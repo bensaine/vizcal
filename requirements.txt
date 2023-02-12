@@ -1,5 +1,0 @@
-PyQt6
-Numpy
-Matplotlib
-Scipy
-SymPy
