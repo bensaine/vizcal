@@ -1,5 +1,13 @@
 import { Experiment } from './Experiment/Experiment'
 
 export const Arc = () => {
-	return <Experiment />
+	const renderOptions = () => {
+		return <></>
+	}
+
+	const renderGraph = () => {
+		return <></>
+	}
+
+	return <Experiment optionsSlot={renderOptions} graphSlot={renderGraph} />
 }

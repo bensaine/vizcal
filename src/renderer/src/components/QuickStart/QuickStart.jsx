@@ -28,12 +28,7 @@ export const QuickStart = () => {
 			</div>
 
 			<div className={styles.row}>
-				<h2>Calculus I</h2>
-				<Carousel slides={data.cal1}></Carousel>
-			</div>
-			<div className={styles.row}>
-				<h2>Calculus II</h2>
-				<Carousel slides={data.cal2}></Carousel>
+				<Carousel slides={data.all}></Carousel>
 			</div>
 			<input
 				type="file"
