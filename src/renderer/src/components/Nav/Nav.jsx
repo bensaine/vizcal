@@ -11,16 +11,28 @@ export const Nav = ({ active, handleWindowChange }) => {
 					Home
 				</li>
 				<li
-					className={active == 'cal1' ? styles.active : ''}
-					onClick={() => handleWindowChange('cal1')}
+					className={active == 'lim' ? styles.active : ''}
+					onClick={() => handleWindowChange('lim')}
 				>
-					Calculus I
+					I
 				</li>
 				<li
-					className={active == 'cal2' ? styles.active : ''}
-					onClick={() => handleWindowChange('cal2')}
+					className={active == 'der' ? styles.active : ''}
+					onClick={() => handleWindowChange('der')}
 				>
-					Calculus II
+					II
+				</li>
+				<li
+					className={active == 'rie' ? styles.active : ''}
+					onClick={() => handleWindowChange('rie')}
+				>
+					III
+				</li>
+				<li
+					className={active == 'arc' ? styles.active : ''}
+					onClick={() => handleWindowChange('arc')}
+				>
+					IIII
 				</li>
 			</ul>
 		</nav>

@@ -41,16 +41,6 @@
 			"id": "arcLength",
 			"displayName": "Arc Length",
 			"category": "Arc Length"
-		},
-		{
-			"id": "washerVolume",
-			"displayName": "Washer Volume",
-			"category": "Volume of Revolution"
-		},
-		{
-			"id": "shellVolume",
-			"displayName": "Shell Volume",
-			"category": "Volume of Revolution"
 		}
 	]
 }

@@ -3,6 +3,7 @@
 	--color-secondary: #dedede;
 	--color-link: #9feaf9;
 
+	--bg-blue-100: #b7cde7;
 	--bg-50: #f9fafb;
 	--bg-100: #f3f4f6;
 	--bg-200: #e5e7eb;
@@ -14,6 +15,7 @@
 	--bg-800: #1f2937;
 	--bg-900: #111827;
 
+	--desmos-color-primary: #fff;
 }
 
 body {
@@ -28,6 +30,12 @@ body {
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
+}
+
+*:focus, span.mq-focused, input:focus {
+	box-shadow: rgba(219, 219, 219, 0.496) 0 0 1px 2px, inset rgba(204, 221, 237, 0.762) 0 0 2px 0 !important;
+	border-color: #bbbbbb !important;
+	outline: unset;
 }
 
 ul {
