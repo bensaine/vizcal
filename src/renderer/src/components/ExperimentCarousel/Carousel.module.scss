@@ -66,9 +66,10 @@
 	border-radius: 1rem;
 	border: 1px solid var(--bg-600);
 	aspect-ratio: 1;
-	transition: transform 0.5s ease-in-out;
+	transition: border 0.2s ease-in-out;
 	background-color: var(--bg-900);
 	gap: 0.5rem;
+	box-shadow: #00000033 0 0 0.5rem 0;
 
 	span {
 		text-align: center;
@@ -84,5 +85,10 @@
 		font-size: 1rem;
 		font-weight: 400;
 		color: var(--color-secondary);
+	}
+
+	&:hover {
+		border: 2px solid var(--bg-600);
+		cursor: pointer;
 	}
 }

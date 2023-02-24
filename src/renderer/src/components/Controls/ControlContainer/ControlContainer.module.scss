@@ -7,12 +7,9 @@
 		margin-bottom: 0.5rem;
 	}
 
-	&:has(.mq-focused, :focus) .label {
-		text-decoration: underline;
-	}
-
 	> :global(.mq-editable-field),
-	> input {
+	> input,
+	> select {
 		width: 100%;
 		padding: 0.5rem;
 		color: #fff;
@@ -21,7 +18,12 @@
 		border: none;
 		border-radius: 0.25rem;
 		transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-		box-shadow: #0003 0 0 0.5rem 0;
+		box-shadow: #00000033 0 0 0.5rem 0;
+	}
+
+	> select {
+		width: fit-content;
+		font-size: 1rem;
 	}
 
 	> input {

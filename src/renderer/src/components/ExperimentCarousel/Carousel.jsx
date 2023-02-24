@@ -33,7 +33,7 @@ export const Carousel = ({ slides }) => {
 				<ButtonBack className={styles.carouselButton}>
 					<ArrowLeft />
 				</ButtonBack>
-				<Slider className={styles.carouselSlider}>
+				<Slider className={styles.carouselSlider} tabIndex={-1}>
 					{slides.map((slide, index) => {
 						return (
 							<Slide index={index} key={slide.id} innerClassName={styles.slideInner}>

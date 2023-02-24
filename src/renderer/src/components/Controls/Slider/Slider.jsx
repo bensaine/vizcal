@@ -1,13 +1,15 @@
 import ReactSlider from 'react-slider'
-import { InputContainer } from '../InputContainer/InputContainer'
+import { ControlContainer } from '../ControlContainer/ControlContainer'
 import styles from './Slider.module.scss'
 
 export const Slider = ({ id, label, value, onChange, min, max, step, minDistance }) => {
 	return (
-		<InputContainer id={id} label={label}>
+		<ControlContainer id={id} label={label}>
 			<div className={styles.sliderContainer}>
 				<ReactSlider
-					className={styles.slider + (Array.isArray(value) ? " " + styles.sliderRange : "")}
+					className={
+						styles.slider + (Array.isArray(value) ? ' ' + styles.sliderRange : '')
+					}
 					trackClassName={styles.track}
 					thumbClassName={styles.thumb}
 					thumbActiveClassName={styles.thumbActive}
@@ -30,6 +32,6 @@ export const Slider = ({ id, label, value, onChange, min, max, step, minDistance
 					<span>{max}</span>
 				</span>
 			</div>
-		</InputContainer>
+		</ControlContainer>
 	)
 }

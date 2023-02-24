@@ -1,4 +1,4 @@
-import styles from './QuickStart.module.scss'
+import styles from './Start.module.scss'
 import { useRef } from 'react'
 import { Carousel } from '../ExperimentCarousel/Carousel'
 import data from '../../data/experiments.json'

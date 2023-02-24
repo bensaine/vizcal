@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import './MathInput.css'
-import { InputContainer } from '../InputContainer/InputContainer'
+import { ControlContainer } from '../ControlContainer/ControlContainer'
 
 export const MathInput = ({
 	id,
@@ -62,8 +62,8 @@ export const MathInput = ({
 	}, [latex])
 
 	return (
-		<InputContainer id={id} label={label}>
+		<ControlContainer id={id} label={label}>
 			<span {...otherProps} ref={wrapperElement} />
-		</InputContainer>
+		</ControlContainer>
 	)
 }
