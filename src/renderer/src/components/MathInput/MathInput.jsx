@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react'
 import './MathInput.css'
-import styles from '../Input/Input.module.scss'
 import { InputContainer } from '../InputContainer/InputContainer'
 
 export const MathInput = ({
@@ -64,7 +63,7 @@ export const MathInput = ({
 
 	return (
 		<InputContainer id={id} label={label}>
-			<span className={styles.input} {...otherProps} ref={wrapperElement} />
+			<span {...otherProps} ref={wrapperElement} />
 		</InputContainer>
 	)
 }

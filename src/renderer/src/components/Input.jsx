@@ -1,5 +1,4 @@
-import { InputContainer } from '../InputContainer/InputContainer'
-import styles from './Input.module.scss'
+import { InputContainer } from './InputContainer/InputContainer'
 
 export const Input = ({ id, label, value, onChange }) => {
 	return (
