@@ -44,14 +44,36 @@ export const Derivative = () => {
 	const renderGraph = () => {
 		return (
 			<>
-			<Expression id="x" latex={"x_{point}="+x}/>
-				<Expression id="d" latex={"d_{eltaX}="+d}/>
-				<Expression id="function" latex={"f\\left(x\\right)="+fx} color="#37a"  />
+				<Expression id="x" latex={'x_{point}=' + x} />
+				<Expression id="d" latex={'d_{eltaX}=' + d} />
+				<Expression id="function" latex={'f\\left(x\\right)=' + fx} color="#fff" />
 				<Expression
 					id="slope"
 					latex={
 						'y=\\frac{f\\left(x_{point}+d_{eltaX}\\right)-f\\left(x_{point}\\right)}{d_{eltaX}}\\left(x-x_{point}\\right)+f\\left(x_{point}\\right)'
-					} color="#f90"
+					}
+					color="#37a"
+				/>
+				<Expression
+					id="runRise"
+					latex={
+						'x_{2}=x_{point}+d_{eltaX}\\left\\{f\\left(x_{point}+d_{eltaX}\\right)<y<f\\left(x_{point}\\right)\\right\\}'
+					}
+					color="#fff"
+				/>
+				<Expression
+					id="riseRun"
+					latex={
+						'y_{2}=f\\left(x_{point}\\right)\\left\\{x_{point}+d_{eltaX}>x>x_{point}\\right\\}'
+					}
+					color="#fff"
+				/>
+				<Expression
+					id="riseRunU"
+					latex={
+						'x_{1}=x_{point}+d_{eltaX}\\left\\{f\\left(x_{point}\\right)<y<f\\left(x_{point}+d_{eltaX}\\right)\\right\\}'
+					}
+					color="#fff"
 				/>
 			</>
 		)
