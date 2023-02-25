@@ -19,11 +19,11 @@ export const Experiment = ({ optionsSlot, graphSlot, helpSlot = () => {} }) => {
 					fontSize={12}
 					zoomFit={false}
 					projectorMode
-					expressions={false}
+					// expressions={false}
 					backgroundColor={'red'}
 					// invertedColors={true}
-					keypad={false}
-					toolbar={false}
+					// keypad={false}
+					// toolbar={false}
 					settingsMenu={false}
 					zoomButtons={false}
 					border={false}
