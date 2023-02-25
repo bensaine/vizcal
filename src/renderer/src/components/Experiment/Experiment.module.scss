@@ -23,11 +23,19 @@
 }
 
 .options {
+	position: relative;
 	justify-content: flex-start;
 	padding: 2rem;
 	gap: 1rem;
 	flex-basis: 40%;
 	overflow-y: auto;
+
+	.helpButton {
+		position: absolute;
+		top: 2rem;
+		right: 2rem;
+		cursor: pointer;
+	}
 
 	h2 {
 		width: 100%;
