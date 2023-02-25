@@ -11,19 +11,22 @@ export const Experiment = ({ optionsSlot, graphSlot, helpSlot = () => {} }) => {
 	return (
 		<div className={styles.container}>
 			<div className={styles.options}>
-				<span className={styles.helpButton} onClick={() => setHelpOpen(true)}><HelpCircle/></span>
-				{optionsSlot()}</div>
+				<span className={styles.helpButton} onClick={() => setHelpOpen(true)}>
+					<HelpCircle />
+				</span>
+				{optionsSlot()}
+			</div>
 			<div className={styles.output}>
 				<GraphingCalculator
 					attributes={{ className: styles.calculator }}
 					fontSize={12}
 					zoomFit={false}
 					projectorMode
-					// expressions={false}
+					expressions={false}
 					backgroundColor={'red'}
 					// invertedColors={true}
-					// keypad={false}
-					// toolbar={false}
+					keypad={false}
+					toolbar={false}
 					settingsMenu={false}
 					zoomButtons={false}
 					border={false}
