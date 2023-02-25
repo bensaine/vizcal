@@ -2,8 +2,9 @@ import { Expression } from 'desmos-react'
 import { useState } from 'react'
 import { Dropdown } from './Controls/Dropdown'
 import { Experiment } from './Experiment/Experiment'
-import { MathInput } from './Controls/MathInput/MathInput'
+import { MathInput } from './Controls/MathInput'
 import { Slider } from './Controls/Slider/Slider'
+import { StaticMath } from './StaticMath'
 
 export const Limit = () => {
 	const [fx, setFx] = useState('')
@@ -41,6 +42,9 @@ export const Limit = () => {
 		return (
 			<>
 				<p>HO SAY YUNG FROM SQUID GAME?</p>
+				<StaticMath>
+					{'lim_{h\\to0}\\frac{f\\left(x+h\\right)-f\\left(x\\right)}{h}'}
+				</StaticMath>
 			</>
 		)
 	}

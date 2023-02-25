@@ -2,7 +2,7 @@ import { Expression } from 'desmos-react'
 import { useState } from 'react'
 import { Dropdown } from './Controls/Dropdown'
 import { Experiment } from './Experiment/Experiment'
-import { MathInput } from './Controls/MathInput/MathInput'
+import { MathInput } from './Controls/MathInput'
 import { Slider } from './Controls/Slider/Slider'
 
 export const Riemann = () => {
