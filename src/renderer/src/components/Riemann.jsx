@@ -66,9 +66,6 @@ export const Riemann = () => {
 					latex={'s\\left(x\\right)=a+w\\left(x+c\\right)'}
 					hidden={true}
 				/>
-				{/* <Expression id="w" latex={'w=' + (x[1] - x[0]) / n} /> */}
-
-				{/* <Expression id="wpoit" latex={'(w,w)'} label="${w}" /> */}
 				<Expression id="function" latex={'f\\left(x\\right)=' + fx} />
 				<Expression
 					id="nOfX"
@@ -98,32 +95,8 @@ export const Riemann = () => {
 				/>
 				<Expression id="min" latex={'x=a'} />
 				<Expression id="max" latex={'x=b'} />
-				{/* {calculateArea} */}
 			</>
 		)
-	}
-	const calculateArea = () => {
-		;<>
-			// <Expression id="s" latex={'s\\left(x\\right)=a+w\\left(x+c\\right)'} hidden={true} />
-			<Expression
-				id="nOfX"
-				latex={'n_{x}\\left(x\\right)=\\operatorname{floor}\\left(\\frac{x-a}{w}\\right)'}
-				hidden={false}
-			/>
-			<Expression
-				id="sSubX"
-				latex={
-					's_{x}\\left(x\\right)=\\left\\{a\\le x\\le b:\\ s\\left(n_{x}\\left(x\\right)\\right)\\right\\}'
-				}
-				hidden={true}
-			/>
-			<Expression
-				id="area"
-				latex={'0le yle fleft(s_{x}left(x\\right)\\right)left{ale xle b\\right}'}
-			/>
-			<Expression id="min" latex={'x=a'} />
-			<Expression id="max" latex={'x=b'} />
-		</>
 	}
 
 	return <Experiment optionsSlot={renderOptions} graphSlot={renderGraph} />
