@@ -14,7 +14,7 @@ export const Riemann = () => {
 	const renderOptions = () => {
 		return (
 			<>
-				<h2>Reiman Sums Visualizer</h2>
+				<h2>Riemann Sums</h2>
 				<MathInput
 					id="function"
 					label="Function"
