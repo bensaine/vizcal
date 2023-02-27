@@ -1,8 +1,7 @@
 import { Expression } from 'desmos-react'
 import { useState } from 'react'
-import { Dropdown } from './Controls/Dropdown'
 import { Experiment } from './Experiment/Experiment'
-import { MathInput } from './Controls/MathInput/MathInput'
+import { MathInput } from './Controls/MathInput'
 import { Slider } from './Controls/Slider/Slider'
 
 export const Arc = () => {
@@ -23,7 +22,7 @@ export const Arc = () => {
 					}}
 				/>
 				<Slider
-					id="number_subdivisions"
+					id="numberSubdivisions"
 					label="Number of Subdivisions"
 					value={n}
 					onChange={setN}
@@ -32,7 +31,7 @@ export const Arc = () => {
 					step={1}
 				/>
 				<Slider
-					id="length_range"
+					id="lengthRange"
 					label="Length Range"
 					value={x}
 					onChange={setX}
