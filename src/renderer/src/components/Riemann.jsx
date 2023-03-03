@@ -4,10 +4,11 @@ import { Dropdown } from './Controls/Dropdown'
 import { Experiment } from './Experiment/Experiment'
 import { MathInput } from './Controls/MathInput'
 import { Slider } from './Controls/Slider/Slider'
+import { StaticMath } from './StaticMath'
 
 export const Riemann = () => {
 	const [fx, setFx] = useState('')
-	const [x, setX] = useState([0, 10])
+	const [x, setX] = useState([-10, 10])
 	const [direction, setDirection] = useState('left')
 	const [n, setN] = useState(1)
 
@@ -23,7 +24,7 @@ export const Riemann = () => {
 						setFx(input.latex())
 					}}
 				/>
-				{fx}
+
 				<Slider
 					id="range"
 					label="Range"
@@ -39,7 +40,7 @@ export const Riemann = () => {
 					value={n}
 					onChange={setN}
 					min={1}
-					max={100}
+					max={1000}
 					step={1}
 				/>
 				<Dropdown
@@ -98,6 +99,19 @@ export const Riemann = () => {
 			</>
 		)
 	}
+	const renderHelp = () => {
+		return (
+			<>
+				<h3>Reimann sums and Integrals</h3>
+				<p>What is a Reimann sum?</p>
+				<p>
+					In mathematics, a Riemann sum is a certain kind of approximation of an integral
+					by a finite sum. Riemann sums help us approximate definite integrals, but they
+					also help us formally define definite integrals.
+				</p>
+			</>
+		)
+	}
 
-	return <Experiment optionsSlot={renderOptions} graphSlot={renderGraph} />
+	return <Experiment optionsSlot={renderOptions} graphSlot={renderGraph} helpSlot={renderHelp} />
 }

@@ -75,6 +75,11 @@ export const Derivative = () => {
 					}
 					color="#fff"
 				/>
+				<Expression
+					id="point"
+					latex={'\\left(x_{point},f\\left(x_{point}\\right)\\right)'}
+					color="#fa0"
+				/>
 			</>
 		)
 	}
