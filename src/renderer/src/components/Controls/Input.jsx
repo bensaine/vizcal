@@ -1,6 +1,6 @@
 import { ControlContainer } from './ControlContainer/ControlContainer'
 
-export const Input = ({ id, label, value, onChange }) => {
+export const Input = ({ id, label, value, onChange, disabled }) => {
 	return (
 		<ControlContainer id={id} label={label}>
 			<input
@@ -8,6 +8,7 @@ export const Input = ({ id, label, value, onChange }) => {
 				type="text"
 				value={value}
 				onChange={(event) => onChange(event.target.value)}
+				disabled={disabled}
 			/>
 		</ControlContainer>
 	)
