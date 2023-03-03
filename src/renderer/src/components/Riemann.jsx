@@ -107,7 +107,7 @@ export const Riemann = () => {
 				<p>
 					In mathematics, a Riemann sum is a certain kind of approximation of an integral
 					by a finite sum. Riemann sums help us approximate definite integrals, but they
-					also help us formally define definite integrals
+					also help us formally define definite integrals.
 				</p>
 			</>
 		)
