@@ -7,6 +7,12 @@
 		margin-bottom: 0.5rem;
 	}
 
+	&.disabled {
+		.label {
+			color: var(--color-secondary);
+		}
+	}
+
 	> :global(.mq-editable-field),
 	> input,
 	> select {

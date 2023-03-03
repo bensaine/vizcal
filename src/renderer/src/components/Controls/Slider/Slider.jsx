@@ -4,7 +4,7 @@ import styles from './Slider.module.scss'
 
 export const Slider = ({ id, label, value, onChange, disabled, min, max, step, minDistance }) => {
 	return (
-		<ControlContainer id={id} label={label}>
+		<ControlContainer id={id} label={label} disabled={disabled}>
 			<div className={styles.sliderContainer}>
 				<ReactSlider
 					className={
