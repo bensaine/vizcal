@@ -7,6 +7,7 @@ export const Derivative = () => {
 	const [fx, setFx] = useState('')
 	const [x, setX] = useState()
 	const [d, setD] = useState()
+
 	const renderOptions = () => {
 		return (
 			<>
