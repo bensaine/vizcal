@@ -1,7 +1,7 @@
 import { useLayoutEffect, useRef } from 'react'
-import '../../assets/mathquill.css'
+import '../assets/mathquill.css'
 
-export const StaticMathField = ({ mathquillDidMount, children, ...otherProps }) => {
+export const StaticMath = ({ mathquillDidMount, children, ...otherProps }) => {
 	const wrapperElement = useRef(null)
 	const mathField = useRef(null)
 

@@ -1,12 +1,21 @@
 import styles from './Experiment.module.scss'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { Expression, GraphingCalculator, useHelperExpression } from 'desmos-react'
+import { Dialog } from '../Dialog/Dialog'
+import { HelpCircle } from 'react-feather'
 import '../../assets/desmos.css'
 
-export const Experiment = ({ optionsSlot, graphSlot, helpSlot }) => {
+export const Experiment = ({ optionsSlot, graphSlot, helpSlot = () => {} }) => {
+	const [helpOpen, setHelpOpen] = useState(false)
+
 	return (
 		<div className={styles.container}>
-			<div className={styles.options}>{optionsSlot()}</div>
+			<div className={styles.options}>
+				<span className={styles.helpButton} onClick={() => setHelpOpen(true)}>
+					<HelpCircle />
+				</span>
+				{optionsSlot()}
+			</div>
 			<div className={styles.output}>
 				<GraphingCalculator
 					attributes={{ className: styles.calculator }}
@@ -25,6 +34,9 @@ export const Experiment = ({ optionsSlot, graphSlot, helpSlot }) => {
 					{graphSlot()}
 				</GraphingCalculator>
 			</div>
+			<Dialog open={helpOpen} title={'Help'} onClose={() => setHelpOpen(false)}>
+				{helpSlot()}
+			</Dialog>
 		</div>
 	)
 }

@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
-import './MathInput.css'
-import { ControlContainer } from '../ControlContainer/ControlContainer'
+import '../../assets/mathquill.css'
+import { ControlContainer } from './ControlContainer/ControlContainer'
 
 export const MathInput = ({
 	id,

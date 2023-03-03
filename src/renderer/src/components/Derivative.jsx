@@ -1,5 +1,5 @@
 import { Experiment } from './Experiment/Experiment'
-import { MathInput } from './Controls/MathInput/MathInput'
+import { MathInput } from './Controls/MathInput'
 import { useState } from 'react'
 import { Expression } from 'desmos-react'
 import { Slider } from './Controls/Slider/Slider'
