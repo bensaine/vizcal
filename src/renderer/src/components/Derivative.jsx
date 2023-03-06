@@ -6,9 +6,10 @@ import { Slider } from './Controls/Slider/Slider'
 import { Dropdown } from './Controls/Dropdown'
 export const Derivative = () => {
 	const [fx, setFx] = useState('')
-	const [x, setX] = useState()
-	const [d, setD] = useState()
-	const [derivOrd, setDerivOrd] = useState()
+	const [x, setX] = useState(0)
+	const [d, setD] = useState(0.00001)
+	const [derivOrd, setDerivOrd] = useState('First')
+
 	const renderOptions = () => {
 		return (
 			<>
@@ -43,38 +44,31 @@ export const Derivative = () => {
 				/>
 				<Dropdown
 					id="derivOrd"
-					label="Derivative order"
+					label="Derivative Order"
 					value={derivOrd}
-					options={['first', 'second']}
+					options={['First', 'Second']}
 					onChange={setDerivOrd}
 					disabled={fx == ''}
 				/>
 			</>
 		)
 	}
-	let renderGraph = () => {
+
+	const renderGraph = () => {
 		return (
 			<>
 				<Expression id="x" latex={'x_{point}=' + x} />
 				<Expression id="d" latex={'d_{eltaX}=' + d} />
 				<Expression id="function" latex={'f\\left(x\\right)=' + fx} color="#fff" />
-				{derivOrd == 'first' ? (
-					<Expression
-						id="slope"
-						latex={
-							'y=\\frac{f\\left(x_{point}+d_{eltaX}\\right)-f\\left(x_{point}\\right)}{d_{eltaX}}\\left(x-x_{point}\\right)+f\\left(x_{point}\\right)'
-						}
-						color="#37a"
-					/>
-				) : (
-					<Expression
-						id="slope"
-						latex={
-							"y=\\frac{f'\\left(x_{point}+d_{eltaX}\\right)-f'\\left(x_{point}\\right)}{d_{eltaX}}\\left(x-x_{point}\\right)+f\\left(x_{point}\\right)"
-						}
-						color="#37a"
-					/>
-				)}
+				<Expression
+					id="slope"
+					latex={
+						derivOrd == 'first'
+							? 'y=\\frac{f\\left(x_{point}+d_{eltaX}\\right)-f\\left(x_{point}\\right)}{d_{eltaX}}\\left(x-x_{point}\\right)+f\\left(x_{point}\\right)'
+							: "y=\\frac{f'\\left(x_{point}+d_{eltaX}\\right)-f'\\left(x_{point}\\right)}{d_{eltaX}}\\left(x-x_{point}\\right)+f\\left(x_{point}\\right)"
+					}
+					color="#37a"
+				/>
 				<Expression
 					id="runRise"
 					latex={
@@ -109,9 +103,7 @@ export const Derivative = () => {
 		return (
 			<>
 				<h3>Derivatives</h3>
-				<p>
-					<br></br>What is a Derivative?
-				</p>
+				<p>What is a Derivative?</p>
 				<p>
 					The derivative of a function at a given point is the instaneous slope of said
 					function at said point. The values for the run and rise dictate the range of
