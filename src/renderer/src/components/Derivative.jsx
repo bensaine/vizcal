@@ -29,6 +29,7 @@ export const Derivative = () => {
 					min={-20}
 					max={20}
 					step={0.1}
+					disabled={fx == ''}
 				/>
 				<Slider
 					id="d"
@@ -38,6 +39,7 @@ export const Derivative = () => {
 					min={0.00001}
 					max={1}
 					step={0.0001}
+					disabled={fx == ''}
 				/>
 				<Dropdown
 					id="derivOrd"
@@ -45,57 +47,62 @@ export const Derivative = () => {
 					value={derivOrd}
 					options={['first', 'second']}
 					onChange={setDerivOrd}
+					disabled={fx == ''}
 				/>
 			</>
 		)
 	}
 	let renderGraph = () => {
-			return (
-				<>
-					<Expression id="x" latex={'x_{point}=' + x} />
-					<Expression id="d" latex={'d_{eltaX}=' + d} />
-					<Expression id="function" latex={'f\\left(x\\right)=' + fx} color="#fff" />
-					{derivOrd == 'first' ? (<Expression
+		return (
+			<>
+				<Expression id="x" latex={'x_{point}=' + x} />
+				<Expression id="d" latex={'d_{eltaX}=' + d} />
+				<Expression id="function" latex={'f\\left(x\\right)=' + fx} color="#fff" />
+				{derivOrd == 'first' ? (
+					<Expression
 						id="slope"
 						latex={
 							'y=\\frac{f\\left(x_{point}+d_{eltaX}\\right)-f\\left(x_{point}\\right)}{d_{eltaX}}\\left(x-x_{point}\\right)+f\\left(x_{point}\\right)'
 						}
 						color="#37a"
-					/>):(<Expression
+					/>
+				) : (
+					<Expression
 						id="slope"
 						latex={
-							'y=\\frac{f\'\\left(x_{point}+d_{eltaX}\\right)-f\'\\left(x_{point}\\right)}{d_{eltaX}}\\left(x-x_{point}\\right)+f\\left(x_{point}\\right)'
+							"y=\\frac{f'\\left(x_{point}+d_{eltaX}\\right)-f'\\left(x_{point}\\right)}{d_{eltaX}}\\left(x-x_{point}\\right)+f\\left(x_{point}\\right)"
 						}
 						color="#37a"
-					/>)}
-					<Expression
-						id="runRise"
-						latex={
-							'x_{2}=x_{point}+d_{eltaX}\\left\\{f\\left(x_{point}+d_{eltaX}\\right)<y<f\\left(x_{point}\\right)\\right\\}'
-						}
-						color="#fff"
 					/>
-					<Expression
-						id="riseRun"
-						latex={
-							'y_{2}=f\\left(x_{point}\\right)\\left\\{x_{point}+d_{eltaX}>x>x_{point}\\right\\}'
-						}
-						color="#fff"
-					/>
-					<Expression
-						id="riseRunU"
-						latex={
-							'x_{1}=x_{point}+d_{eltaX}\\left\\{f\\left(x_{point}\\right)<y<f\\left(x_{point}+d_{eltaX}\\right)\\right\\}'
-						}
-						color="#fff"
-					/>
-					<Expression
-						id="point"
-						latex={'\\left(x_{point},f\\left(x_{point}\\right)\\right)'}
-						color="#fa0"
-					/>
-				</>
-			)
+				)}
+				<Expression
+					id="runRise"
+					latex={
+						'x_{2}=x_{point}+d_{eltaX}\\left\\{f\\left(x_{point}+d_{eltaX}\\right)<y<f\\left(x_{point}\\right)\\right\\}'
+					}
+					color="#fff"
+				/>
+				<Expression
+					id="riseRun"
+					latex={
+						'y_{2}=f\\left(x_{point}\\right)\\left\\{x_{point}+d_{eltaX}>x>x_{point}\\right\\}'
+					}
+					color="#fff"
+				/>
+				<Expression
+					id="riseRunU"
+					latex={
+						'x_{1}=x_{point}+d_{eltaX}\\left\\{f\\left(x_{point}\\right)<y<f\\left(x_{point}+d_{eltaX}\\right)\\right\\}'
+					}
+					color="#fff"
+				/>
+				<Expression
+					id="point"
+					latex={'\\left(x_{point},f\\left(x_{point}\\right)\\right)'}
+					color="#fa0"
+				/>
+			</>
+		)
 	}
 
 	const renderHelp = () => {
