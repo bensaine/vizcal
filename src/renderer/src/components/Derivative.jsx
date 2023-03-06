@@ -63,7 +63,7 @@ export const Derivative = () => {
 				<Expression
 					id="slope"
 					latex={
-						derivOrd == 'first'
+						derivOrd == 'First'
 							? 'y=\\frac{f\\left(x_{point}+d_{eltaX}\\right)-f\\left(x_{point}\\right)}{d_{eltaX}}\\left(x-x_{point}\\right)+f\\left(x_{point}\\right)'
 							: "y=\\frac{f'\\left(x_{point}+d_{eltaX}\\right)-f'\\left(x_{point}\\right)}{d_{eltaX}}\\left(x-x_{point}\\right)+f\\left(x_{point}\\right)"
 					}
