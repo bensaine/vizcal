@@ -2,9 +2,9 @@ import ReactSlider from 'react-slider'
 import { ControlContainer } from '../ControlContainer/ControlContainer'
 import styles from './Slider.module.scss'
 
-export const Slider = ({ id, label, value, onChange, min, max, step, minDistance }) => {
+export const Slider = ({ id, label, value, onChange, disabled, min, max, step, minDistance }) => {
 	return (
-		<ControlContainer id={id} label={label}>
+		<ControlContainer id={id} label={label} disabled={disabled}>
 			<div className={styles.sliderContainer}>
 				<ReactSlider
 					className={
@@ -25,6 +25,7 @@ export const Slider = ({ id, label, value, onChange, min, max, step, minDistance
 					step={step}
 					minDistance={minDistance}
 					pearling
+					disabled={disabled}
 				/>
 				<span className={styles.labelRow}>
 					<span>{min}</span>

@@ -1,3 +1,19 @@
+@mixin sliderColor($color) {
+	.track:nth-child(1) {
+		background-color: $color;
+	}
+
+	&.sliderRange {
+		.track:nth-child(1) {
+			background-color: var(--bg-800);
+		}
+
+		.track:nth-child(2) {
+			background-color: $color;
+		}
+	}
+}
+
 .sliderContainer {
 	padding-top: 1rem;
 }
@@ -6,6 +22,20 @@
 	position: relative;
 	width: 100%;
 	height: 1rem;
+	@include sliderColor(var(--color-primary));
+
+	&:global(.disabled) {
+		pointer-events: none;
+		@include sliderColor(var(--color-secondary));
+
+		.thumb {
+			background-color: var(--color-secondary);
+		}
+
+		.value {
+			color: var(--color-secondary);
+		}
+	}
 }
 
 .value {
@@ -48,21 +78,6 @@
 	background-color: var(--bg-800);
 	border-radius: 0.25rem;
 	box-shadow: #00000033 0 0 0.5rem 0;
-
-
-	&:nth-child(1) {
-		background-color: var(--color-primary);
-	}
-}
-
-.sliderRange {
-	.track:nth-child(1) {
-		background-color: var(--bg-800);
-	}
-
-	.track:nth-child(2) {
-		background-color: var(--color-primary);
-	}
 }
 
 .thumb {
