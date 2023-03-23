@@ -33,6 +33,7 @@ export const Riemann = () => {
 					min={-100}
 					max={100}
 					step={0.1}
+					disabled={fx == ''}
 				/>
 				<Slider
 					id="n"
@@ -42,6 +43,7 @@ export const Riemann = () => {
 					min={1}
 					max={1000}
 					step={1}
+					disabled={fx == ''}
 				/>
 				<Dropdown
 					id="direction"
@@ -49,6 +51,7 @@ export const Riemann = () => {
 					value={direction}
 					options={['left', 'right']}
 					onChange={setDirection}
+					disabled={fx == ''}
 				/>
 			</>
 		)
