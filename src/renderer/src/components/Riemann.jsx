@@ -97,8 +97,12 @@ export const Riemann = () => {
 						'f\\left(s_{x}\\left(x\\right)\\right)\\le y\\le0\\left\\{a\\le x\\le b\\right\\}'
 					}
 				/>
-				<Expression id="min" latex={'x=a'} />
-				<Expression id="max" latex={'x=b'} />
+				{fx && (
+					<>
+						<Expression id="min" latex={'x=a'} />
+						<Expression id="max" latex={'x=b'} />
+					</>
+				)}
 			</>
 		)
 	}
