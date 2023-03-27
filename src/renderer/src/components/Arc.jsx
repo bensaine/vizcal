@@ -42,6 +42,7 @@ export const Arc = ({ payload, visible, setPayload }) => {
 					min={1}
 					max={100}
 					step={1}
+					disabled={fx == ''}
 				/>
 				<Slider
 					id="lengthRange"
@@ -51,6 +52,7 @@ export const Arc = ({ payload, visible, setPayload }) => {
 					min={-20}
 					max={20}
 					step={0.01}
+					disabled={fx == ''}
 				/>
 			</>
 		)
