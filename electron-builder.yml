@@ -1,5 +1,5 @@
 appId: edu.vaniercollege.vizcal
-productName: vizcal
+productName: Vizcal
 directories:
   buildResources: build
 files:
@@ -10,7 +10,7 @@ files:
 asarUnpack:
   - resources/*
 win:
-  executableName: vizcal
+  executableName: Vizcal
 nsis:
   artifactName: ${name}-${version}-setup.${ext}
   shortcutName: ${productName}
