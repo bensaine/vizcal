@@ -1,16 +1,26 @@
+import '../../jquery.js'
+import '../../desmos.js'
 import { Expression } from 'desmos-react'
-import { useState } from 'react'
-import { Experiment } from './Experiment/Experiment'
+import { useEffect, useState } from 'react'
+import { ExperimentBase } from './ExperimentBase/ExperimentBase'
 import { MathInput } from './Controls/MathInput'
 import { Slider } from './Controls/Slider/Slider'
 import { StaticMath } from './StaticMath'
 import ArcImg1 from '../assets/images/arclength1.png'
 import ArcImg2 from '../assets/images/arclength2.png'
 
-export const Arc = () => {
-	const [fx, setFx] = useState('')
-	const [x, setX] = useState([0, 10])
-	const [n, setN] = useState(0)
+export const Arc = ({ payload, visible, setPayload }) => {
+	const [fx, setFx] = useState(payload.fx ?? '')
+	const [x, setX] = useState(payload.x ?? [0, 10])
+	const [n, setN] = useState(payload.n ?? 0)
+
+	useEffect(() => {
+		setPayload({
+			fx: fx,
+			x: x,
+			n: n
+		})
+	}, [fx, x, n])
 
 	const renderOptions = () => {
 		return (
@@ -93,37 +103,45 @@ export const Arc = () => {
 			<>
 				<h3>What is an arc length?</h3>
 				<p>
-					The arc length is an application of integration that lets us find the length of a function within a certain range.
-					The method by which this is achieved it very similar to the approximation of the area under a curve
-					where Riemann sums where exhaustively used.
+					The arc length is an application of integration that lets us find the length of
+					a function within a certain range. The method by which this is achieved it very
+					similar to the approximation of the area under a curve where Riemann sums where
+					exhaustively used.
 				</p>
-				
+
 				<h3>What is the formula?</h3>
 				<p>
 					We start by dividing our range into n sections with equal width
-					<StaticMath>
-						{' \\Delta x=\\frac{b-a}{n}'}
-					</StaticMath>
+					<StaticMath>{' \\Delta x=\\frac{b-a}{n}'}</StaticMath>
 					and define <StaticMath>{'x_{i}*=a+i\\Delta x'}</StaticMath>
-					where <StaticMath>{'0 < i \\leq n'}</StaticMath>. Then, we join all points for <StaticMath>{'f(x_{i}) \\space and \\space f(x_{i-1})'}</StaticMath> 
+					where <StaticMath>{'0 < i \\leq n'}</StaticMath>. Then, we join all points for{' '}
+					<StaticMath>{'f(x_{i}) \\space and \\space f(x_{i-1})'}</StaticMath>
 					to create line segments that approximate the length of the curve.
 				</p>
-				<img src={ArcImg1}/>
+				<img src={ArcImg1} />
 				<p>
 					To get the numerical approximation, we repeatedly use the distance formula
-					<StaticMath>{"\\sqrt{(\\Delta x)^2 + (f'(x_{i}*)\\Delta x)^2} = \\sqrt{1 + [f'(x_{i}*)]^2}\\Delta x"}</StaticMath>.
-					Lastly, we take <StaticMath>{"\\lim_{n\\to\\infty}\\sum_{i=1}^{n}{{\\sqrt{1+[f'(x_{i}*)]^2}}\\Delta x}"}</StaticMath> to go over all line segments
-					as well as refining the approximation infinitely well.
+					<StaticMath>
+						{
+							"\\sqrt{(\\Delta x)^2 + (f'(x_{i}*)\\Delta x)^2} = \\sqrt{1 + [f'(x_{i}*)]^2}\\Delta x"
+						}
+					</StaticMath>
+					. Lastly, we take{' '}
+					<StaticMath>
+						{"\\lim_{n\\to\\infty}\\sum_{i=1}^{n}{{\\sqrt{1+[f'(x_{i}*)]^2}}\\Delta x}"}
+					</StaticMath>{' '}
+					to go over all line segments as well as refining the approximation infinitely
+					well.
 				</p>
-				<img src={ArcImg2}/>	
-				<p>
-					This gives us the formula for the arc length:
-				</p>
-				
+				<img src={ArcImg2} />
+				<p>This gives us the formula for the arc length:</p>
+
 				<StaticMath>{"L = \\int_{a}^{b}{\\sqrt{1+[f'(x)]^2}}dx"}</StaticMath>
 			</>
 		)
 	}
 
-	return <Experiment optionsSlot={renderOptions} graphSlot={renderGraph} helpSlot={renderHelp}/>
+	return visible ? (
+		<ExperimentBase optionsSlot={renderOptions} graphSlot={renderGraph} helpSlot={renderHelp} />
+	) : null
 }

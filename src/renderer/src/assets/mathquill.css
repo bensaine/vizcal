@@ -9,7 +9,7 @@
  */
 @font-face {
 	font-family: Symbola;
-	src: url(assets/Symbola.woff);
+	src: url(Symbola.woff);
 	src: local('Symbola Regular'), local('Symbola');
 }
 .mq-editable-field {

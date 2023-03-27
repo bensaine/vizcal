@@ -1,26 +1,62 @@
 import styles from './App.module.scss'
-import { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Nav } from './components/Nav/Nav'
 import { WindowContainer } from './components/WindowContainer/WindowContainer'
-import { QuickStart } from './components/Start/Start'
-import { Experiment } from './components/Experiment/Experiment'
-import { Limit } from './components/Limit'
-import { Derivative } from './components/Derivative'
-import { Riemann } from './components/Riemann'
-import { Arc } from './components/Arc'
+import { Home } from './components/Home/Home'
+import { experiments } from './data/experiments.js'
+import { v4 as uuidv4 } from 'uuid'
+import { Experiment } from './components/Experiment'
+import fs from 'fs'
 
 function App() {
-	const [window, setWindow] = useState('home')
+	const [openExperiments, setOpenExperiments] = useState([])
+	const [focusedExperiment, setFocusedExperiment] = useState('home')
+
+	const createExperiment = (type) => {
+		const id = uuidv4()
+		localStorage.setItem(id, JSON.stringify({ type: type, payload: {} }))
+		setOpenExperiments([...openExperiments, id])
+		setFocusedExperiment(id)
+	}
+
+	if (window.electron) {
+		window.electron.ipcRenderer.on('open-file', (event, experiment) => {
+			localStorage.setItem(experiment.id, JSON.stringify(experiment.save))
+
+			if (!openExperiments.includes(experiment.id))
+				setOpenExperiments([...openExperiments, experiment.id])
+
+			setFocusedExperiment(experiment.id)
+		})
+
+		window.electron.ipcRenderer.on('save-file', async (event, path) => {
+			if (focusedExperiment == 'home') return
+
+			const updatePayloadEvent = new CustomEvent('updatePayload:' + focusedExperiment)
+			document.dispatchEvent(updatePayloadEvent)
+			const experiment = JSON.parse(localStorage.getItem(focusedExperiment))
+			console.log(experiment)
+			const output = { id: focusedExperiment, save: experiment, sign: 'vizcal' }
+			window.api.writeFile(path, JSON.stringify(output))
+		})
+	}
 
 	return (
 		<div className={styles.container}>
-			<Nav active={window} handleWindowChange={setWindow} />
+			<Nav
+				experiments={openExperiments}
+				focus={focusedExperiment}
+				setFocus={setFocusedExperiment}
+			/>
 			<WindowContainer>
-				{window == 'home' && <QuickStart />}
-				{window == 'lim' && <Limit />}
-				{window == 'der' && <Derivative />}
-				{window == 'rie' && <Riemann />}
-				{window == 'arc' && <Arc />}
+				{focusedExperiment == 'home' && <Home createNewExperiment={createExperiment} />}
+				{openExperiments.map((experiment) => (
+					<Experiment
+						id={experiment}
+						visible={focusedExperiment == experiment}
+						key={experiment}
+					/>
+				))}
 			</WindowContainer>
 		</div>
 	)

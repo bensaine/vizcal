@@ -1,5 +1,7 @@
-import { useLayoutEffect, useRef } from 'react'
+import { useEffect, useLayoutEffect, useRef } from 'react'
 import '../assets/mathquill.css'
+import '../../jquery.js'
+import '../../mathquill.js'
 
 export const StaticMath = ({ mathquillDidMount, children, ...otherProps }) => {
 	const wrapperElement = useRef(null)
@@ -8,7 +10,7 @@ export const StaticMath = ({ mathquillDidMount, children, ...otherProps }) => {
 	useLayoutEffect(() => {
 		if (!wrapperElement) return
 
-		mathField.current = window.MathQuill.StaticMath(wrapperElement.current)
+		mathField.current = MathQuill.StaticMath(wrapperElement.current)
 		if (mathquillDidMount) mathquillDidMount(mathField.current)
 	}, [wrapperElement, children])
 

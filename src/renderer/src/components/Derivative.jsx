@@ -1,14 +1,26 @@
-import { Experiment } from './Experiment/Experiment'
+import '../../jquery.js'
+import '../../desmos.js'
+import { ExperimentBase } from './ExperimentBase/ExperimentBase'
 import { MathInput } from './Controls/MathInput'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Expression } from 'desmos-react'
 import { Slider } from './Controls/Slider/Slider'
 import { Dropdown } from './Controls/Dropdown'
-export const Derivative = () => {
-	const [fx, setFx] = useState('')
-	const [x, setX] = useState(0)
-	const [d, setD] = useState(0.00001)
-	const [derivOrd, setDerivOrd] = useState('First')
+
+export const Derivative = ({ payload, visible, setPayload }) => {
+	const [fx, setFx] = useState(payload.fx ?? '')
+	const [x, setX] = useState(payload.x ?? 0)
+	const [d, setD] = useState(payload.d ?? 0.00001)
+	const [derivOrd, setDerivOrd] = useState(payload.derivOrd ?? 'First')
+
+	useEffect(() => {
+		setPayload({
+			fx: fx,
+			x: x,
+			d: d,
+			derivOrd: derivOrd
+		})
+	}, [fx, x, d, derivOrd])
 
 	const renderOptions = () => {
 		return (
@@ -113,5 +125,8 @@ export const Derivative = () => {
 			</>
 		)
 	}
-	return <Experiment optionsSlot={renderOptions} graphSlot={renderGraph} helpSlot={renderHelp} />
+
+	return visible ? (
+		<ExperimentBase optionsSlot={renderOptions} graphSlot={renderGraph} helpSlot={renderHelp} />
+	) : null
 }

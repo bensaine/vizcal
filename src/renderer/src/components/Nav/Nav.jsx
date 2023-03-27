@@ -1,39 +1,24 @@
 import styles from './Nav.module.scss'
+import { NavItem } from './NavItem'
 
-export const Nav = ({ active, handleWindowChange }) => {
+export const Nav = ({ experiments, focus, setFocus }) => {
 	return (
 		<nav className={styles.nav}>
 			<ul>
 				<li
-					className={active == 'home' ? styles.active : ''}
-					onClick={() => handleWindowChange('home')}
+					className={focus == 'home' ? styles.active : ''}
+					onClick={() => setFocus('home')}
 				>
 					Home
 				</li>
-				<li
-					className={active == 'lim' ? styles.active : ''}
-					onClick={() => handleWindowChange('lim')}
-				>
-					I
-				</li>
-				<li
-					className={active == 'der' ? styles.active : ''}
-					onClick={() => handleWindowChange('der')}
-				>
-					II
-				</li>
-				<li
-					className={active == 'rie' ? styles.active : ''}
-					onClick={() => handleWindowChange('rie')}
-				>
-					III
-				</li>
-				<li
-					className={active == 'arc' ? styles.active : ''}
-					onClick={() => handleWindowChange('arc')}
-				>
-					IIII
-				</li>
+				{experiments.map((experiment) => (
+					<NavItem
+						id={experiment}
+						focus={focus == experiment}
+						onClick={setFocus}
+						key={experiment}
+					/>
+				))}
 			</ul>
 		</nav>
 	)

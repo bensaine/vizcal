@@ -1,16 +1,26 @@
+import '../../jquery.js'
+import '../../desmos.js'
 import { Expression } from 'desmos-react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Dropdown } from './Controls/Dropdown'
-import { Experiment } from './Experiment/Experiment'
+import { ExperimentBase } from './ExperimentBase/ExperimentBase'
 import { MathInput } from './Controls/MathInput'
 import { Slider } from './Controls/Slider/Slider'
-import { StaticMath } from './StaticMath'
 
-export const Riemann = () => {
-	const [fx, setFx] = useState('')
-	const [x, setX] = useState([-10, 10])
-	const [direction, setDirection] = useState('left')
-	const [n, setN] = useState(1)
+export const Riemann = ({ payload, visible, setPayload }) => {
+	const [fx, setFx] = useState(payload.fx ?? '')
+	const [x, setX] = useState(payload.x ?? [-10, 10])
+	const [direction, setDirection] = useState(payload.direction ?? 'left')
+	const [n, setN] = useState(payload.n ?? 1)
+
+	useEffect(() => {
+		setPayload({
+			fx: fx,
+			x: x,
+			direction: direction,
+			n: n
+		})
+	}, [fx, x, direction, n])
 
 	const renderOptions = () => {
 		return (
@@ -120,5 +130,7 @@ export const Riemann = () => {
 		)
 	}
 
-	return <Experiment optionsSlot={renderOptions} graphSlot={renderGraph} helpSlot={renderHelp} />
+	return visible ? (
+		<ExperimentBase optionsSlot={renderOptions} graphSlot={renderGraph} helpSlot={renderHelp} />
+	) : null
 }

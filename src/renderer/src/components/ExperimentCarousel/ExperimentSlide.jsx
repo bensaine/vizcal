@@ -1,4 +1,4 @@
-import styles from './Carousel.module.scss'
+import styles from './ExperimentCarousel.module.scss'
 
 export const ExperimentSlide = ({ id, displayName, category }) => {
 	return (

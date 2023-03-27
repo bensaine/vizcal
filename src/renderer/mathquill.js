@@ -959,7 +959,7 @@
 	}
 	// globally exported API object
 	function MathQuill(el) {
-		insistOnInterVer()
+		// insistOnInterVer()
 		return MQ1(el)
 	}
 	MathQuill.prototype = Progenote.p
@@ -980,7 +980,7 @@
 						'  https://github.com/mathquill/mathquill/wiki/%60dev%60-branch-(2014%E2%80%932015)-%E2%86%92-v0.10.0-Migration-Guide'
 				)
 		}
-		insistOnInterVer()
+		// insistOnInterVer()
 		return MathQuill
 	}
 	MathQuill.getInterface = getInterface
@@ -5368,7 +5368,7 @@
 		(function (key, val) {
 			if (typeof val === 'function') {
 				MathQuill[key] = function () {
-					insistOnInterVer()
+					// insistOnInterVer()
 					return val.apply(this, arguments)
 				}
 				MathQuill[key].prototype = val.prototype

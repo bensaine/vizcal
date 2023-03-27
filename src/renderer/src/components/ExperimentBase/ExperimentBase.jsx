@@ -1,11 +1,13 @@
-import styles from './Experiment.module.scss'
-import { useRef, useState } from 'react'
-import { Expression, GraphingCalculator, useHelperExpression } from 'desmos-react'
+import styles from './ExperimentBase.module.scss'
+import { useEffect, useState } from 'react'
+import '../../../jquery.js'
+import '../../../desmos.js'
 import { Dialog } from '../Dialog/Dialog'
 import { HelpCircle } from 'react-feather'
 import '../../assets/desmos.css'
+import { GraphingCalculator } from 'desmos-react'
 
-export const Experiment = ({ optionsSlot, graphSlot, helpSlot = () => {} }) => {
+export const ExperimentBase = ({ optionsSlot, graphSlot, helpSlot = () => {} }) => {
 	const [helpOpen, setHelpOpen] = useState(false)
 
 	return (

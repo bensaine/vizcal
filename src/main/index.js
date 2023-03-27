@@ -1,7 +1,8 @@
-import { app, shell, BrowserWindow } from 'electron'
+import { app, shell, dialog, BrowserWindow, Menu, ipcMain } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
+import fs from 'fs'
 
 function createWindow() {
 	// Create the browser window.
@@ -17,9 +18,100 @@ function createWindow() {
 		}
 	})
 
+	const isMac = process.platform === 'darwin'
+
+	const mainMenuTemplate = [
+		...(isMac
+			? [
+					{
+						label: app.name,
+						submenu: [
+							{ role: 'about' },
+							{ type: 'separator' },
+							{ role: 'services' },
+							{ type: 'separator' },
+							{ role: 'hide' },
+							{ role: 'hideOthers' },
+							{ role: 'unhide' },
+							{ type: 'separator' },
+							{ role: 'quit' }
+						]
+					}
+			  ]
+			: []),
+		{
+			label: 'File',
+			submenu: [
+				{
+					label: 'Open Experiment',
+					accelerator: 'CmdOrCtrl+O',
+					click() {
+						openExperiment(mainWindow.webContents)
+					}
+				},
+				{
+					label: 'Save Experiment',
+					accelerator: 'CmdOrCtrl+S',
+					click() {
+						dialog
+							.showSaveDialog({
+								filters: [
+									{ name: 'Vizcal Experiment', extensions: ['viz'] },
+									{ name: 'JSON', extensions: ['json'] },
+									{ name: 'All Files', extensions: ['*'] }
+								],
+								defaultPath: 'experiment.viz'
+							})
+							.then((result) => {
+								if (result.canceled) return
+
+								const file = result.filePath
+								mainWindow.webContents.send('save-file', file)
+							})
+					}
+				}
+			]
+		},
+		{
+			label: 'Edit',
+			submenu: [
+				{ label: 'Undo', accelerator: 'CmdOrCtrl+Z', selector: 'undo:' },
+				{ label: 'Redo', accelerator: 'Shift+CmdOrCtrl+Z', selector: 'redo:' },
+				{ type: 'separator' },
+				{ label: 'Cut', accelerator: 'CmdOrCtrl+X', selector: 'cut:' },
+				{ label: 'Copy', accelerator: 'CmdOrCtrl+C', selector: 'copy:' },
+				{ label: 'Paste', accelerator: 'CmdOrCtrl+V', selector: 'paste:' },
+				{ label: 'Select All', accelerator: 'CmdOrCtrl+A', selector: 'selectAll:' }
+			]
+		},
+		{
+			label: 'View',
+			submenu: [
+				{
+					role: 'reload'
+				},
+				{
+					role: 'togglefullscreen'
+				}
+			]
+		}
+	]
+
+	const mainMenu = Menu.buildFromTemplate(mainMenuTemplate)
+
+	Menu.setApplicationMenu(mainMenu)
+
 	mainWindow.on('ready-to-show', () => {
 		mainWindow.maximize()
 		mainWindow.show()
+	})
+
+	ipcMain.on('write-file', (event, path, data) => {
+		fs.writeFileSync(path, data)
+	})
+
+	ipcMain.on('open-experiment', (event) => {
+		openExperiment(mainWindow.webContents)
 	})
 
 	mainWindow.webContents.setWindowOpenHandler((details) => {
@@ -36,12 +128,43 @@ function createWindow() {
 	}
 }
 
+const openExperiment = (webContents) => {
+	dialog
+		.showOpenDialog({
+			properties: ['openFile'],
+			filters: [
+				{ name: 'Vizcal Experiment', extensions: ['viz'] },
+				{ name: 'JSON', extensions: ['json'] },
+				{ name: 'All Files', extensions: ['*'] }
+			]
+		})
+		.then((result) => {
+			if (result.canceled) return
+
+			const file = result.filePaths[0]
+			fs.readFile(file, 'utf8', (err, data) => {
+				if (err) {
+					console.error(err)
+					return
+				}
+
+				try {
+					const experiment = JSON.parse(data)
+
+					if (experiment.sign == 'vizcal') webContents.send('open-file', experiment)
+				} catch (error) {
+					console.error(error)
+				}
+			})
+		})
+}
+
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
 	// Set app user model id for windows
-	electronApp.setAppUserModelId('com.electron')
+	electronApp.setAppUserModelId('edu.vanier')
 
 	// Default open or close DevTools by F12 in development
 	// and ignore CommandOrControl + R in production.

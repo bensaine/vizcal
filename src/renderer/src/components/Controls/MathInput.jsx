@@ -1,5 +1,7 @@
 import { useEffect, useRef } from 'react'
 import '../../assets/mathquill.css'
+import '../../../jquery.js'
+import '../../../mathquill.js'
 import { ControlContainer } from './ControlContainer/ControlContainer'
 
 export const MathInput = ({
@@ -49,7 +51,7 @@ export const MathInput = ({
 			}
 		}
 
-		mathField.current = window.MathQuill.MathField(wrapperElement.current, combinedConfig)
+		mathField.current = MathQuill.MathField(wrapperElement.current, combinedConfig)
 		mathField.current.latex(latex || '')
 
 		if (mathquillDidMount) mathquillDidMount(mathField.current)

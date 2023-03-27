@@ -3,9 +3,9 @@ import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-re
 import 'pure-react-carousel/dist/react-carousel.es.css'
 import { ExperimentSlide } from './ExperimentSlide'
 import { ArrowLeft, ArrowRight } from 'react-feather'
-import styles from './Carousel.module.scss'
+import styles from './ExperimentCarousel.module.scss'
 
-export const Carousel = ({ slides }) => {
+export const ExperimentCarousel = ({ slides, onSlideClick }) => {
 	const ref = React.useRef(null)
 	const [numberOfSlides, setNumberOfSlides] = React.useState(1)
 
@@ -36,7 +36,7 @@ export const Carousel = ({ slides }) => {
 				<Slider className={styles.carouselSlider} tabIndex={-1}>
 					{slides.map((slide, index) => {
 						return (
-							<Slide index={index} key={slide.id} innerClassName={styles.slideInner}>
+							<Slide index={index} key={slide.type} innerClassName={styles.slideInner} onClick={() => onSlideClick(slide.type)}>
 								<ExperimentSlide {...slide} />
 							</Slide>
 						)
