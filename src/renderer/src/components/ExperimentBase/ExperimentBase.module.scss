@@ -64,6 +64,9 @@
         background: var(--bg-800);
         border-bottom-right-radius: 1rem;
         border-top-right-radius: 1rem;
+  		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 	position: relative;
 	justify-content: center;
