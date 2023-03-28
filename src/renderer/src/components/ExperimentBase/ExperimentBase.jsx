@@ -36,6 +36,7 @@ export const ExperimentBase = ({ optionsSlot, graphSlot, helpSlot = () => {} }) 
 					settingsMenu={false}
 					zoomButtons={false}
 					border={false}
+					invertedColors={localStorage.getItem('theme') === 'Light'}
 				>
 					{graphSlot()}
 				</GraphingCalculator>

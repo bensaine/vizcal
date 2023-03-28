@@ -18,7 +18,7 @@
 	border-radius: 0.25rem;
 }
 .mq-editable-field .mq-cursor {
-	border-left: 1px solid #fff;
+	border-left: 1px solid var(--color-primary);
 	margin-left: -1px;
 	position: relative;
 	z-index: 1;

@@ -1,14 +1,20 @@
 import styles from './App.module.scss'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Nav } from './components/Nav/Nav'
 import { WindowContainer } from './components/WindowContainer/WindowContainer'
 import { Home } from './components/Home/Home'
 import { v4 as uuidv4 } from 'uuid'
 import { Experiment } from './components/Experiment'
+import { Settings } from './components/Settings/Settings'
 
 function App() {
 	const [openExperiments, setOpenExperiments] = useState([])
 	const [focusedExperiment, setFocusedExperiment] = useState('home')
+	const [theme, setTheme] = useState(localStorage.getItem('theme') ?? 'Dark')
+
+	useEffect(() => {
+		localStorage.setItem('theme', theme)
+	}, [theme])
 
 	const createExperiment = (type) => {
 		const id = uuidv4()
@@ -28,7 +34,7 @@ function App() {
 		})
 
 		window.electron.ipcRenderer.on('save-file', async (event, path) => {
-			if (focusedExperiment == 'home') return
+			if (['home', 'focused'].includes(focusedExperiment)) return
 
 			const updatePayloadEvent = new CustomEvent('updatePayload:' + focusedExperiment)
 			document.dispatchEvent(updatePayloadEvent)
@@ -40,7 +46,7 @@ function App() {
 	}
 
 	return (
-		<div className={styles.container}>
+		<div className={styles.container} data-theme={theme}>
 			<Nav
 				experiments={openExperiments}
 				focus={focusedExperiment}
@@ -48,6 +54,7 @@ function App() {
 			/>
 			<WindowContainer>
 				{focusedExperiment == 'home' && <Home createNewExperiment={createExperiment} />}
+				{focusedExperiment == 'settings' && <Settings theme={theme} setTheme={setTheme} />}
 				{openExperiments.map((experiment) => (
 					<Experiment
 						id={experiment}
