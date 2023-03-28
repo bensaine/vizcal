@@ -55,16 +55,15 @@
 .output {
 	.collapseButton {
 		position: absolute;
-		z-index: 2;
-		top: 0;
-		left: 0;
-		cursor: pointer;
-		padding: 1rem;
-		background: var(--bg-800);
-		border-bottom-right-radius: 1rem;
-		border-top-left-radius: 1rem;
-		border-style: solid;
-		border-color: rgba(255, 255, 255, 0.563);
+        z-index: 2;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        cursor: pointer;
+        padding: 0.5rem;
+        background: var(--bg-800);
+        border-bottom-right-radius: 1rem;
+        border-top-right-radius: 1rem;
 	}
 	position: relative;
 	justify-content: center;
