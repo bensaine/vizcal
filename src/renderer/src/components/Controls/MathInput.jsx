@@ -51,6 +51,7 @@ export const MathInput = ({
 			}
 		}
 
+		// eslint-disable-next-line no-undef
 		mathField.current = MathQuill.MathField(wrapperElement.current, combinedConfig)
 		mathField.current.latex(latex || '')
 

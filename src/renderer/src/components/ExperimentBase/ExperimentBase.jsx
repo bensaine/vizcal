@@ -1,5 +1,5 @@
 import styles from './ExperimentBase.module.scss'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import '../../../jquery.js'
 import '../../../desmos.js'
 import { Dialog } from '../Dialog/Dialog'

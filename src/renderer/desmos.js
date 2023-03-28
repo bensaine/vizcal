@@ -57378,7 +57378,7 @@
 											left: 0,
 											top: t,
 											width: e,
-											height: !!this.getGraphSettings().config.projectorMode
+											height: this.getGraphSettings().config.projectorMode
 												? r
 													? 185
 													: 193
@@ -86017,7 +86017,7 @@
 													style: function () {
 														return {
 															'font-size':
-																e.settings().config.fontSize + 'px',
+																e.settings().config.fontSize + 'px'
 														}
 													},
 													role: o.const('application'),
@@ -87368,7 +87368,7 @@
 							var _ = setInterval(function () {
 								window.Calc && (clearInterval(_), setTimeout(E, 1e3))
 							}, 1)
-						if (!!b.getQueryParams().timeInWorker)
+						if (b.getQueryParams().timeInWorker)
 							_ = setInterval(function () {
 								window.Calc && (clearInterval(_), setTimeout(S, 1e3))
 							}, 1)

@@ -36,7 +36,12 @@ export const ExperimentCarousel = ({ slides, onSlideClick }) => {
 				<Slider className={styles.carouselSlider} tabIndex={-1}>
 					{slides.map((slide, index) => {
 						return (
-							<Slide index={index} key={slide.type} innerClassName={styles.slideInner} onClick={() => onSlideClick(slide.type)}>
+							<Slide
+								index={index}
+								key={slide.type}
+								innerClassName={styles.slideInner}
+								onClick={() => onSlideClick(slide.type)}
+							>
 								<ExperimentSlide {...slide} />
 							</Slide>
 						)

@@ -1,9 +1,8 @@
 import styles from './App.module.scss'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Nav } from './components/Nav/Nav'
 import { WindowContainer } from './components/WindowContainer/WindowContainer'
 import { Home } from './components/Home/Home'
-import { experiments } from './data/experiments.js'
 import { v4 as uuidv4 } from 'uuid'
 import { Experiment } from './components/Experiment'
 
