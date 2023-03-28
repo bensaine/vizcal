@@ -20,6 +20,12 @@ export const Nav = ({ experiments, focus, setFocus }) => {
 					/>
 				))}
 			</ul>
+			<span
+				className={styles.settings + (focus == 'settings' ? ' ' + styles.active : '')}
+				onClick={() => setFocus('settings')}
+			>
+				Settings
+			</span>
 		</nav>
 	)
 }

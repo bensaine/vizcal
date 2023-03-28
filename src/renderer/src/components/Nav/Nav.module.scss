@@ -8,6 +8,7 @@
 
 	ul {
 		display: column;
+		flex-grow: 1;
 		flex-direction: row;
 		justify-content: space-between;
 		align-items: center;
@@ -17,7 +18,7 @@
 		overflow-y: auto;
 	}
 
-	li {
+	li, .settings {
 		position: relative;
 		cursor: pointer;
 		padding: 2rem 1rem;
@@ -34,7 +35,7 @@
 				left: 0;
 				height: 100%;
 				width: 100%;
-				color: #fff;
+				color: var(--color-primary);
 				z-index: -1;
 				background-color: var(--bg-800);
 			}
