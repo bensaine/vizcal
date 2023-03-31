@@ -71,12 +71,14 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 			<>
 				<Expression id="x" latex={'x_{point}=' + x} />
 				<Expression id="d" latex={'d_{eltaX}=' + d} />
-				<Expression id="function" latex={'f\\left(x\\right)=' + fx} color="#fff" />
-				<Expression
-					id="function2"
-					latex={derivOrd == 'First' ? '' : 'g\\left(x\\right)=\\frac{d}{dx}' + fx}
-					color="#444"
-				/>
+				<Expression id="function" latex={'f\\left(x\\right)=' + fx} color="#ffffff" />
+				{derivOrd == 'Second' && (
+					<Expression
+						id="function2"
+						latex={'g\\left(x\\right)=\\frac{d}{dx}' + fx}
+						color="#444444"
+					/>
+				)}
 				<Expression
 					id="slope"
 					latex={
@@ -84,7 +86,7 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 							? 'y=\\frac{f\\left(x_{point}+d_{eltaX}\\right)-f\\left(x_{point}\\right)}{d_{eltaX}}\\left(x-x_{point}\\right)+f\\left(x_{point}\\right)'
 							: 'y=\\frac{g\\left(x_{point}+d_{eltaX}\\right)-g\\left(x_{point}\\right)}{d_{eltaX}}\\left(x-x_{point}\\right)+g\\left(x_{point}\\right)'
 					}
-					color="#37a"
+					color="#3377aa"
 				/>
 				<Expression
 					id="runRise"
@@ -93,7 +95,7 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 							? 'x_{2}=x_{point}+d_{eltaX}\\left\\{f\\left(x_{point}+d_{eltaX}\\right)<y<f\\left(x_{point}\\right)\\right\\}'
 							: 'x_{2}=x_{point}+d_{eltaX}\\left\\{g\\left(x_{point}+d_{eltaX}\\right)<y<g\\left(x_{point}\\right)\\right\\}'
 					}
-					color="#fff"
+					color="#ffffff"
 				/>
 				<Expression
 					id="riseRun"
@@ -102,7 +104,7 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 							? 'y_{2}=f\\left(x_{point}\\right)\\left\\{x_{point}+d_{eltaX}>x>x_{point}\\right\\}'
 							: 'y_{2}=g\\left(x_{point}\\right)\\left\\{x_{point}+d_{eltaX}>x>x_{point}\\right\\}'
 					}
-					color="#fff"
+					color="#ffffff"
 				/>
 				<Expression
 					id="riseRunU"
@@ -111,12 +113,12 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 							? 'x_{1}=x_{point}+d_{eltaX}\\left\\{f\\left(x_{point}\\right)<y<f\\left(x_{point}+d_{eltaX}\\right)\\right\\}'
 							: 'x_{1}=x_{point}+d_{eltaX}\\left\\{g\\left(x_{point}\\right)<y<g\\left(x_{point}+d_{eltaX}\\right)\\right\\}'
 					}
-					color="#fff"
+					color="#ffffff"
 				/>
 				<Expression
 					id="point"
 					latex={'\\left(x_{point},f\\left(x_{point}\\right)\\right)'}
-					color="#fa0"
+					color="#ffaa00"
 				/>
 			</>
 		)
