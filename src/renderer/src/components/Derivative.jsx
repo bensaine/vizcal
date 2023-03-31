@@ -73,32 +73,43 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 				<Expression id="d" latex={'d_{eltaX}=' + d} />
 				<Expression id="function" latex={'f\\left(x\\right)=' + fx} color="#fff" />
 				<Expression
+					id="function2"
+					latex={derivOrd == 'First' ? '' : "g\\left(x\\right)=\\frac{d}{dx}" + fx}
+					color="#444"
+				/>
+				<Expression
 					id="slope"
 					latex={
 						derivOrd == 'First'
 							? 'y=\\frac{f\\left(x_{point}+d_{eltaX}\\right)-f\\left(x_{point}\\right)}{d_{eltaX}}\\left(x-x_{point}\\right)+f\\left(x_{point}\\right)'
-							: "y=\\frac{f'\\left(x_{point}+d_{eltaX}\\right)-f'\\left(x_{point}\\right)}{d_{eltaX}}\\left(x-x_{point}\\right)+f\\left(x_{point}\\right)"
+							: "y=\\frac{g\\left(x_{point}+d_{eltaX}\\right)-g\\left(x_{point}\\right)}{d_{eltaX}}\\left(x-x_{point}\\right)+g\\left(x_{point}\\right)"
 					}
 					color="#37a"
 				/>
 				<Expression
 					id="runRise"
 					latex={
-						'x_{2}=x_{point}+d_{eltaX}\\left\\{f\\left(x_{point}+d_{eltaX}\\right)<y<f\\left(x_{point}\\right)\\right\\}'
+						derivOrd == 'First'
+						?'x_{2}=x_{point}+d_{eltaX}\\left\\{f\\left(x_{point}+d_{eltaX}\\right)<y<f\\left(x_{point}\\right)\\right\\}'
+						:'x_{2}=x_{point}+d_{eltaX}\\left\\{g\\left(x_{point}+d_{eltaX}\\right)<y<g\\left(x_{point}\\right)\\right\\}'
 					}
 					color="#fff"
 				/>
 				<Expression
 					id="riseRun"
 					latex={
-						'y_{2}=f\\left(x_{point}\\right)\\left\\{x_{point}+d_{eltaX}>x>x_{point}\\right\\}'
+						derivOrd == 'First'
+						?'y_{2}=f\\left(x_{point}\\right)\\left\\{x_{point}+d_{eltaX}>x>x_{point}\\right\\}'
+						:'y_{2}=g\\left(x_{point}\\right)\\left\\{x_{point}+d_{eltaX}>x>x_{point}\\right\\}'
 					}
 					color="#fff"
 				/>
 				<Expression
 					id="riseRunU"
 					latex={
-						'x_{1}=x_{point}+d_{eltaX}\\left\\{f\\left(x_{point}\\right)<y<f\\left(x_{point}+d_{eltaX}\\right)\\right\\}'
+						derivOrd == 'First'
+						?'x_{1}=x_{point}+d_{eltaX}\\left\\{f\\left(x_{point}\\right)<y<f\\left(x_{point}+d_{eltaX}\\right)\\right\\}'
+						:'x_{1}=x_{point}+d_{eltaX}\\left\\{g\\left(x_{point}\\right)<y<g\\left(x_{point}+d_{eltaX}\\right)\\right\\}'
 					}
 					color="#fff"
 				/>
