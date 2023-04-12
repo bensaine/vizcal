@@ -1,4 +1,5 @@
 import useExperiment from '../../hooks/useExperiment'
+import { experiments } from '../../data/experiments'
 import styles from './Nav.module.scss'
 
 export const NavItem = ({ id, focus, onClick }) => {
@@ -8,7 +9,11 @@ export const NavItem = ({ id, focus, onClick }) => {
 
 	return (
 		<li className={focus ? styles.active : ''} onClick={() => onClick(id)}>
-			{experiment.type}
+			<img
+				className={styles.icon}
+				src={experiments.find((e) => e.type == experiment.type).image}
+				alt={experiments.find((e) => e.type == experiment.type).displayName + ' logo'}
+			/>
 		</li>
 	)
 }

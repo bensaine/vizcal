@@ -1,3 +1,4 @@
+import { Home, Settings } from 'react-feather'
 import styles from './Nav.module.scss'
 import { NavItem } from './NavItem'
 
@@ -9,7 +10,7 @@ export const Nav = ({ experiments, focus, setFocus }) => {
 					className={focus == 'home' ? styles.active : ''}
 					onClick={() => setFocus('home')}
 				>
-					Home
+					<Home/>
 				</li>
 				{experiments.map((experiment) => (
 					<NavItem
@@ -24,7 +25,7 @@ export const Nav = ({ experiments, focus, setFocus }) => {
 				className={styles.settings + (focus == 'settings' ? ' ' + styles.active : '')}
 				onClick={() => setFocus('settings')}
 			>
-				Settings
+				<Settings/>
 			</span>
 		</nav>
 	)
