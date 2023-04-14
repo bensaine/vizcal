@@ -3,7 +3,7 @@
 	flex-direction: column;
 	flex-shrink: 0;
 	height: 100%;
-	box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1);
+	box-shadow: inset rgba(0, 0, 0, 0.1215686275) 0 0 1rem 0;
 	background-color: var(--bg-900);
 	overflow: hidden;
 
@@ -53,6 +53,7 @@
 				color: var(--color-primary);
 				z-index: -1;
 				background-color: var(--bg-800);
+				box-shadow: rgba(0, 0, 0, 0.1215686275) 0 0 1rem 0;
 			}
 		}
 	}
