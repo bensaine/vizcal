@@ -93,5 +93,6 @@
 	}
 	.icon {
 		width: 80%;
+		filter: var(--image-invert);
 	}
 }

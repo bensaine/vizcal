@@ -38,6 +38,7 @@
 			width: 3.5rem;
 			padding: 0.25rem;
 			box-sizing: content-box;
+			filter: var(--image-invert);
 		}
 
 		&:hover,
