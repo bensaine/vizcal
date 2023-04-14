@@ -19,6 +19,7 @@
 
 .carouselSlider {
 	flex-grow: 1;
+	padding: 1rem 0;
 }
 
 .carouselButton {
@@ -91,6 +92,7 @@
 		border: 2px solid var(--bg-600);
 		cursor: pointer;
 	}
+
 	.icon {
 		width: 80%;
 		filter: var(--image-invert);
