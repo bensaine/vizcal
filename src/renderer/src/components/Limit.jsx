@@ -6,12 +6,14 @@ import { ExperimentBase } from './ExperimentBase/ExperimentBase'
 import { MathInput } from './Controls/MathInput'
 import { Slider } from './Controls/Slider/Slider'
 import { StaticMath } from './StaticMath'
+import { ExpressionListener } from './ExpressionListener.jsx'
 
 export const Limit = ({ payload, visible, setPayload }) => {
 	const [fx, setFx] = useState(payload.fx ?? '')
 	const [x, setX] = useState(payload.x ?? 0)
 	const [epsilon, setEpsilon] = useState(payload.epsilon ?? 0.1)
 	const [delta, setDelta] = useState(payload.delta ?? 0.1)
+	const [limit, setLimit] = useState(NaN)
 
 	useEffect(() => {
 		setPayload({
@@ -148,6 +150,8 @@ export const Limit = ({ payload, visible, setPayload }) => {
 							lineWidth={1.5}
 							color="#37a"
 						/>
+						<Expression id="limit" latex={'y_{xpoint}=f\\left(x_{point}\\right)'} />
+						<ExpressionListener latex={'y_{xpoint}'} onExpressionChange={setLimit} />
 					</>
 				)}
 			</>
@@ -166,6 +170,11 @@ export const Limit = ({ payload, visible, setPayload }) => {
 	}
 
 	return visible ? (
-		<ExperimentBase optionsSlot={renderOptions} graphSlot={renderGraph} helpSlot={renderHelp} />
+		<ExperimentBase
+			optionsSlot={renderOptions}
+			graphSlot={renderGraph}
+			helpSlot={renderHelp}
+			output={limit}
+		/>
 	) : null
 }
