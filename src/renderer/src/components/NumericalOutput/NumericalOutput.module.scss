@@ -1,0 +1,40 @@
+.numericalOutput {
+	display: flex;
+	position: relative;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	padding: 0.5rem;
+	color: var(--color-primary);
+	background-color: var(--bg-800);
+	background-clip: padding-box;
+	border: 3px solid var(--bg-700);
+	border-radius: 0.25rem;
+	border-top-left-radius: 0;
+	transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+	box-shadow: #00000033 0 0 0.5rem 0;
+
+	&::after {
+		content: 'Output';
+		position: absolute;
+		font-size: 0.7rem;
+		top: -1.5rem;
+		left: -3px;
+		padding: 0.25rem;
+		border-top-right-radius: 0.25rem;
+		border-top-left-radius: 0.25rem;
+		background-color: var(--bg-700);
+	}
+
+	.copy {
+		cursor: pointer;
+		transition: all 0.3s ease-in-out;
+		color: var(--bg-700);
+
+		&:active {
+			opacity: 0.3;
+			transition: none;
+		}
+	}
+}

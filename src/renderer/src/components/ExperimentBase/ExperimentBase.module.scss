@@ -29,7 +29,6 @@
 	position: relative;
 	justify-content: flex-start;
 	padding: 2rem;
-	gap: 1rem;
 	flex-basis: 30rem;
 	overflow-y: auto;
 	margin-right: 2rem;
@@ -50,21 +49,38 @@
 	h2 {
 		width: 100%;
 	}
+
+	.optionsBody {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		flex-grow: 1;
+		gap: 1rem;
+		position: relative;
+		justify-content: flex-start;
+	}
+
+	.optionsFooter {
+		width: 100%;
+		position: relative;
+		justify-content: flex-end;
+		margin-top: 2rem;
+	}
 }
 
 .output {
 	.collapseButton {
 		position: absolute;
-        z-index: 2;
-        top: 50%;
-        left: 0;
-        transform: translateY(-50%);
-        cursor: pointer;
-        padding: 0.5rem;
-        background: var(--bg-800);
-        border-bottom-right-radius: 1rem;
-        border-top-right-radius: 1rem;
-  		display: flex;
+		z-index: 2;
+		top: 50%;
+		left: 0;
+		transform: translateY(-50%);
+		cursor: pointer;
+		padding: 0.5rem;
+		background: var(--bg-800);
+		border-bottom-right-radius: 1rem;
+		border-top-right-radius: 1rem;
+		display: flex;
 		justify-content: center;
 		align-items: center;
 	}

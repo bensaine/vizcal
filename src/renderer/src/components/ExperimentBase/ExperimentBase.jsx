@@ -6,8 +6,9 @@ import { Dialog } from '../Dialog/Dialog'
 import { HelpCircle, ArrowLeftCircle, ArrowRightCircle } from 'react-feather'
 import '../../assets/desmos.css'
 import { GraphingCalculator } from 'desmos-react'
+import { NumericalOutput } from '../NumericalOutput/NumericalOutput'
 
-export const ExperimentBase = ({ optionsSlot, graphSlot, helpSlot = () => {} }) => {
+export const ExperimentBase = ({ optionsSlot, graphSlot, helpSlot, output }) => {
 	const [helpOpen, setHelpOpen] = useState(false)
 	const [isCollapsed, setIsCollapsed] = useState(false)
 
@@ -17,7 +18,10 @@ export const ExperimentBase = ({ optionsSlot, graphSlot, helpSlot = () => {} }) 
 				<span className={styles.helpButton} onClick={() => setHelpOpen(true)}>
 					<HelpCircle />
 				</span>
-				{optionsSlot()}
+				<div className={styles.optionsBody}>{optionsSlot()}</div>
+				<div className={styles.optionsFooter}>
+					<NumericalOutput output={output} />
+				</div>
 			</div>
 			<div className={styles.output}>
 				<span
