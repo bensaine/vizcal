@@ -8,11 +8,13 @@ import { Slider } from './Controls/Slider/Slider'
 import { StaticMath } from './StaticMath'
 import ArcImg1 from '../assets/images/arclength1.png'
 import ArcImg2 from '../assets/images/arclength2.png'
+import { ExpressionListener } from './ExpressionListener.jsx'
 
 export const Arc = ({ payload, visible, setPayload }) => {
 	const [fx, setFx] = useState(payload.fx ?? '')
 	const [x, setX] = useState(payload.x ?? [0, 10])
 	const [n, setN] = useState(payload.n ?? 0)
+	const [length, setLength] = useState(NaN)
 
 	useEffect(() => {
 		setPayload({
@@ -97,6 +99,7 @@ export const Arc = ({ payload, visible, setPayload }) => {
 					lines
 					color="orange"
 				/>
+				<ExpressionListener latex={'e_{stimation}'} onExpressionChange={setLength} />
 			</>
 		)
 	}
@@ -144,6 +147,11 @@ export const Arc = ({ payload, visible, setPayload }) => {
 	}
 
 	return visible ? (
-		<ExperimentBase optionsSlot={renderOptions} graphSlot={renderGraph} helpSlot={renderHelp} />
+		<ExperimentBase
+			optionsSlot={renderOptions}
+			graphSlot={renderGraph}
+			helpSlot={renderHelp}
+			output={length}
+		/>
 	) : null
 }
