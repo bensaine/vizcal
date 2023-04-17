@@ -161,10 +161,15 @@ export const Limit = ({ payload, visible, setPayload }) => {
 	const renderHelp = () => {
 		return (
 			<>
-				<p>todo</p>
-				<StaticMath>
-					{'lim_{h\\to0}\\frac{f\\left(x+h\\right)-f\\left(x\\right)}{h}'}
-				</StaticMath>
+				<h3>Limits</h3>
+				<p>What is a Limit?</p>
+				<p>
+					A limit is a fundamental concept in calculus and mathematical analysis that
+					describes the behavior of a function as its input approaches a particular value.
+					In other words, it is the value that a function approaches as the input gets
+					arbitrarily close to a specific point. Limits are used to define the concepts of
+					continuity, derivatives, and integrals in calculus.
+				</p>
 			</>
 		)
 	}
