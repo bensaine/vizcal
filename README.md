@@ -2,7 +2,7 @@
 
 ## What is it?
 
-Visualizing concepts is a great way to learn them. It is also a great way to teach them. Vizcal is a tool to help you visualize Calculus concepts. Find visualization tools for Limits, Derivatives, Riemman Sums, and Arc Length.
+Visualizing concepts is a great way to learn them. It is also a great way to teach them. Vizcal is a tool to help you visualize Calculus concepts. Find visualization tools for Limits, Derivatives, Riemman Sums, and Arc Length. Made using Electron, Vite, and React - see [evite](https://evite.netlify.app/).
 
 ## Recommended IDE Setup
 
@@ -22,7 +22,7 @@ $ npm install
 $ npm run dev
 ```
 
-### Build a single-file executable
+### Build a Single-File Executable
 
 ```bash
 # For windows
