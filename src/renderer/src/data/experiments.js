@@ -2,34 +2,38 @@ import { Arc } from '../components/Arc'
 import { Derivative } from '../components/Derivative'
 import { Limit } from '../components/Limit'
 import { Riemann } from '../components/Riemann'
+import eps from '../assets/images/icons/eps.svg'
+import slope from '../assets/images/icons/slope.svg'
+import riemann from '../assets/images/icons/riemann.svg'
+import arc from '../assets/images/icons/arc.svg'
 
 export const experiments = [
 	{
 		type: 'epsilonDelta',
 		displayName: 'Epsilon-Delta',
 		category: 'Limits',
-		image: '/src/assets/images/icons/eps.svg',
+		image: eps,
 		component: Limit
 	},
 	{
 		type: 'slope',
 		displayName: 'Slope',
 		category: 'Derivatives',
-		image: '/src/assets/images/icons/slope.svg',
+		image: slope,
 		component: Derivative
 	},
 	{
 		type: 'riemannSum',
 		displayName: 'Riemann Sum',
 		category: 'Area Under Curve',
-		image: '/src/assets/images/icons/reimann.svg',
+		image: riemann,
 		component: Riemann
 	},
 	{
 		type: 'arcLength',
 		displayName: 'Arc Length',
 		category: 'Arc Length',
-		image: '/src/assets/images/icons/arc.svg',
+		image: arc,
 		component: Arc
 	}
 ]
