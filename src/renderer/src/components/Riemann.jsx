@@ -7,6 +7,8 @@ import { ExperimentBase } from './ExperimentBase/ExperimentBase'
 import { MathInput } from './Controls/MathInput'
 import { Slider } from './Controls/Slider/Slider'
 import { ExpressionListener } from './ExpressionListener.jsx'
+import { List } from 'react-feather'
+import { StaticMath } from './StaticMath.jsx'
 
 export const Riemann = ({ payload, visible, setPayload }) => {
 	const [fx, setFx] = useState(payload.fx ?? '')
@@ -127,15 +129,87 @@ export const Riemann = ({ payload, visible, setPayload }) => {
 	const renderHelp = () => {
 		return (
 			<>
-				<h3>Reimann sums and Integrals</h3>
-				<p>What is a Reimann sum?</p>
+				<h2>Reimann sums and Integrals</h2>
+				<h3>What is a Reimann sum?</h3>
 				<p>
 					In mathematics, a Riemann sum is a certain kind of approximation of an integral
 					by a finite sum. Riemann sums help us approximate definite integrals, but they
 					also help us formally define definite integrals.
 				</p>
-				<p>How does it work?</p>
-				<p>The range slider determines the interval in which the sum will be calculated.</p>
+				<h3>How does it work?</h3>
+				<p>
+					When approximating the area under a function's graph, one usually uses
+					rectangular subdivisions.
+				</p>
+				//image 1 here
+				<p>
+					As seen in the figure below, using more subdivisions results in a better
+					approximation:
+				</p>
+				//image 2 here
+				<p>
+					The subdivisions can be either uniform or non-uniform. However, this program
+					will strictly use uniform subdivisions.
+				</p>
+				<p>
+					The rectangles place themselves under the curve in 4 different ways, generating{' '}
+					<b>4 types of Reimann sums</b>:
+				</p>
+				<ol type="I">
+					<li>Left Reimann sum</li>
+					<li>Right Reimann Sum</li>
+					<li>Midpoint Reimann sum </li>
+					<li>Trapezoidal Reimann sum</li>
+				</ol>
+				<p>This program only consists of Left and Right Reimann sums.</p>
+				<h4>Left Reimann sum:</h4>
+				<p>
+					With this method, each rectangular subdivision touches the curve through their
+					top-left corner.
+				</p>
+				//reimann3- image of left rs
+				<p>As seen in the figure 3, this results in an underestimation.</p>
+				<h4>Right Reimann sum:</h4>
+				<p>
+					With this method, each rectangular subdivision touches the curve through their
+					top-right corner.
+				</p>
+				//reimann4- image of right rs
+				<p>As seen in the figure 4, this results in an overestimation.</p>
+				<h3>Steps to Approximating the Area Through Reimann Sums:</h3>
+				<p> The approximation can be represented as the sum of each rectangles' areas:</p>
+				<StaticMath>{'\\sum_{i=1}^{n}f\\left(x_{i}^*\\right)\\cdot\\Delta {x}'}</StaticMath>
+				,
+				<p>
+					where <StaticMath>{' \\Delta{x}'}</StaticMath> represents the width of each
+					rectangle and <StaticMath>{'f\\left(x_{i}^*\\right)'}</StaticMath> represents
+					the height of each rectangle.
+				</p>
+				<b>When using the left hand point:</b>
+				<p>
+					<StaticMath>{'\\Delta x=\\frac{\\left(a-b\\right)}{n}'}</StaticMath>, where a
+					and b represent the starting and ending points for the area approximation, and n
+					is the number of subdivisions.
+				</p>
+				<p>
+					<StaticMath>{'x_{i}^*= x_{i-1}'}</StaticMath>
+				</p>
+				<b>When using the right hand point:</b>
+				<p>
+					<StaticMath>{'\\Delta x=\\frac{\\left(a-b\\right)}{n}'}</StaticMath>, where a
+					and b represent the starting and ending points for the area approximation, and n
+					is the number of subdivisions.
+				</p>
+				<p>
+					<StaticMath>{'x_{i}^*= x_{i}'}</StaticMath>
+				</p>
+				<p>As the number of subdivisions approaches infinity, the sum becomes:</p>
+				<StaticMath>
+					{
+						'\\lim_{n\\rightarrow \\infty}\\sum_{i=1}^{n}f\\left(x_{i}^*\\right)\\cdot\\Delta{x}'
+					}
+				</StaticMath>
+				<p>which introduces the concept of integrals.</p>
 			</>
 		)
 	}
