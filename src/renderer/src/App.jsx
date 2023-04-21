@@ -11,10 +11,15 @@ function App() {
 	const [openExperiments, setOpenExperiments] = useState([])
 	const [focusedExperiment, setFocusedExperiment] = useState('home')
 	const [theme, setTheme] = useState(localStorage.getItem('theme') ?? 'Dark')
+	const [font, setFont] = useState('Roboto')
 
 	useEffect(() => {
 		localStorage.setItem('theme', theme)
 	}, [theme])
+
+	useEffect(() => {
+		localStorage.setItem('font', font)
+	}, [font])
 
 	const createExperiment = (type) => {
 		const id = uuidv4()
@@ -46,7 +51,7 @@ function App() {
 	}
 
 	return (
-		<div className={styles.container} data-theme={theme}>
+		<div className={styles.container} data-theme={theme} data-font={font}>
 			<Nav
 				experiments={openExperiments}
 				focus={focusedExperiment}
@@ -54,7 +59,9 @@ function App() {
 			/>
 			<WindowContainer>
 				{focusedExperiment == 'home' && <Home createNewExperiment={createExperiment} />}
-				{focusedExperiment == 'settings' && <Settings theme={theme} setTheme={setTheme} />}
+				{focusedExperiment == 'settings' && (
+					<Settings theme={theme} setTheme={setTheme} font={font} setFont={setFont} />
+				)}
 				{openExperiments.map((experiment) => (
 					<Experiment
 						id={experiment}
