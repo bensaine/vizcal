@@ -6,12 +6,14 @@ import { Dropdown } from './Controls/Dropdown'
 import { ExperimentBase } from './ExperimentBase/ExperimentBase'
 import { MathInput } from './Controls/MathInput'
 import { Slider } from './Controls/Slider/Slider'
+import { ExpressionListener } from './ExpressionListener.jsx'
 
 export const Riemann = ({ payload, visible, setPayload }) => {
 	const [fx, setFx] = useState(payload.fx ?? '')
 	const [x, setX] = useState(payload.x ?? [-10, 10])
 	const [direction, setDirection] = useState(payload.direction ?? 'left')
 	const [n, setN] = useState(payload.n ?? 1)
+	const [area, setArea] = useState(NaN)
 
 	useEffect(() => {
 		setPayload({
@@ -107,12 +109,18 @@ export const Riemann = ({ payload, visible, setPayload }) => {
 						'f\\left(s_{x}\\left(x\\right)\\right)\\le y\\le0\\left\\{a\\le x\\le b\\right\\}'
 					}
 				/>
+				<Expression
+					id="areaValue"
+					latex={'I=\\sum_{i=0}^{n\\ -\\ 1}f\\left(s\\left(i\\right)\\right)\\cdot w'}
+					hidden
+				/>
 				{fx && (
 					<>
 						<Expression id="min" latex={'x=a'} />
 						<Expression id="max" latex={'x=b'} />
 					</>
 				)}
+				<ExpressionListener latex={'I'} onExpressionChange={setArea} />
 			</>
 		)
 	}
@@ -126,11 +134,18 @@ export const Riemann = ({ payload, visible, setPayload }) => {
 					by a finite sum. Riemann sums help us approximate definite integrals, but they
 					also help us formally define definite integrals.
 				</p>
+				<p>How does it work?</p>
+				<p>The range slider determines the interval in which the sum will be calculated.</p>
 			</>
 		)
 	}
 
 	return visible ? (
-		<ExperimentBase optionsSlot={renderOptions} graphSlot={renderGraph} helpSlot={renderHelp} />
+		<ExperimentBase
+			optionsSlot={renderOptions}
+			graphSlot={renderGraph}
+			helpSlot={renderHelp}
+			output={area}
+		/>
 	) : null
 }
