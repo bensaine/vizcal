@@ -9,6 +9,10 @@ import { Slider } from './Controls/Slider/Slider'
 import { ExpressionListener } from './ExpressionListener.jsx'
 import { List } from 'react-feather'
 import { StaticMath } from './StaticMath.jsx'
+import fig1 from '../assets/images/reimannDark/reimann1.png'
+import fig2 from '../assets/images/reimannDark/reimann2.png'
+import fig3 from '../assets/images/reimannDark/reimann3.png'
+import fig4 from '../assets/images/reimannDark/reimann4.png'
 
 export const Riemann = ({ payload, visible, setPayload }) => {
 	const [fx, setFx] = useState(payload.fx ?? '')
@@ -141,12 +145,12 @@ export const Riemann = ({ payload, visible, setPayload }) => {
 					When approximating the area under a function's graph, one usually uses
 					rectangular subdivisions.
 				</p>
-				//image 1 here
+				<img src={fig1} alt="Approximating the area under a graph with rectangles" />
 				<p>
 					As seen in the figure below, using more subdivisions results in a better
 					approximation:
 				</p>
-				//image 2 here
+				<img src={fig2} alt="Increasing the number of rectangles for the approximation" />
 				<p>
 					The subdivisions can be either uniform or non-uniform. However, this program
 					will strictly use uniform subdivisions.
@@ -167,14 +171,14 @@ export const Riemann = ({ payload, visible, setPayload }) => {
 					With this method, each rectangular subdivision touches the curve through their
 					top-left corner.
 				</p>
-				//reimann3- image of left rs
+				<img src={fig3} alt="Left Hand Reimann Sum" />
 				<p>As seen in the figure 3, this results in an underestimation.</p>
 				<h4>Right Reimann sum:</h4>
 				<p>
 					With this method, each rectangular subdivision touches the curve through their
 					top-right corner.
 				</p>
-				//reimann4- image of right rs
+				<img src={fig4} alt="Right Hand Reimann Sum" />
 				<p>As seen in the figure 4, this results in an overestimation.</p>
 				<h3>Steps to Approximating the Area Through Reimann Sums:</h3>
 				<p> The approximation can be represented as the sum of each rectangles' areas:</p>
