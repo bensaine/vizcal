@@ -11,6 +11,7 @@ export const MathInput = ({
 	onChange,
 	config,
 	mathquillDidMount,
+	color,
 	...otherProps
 }) => {
 	// MathQuill fire 2 edit events on startup.
