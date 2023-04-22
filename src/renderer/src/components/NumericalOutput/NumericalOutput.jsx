@@ -4,7 +4,7 @@ import styles from './NumericalOutput.module.scss'
 export const NumericalOutput = ({ output }) => {
 	return (
 		<div className={styles.numericalOutput}>
-			{output}
+			{!isNaN(output) ? output : 'No output'}
 			<span className={styles.copy} onClick={() => navigator.clipboard.writeText(output)}>
 				<Copy size={20} />
 			</span>
