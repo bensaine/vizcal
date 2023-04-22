@@ -11,7 +11,7 @@ function App() {
 	const [openExperiments, setOpenExperiments] = useState([])
 	const [focusedExperiment, setFocusedExperiment] = useState('home')
 	const [theme, setTheme] = useState(localStorage.getItem('theme') ?? 'Dark')
-	const [font, setFont] = useState('Roboto')
+	const [font, setFont] = useState(localStorage.getItem('font') ?? 'Helvetica Neue')
 
 	useEffect(() => {
 		localStorage.setItem('theme', theme)

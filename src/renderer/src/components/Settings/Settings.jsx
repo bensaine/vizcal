@@ -1,6 +1,4 @@
 import styles from './Settings.module.scss'
-import iStyles from '/src/assets/index.css'
-import { useEffect, useState } from 'react'
 import { Dropdown } from '../Controls/Dropdown'
 
 export const Settings = ({ theme, setTheme, font, setFont }) => {
@@ -19,7 +17,7 @@ export const Settings = ({ theme, setTheme, font, setFont }) => {
 				<Dropdown
 					label="Font"
 					options={[
-						'Roboto',
+						'Helvetica Neue',
 						'Arial',
 						'Verdana',
 						'Tahoma',
