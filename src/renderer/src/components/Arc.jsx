@@ -9,17 +9,12 @@ import { StaticMath } from './StaticMath'
 import ArcImg1 from '../assets/images/arclength1.png'
 import ArcImg2 from '../assets/images/arclength2.png'
 import { ExpressionListener } from './ExpressionListener.jsx'
-import {Colors} from "./Colors";
 
 export const Arc = ({ payload, visible, setPayload }) => {
 	const [fx, setFx] = useState(payload.fx ?? '')
 	const [x, setX] = useState(payload.x ?? [0, 10])
 	const [n, setN] = useState(payload.n ?? 0)
 	const [length, setLength] = useState(NaN)
-	const [color, setColor] = useState("white")
-	const chooseColors = (color) => {
-		setColor(color)
-	}
 
 	useEffect(() => {
 		setPayload({
@@ -32,7 +27,6 @@ export const Arc = ({ payload, visible, setPayload }) => {
 	const renderOptions = () => {
 		return (
 			<>
-				<Colors color={chooseColors}></Colors>
 				<h2>Arc Length</h2>
 				<MathInput
 					id="function"
@@ -69,11 +63,10 @@ export const Arc = ({ payload, visible, setPayload }) => {
 	const renderGraph = () => {
 		return (
 			<>
-
 				<Expression id="a" latex={'a=' + x[0]} />
 				<Expression id="b" latex={'b=' + x[1]} />
 				<Expression id="n" latex={'n=' + n} />
-				<Expression id="function" latex={'f(x)=' + fx} color={() => chooseColors(color)}/>
+				<Expression id="function" latex={'f(x)=' + fx} color="white" />
 				<Expression id="listofn" latex={'l_{istofN}=\\left[0,1,...,n\\right]'} />
 				<Expression id="delx" latex={'d_{elX}=\\frac{b-a}{n}'} />
 				<Expression id="xpoints" latex={'x_{points}=a+l_{istofN}\\cdot d_{elX}'} />
@@ -107,8 +100,7 @@ export const Arc = ({ payload, visible, setPayload }) => {
 					color="orange"
 				/>
 				<ExpressionListener latex={'e_{stimation}'} onExpressionChange={setLength} />
-
-				</>
+			</>
 		)
 	}
 	const renderHelp = () => {
