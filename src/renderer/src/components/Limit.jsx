@@ -170,6 +170,35 @@ export const Limit = ({ payload, visible, setPayload }) => {
 					arbitrarily close to a specific point. Limits are used to define the concepts of
 					continuity, derivatives, and integrals in calculus.
 				</p>
+				<h3>How to experiment with Limit:</h3>
+				<p>
+					Experimenting with the limit yourself is simple. Here are the components that
+					you see on the screen and how to use them:
+				</p>
+
+				<h4>1. Input a function</h4>
+				<p>
+					Type any explicit function you like in the textbox. Just like other math tools,
+					this is a LaTeX textbox, so you can type your function in easily.
+				</p>
+
+				<h4>2. Select the point on the x-axis</h4>
+				<p>
+					Use the first slider to indicate the point on the x-axis where you want to
+					calculate the limit. The default value is 0.
+				</p>
+
+				<h4>3. Select an epsilon value</h4>
+				<p>
+					Use the second slider to select the epsilon value which will be used to
+					approximate the limit. The default value is 0.1.
+				</p>
+
+				<h4>3. Select a delta value</h4>
+				<p>
+					Use the second slider to select the delta value which will be used to
+					approximate the limit. The default value is 0.1.
+				</p>
 			</>
 		)
 	}
