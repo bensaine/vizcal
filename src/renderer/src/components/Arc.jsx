@@ -145,27 +145,27 @@ export const Arc = ({ payload, visible, setPayload }) => {
 
 				<h3>How to experiment with Arc Length:</h3>
 				<p>
-					Experimenting with the arc length yourself is simple, really. Here are the
+					Experimenting with the arc length yourself is simple. Here are the
 					components that you see on the screen and how to use them:
 				</p>
 
 				<h4>1. Input a function</h4>
 				<p>
-					Type any explicit function you like in the textbox. Just like Desmos, this is a
-					Latex textbox, so you can type your function in easily.
+					Type any explicit function you like in the textbox. Just like other math tools, this is a
+					LaTeX textbox, so you can type your function in easily.
 				</p>
 
 				<h4>2. Select the number of subdivisions</h4>
 				<p>
-					Use the first slider to indicate your "n," or the number of subdivisions you
-					want. Remember, the higher the number, the better the approximation. Default is
+					Use the first slider to indicate the number of subdivisions you
+					want. Remember, the higher the number, the better the approximation. The default is set to
 					1.
 				</p>
 
 				<h4>3. Select a range</h4>
 				<p>
 					Use the second slider to select the range on which you want to approximate the
-					length of the curve. Default is 0 - 10.
+					length of the curve. The default is set to 0 - 10.
 				</p>
 			</>
 		)
