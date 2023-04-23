@@ -6,12 +6,14 @@ import { useEffect, useState } from 'react'
 import { Expression } from 'desmos-react'
 import { Slider } from './Controls/Slider/Slider'
 import { Dropdown } from './Controls/Dropdown'
+import { ExpressionListener } from './ExpressionListener.jsx'
 
 export const Derivative = ({ payload, visible, setPayload }) => {
 	const [fx, setFx] = useState(payload.fx ?? '')
 	const [x, setX] = useState(payload.x ?? 0)
 	const [d, setD] = useState(payload.d ?? 0.00001)
 	const [derivOrd, setDerivOrd] = useState(payload.derivOrd ?? 'First')
+	const [slope, setSlope] = useState(NaN)
 
 	useEffect(() => {
 		setPayload({
@@ -120,6 +122,15 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 					latex={'\\left(x_{point},f\\left(x_{point}\\right)\\right)'}
 					color="#ffaa00"
 				/>
+				<Expression
+					id="s"
+					latex={
+						derivOrd == 'First'
+							? 's=\\frac{f\\left(x_{point}+d_{eltaX}\\right)-f\\left(x_{point}\\right)}{d_{eltaX}}'
+							: 's=\\frac{g\\left(x_{point}+d_{eltaX}\\right)-g\\left(x_{point}\\right)}{d_{eltaX}}'
+					}
+				/>
+				<ExpressionListener latex={'s'} onExpressionChange={setSlope} />
 			</>
 		)
 	}
@@ -140,6 +151,11 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 	}
 
 	return visible ? (
-		<ExperimentBase optionsSlot={renderOptions} graphSlot={renderGraph} helpSlot={renderHelp} />
+		<ExperimentBase
+			optionsSlot={renderOptions}
+			graphSlot={renderGraph}
+			helpSlot={renderHelp}
+			output={slope}
+		/>
 	) : null
 }
