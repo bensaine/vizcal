@@ -1,7 +1,7 @@
 import '../../jquery.js'
 import '../../desmos.js'
 import { Expression } from 'desmos-react'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { Dropdown } from './Controls/Dropdown'
 import { ExperimentBase } from './ExperimentBase/ExperimentBase'
 import { MathInput } from './Controls/MathInput'
@@ -13,6 +13,7 @@ import fig1 from '../assets/images/reimannDark/reimann1.png'
 import fig2 from '../assets/images/reimannDark/reimann2.png'
 import fig3 from '../assets/images/reimannDark/reimann3.png'
 import fig4 from '../assets/images/reimannDark/reimann4.png'
+import {Context} from "./ColorContainer/ContextProvider"
 
 export const Riemann = ({ payload, visible, setPayload }) => {
 	const [fx, setFx] = useState(payload.fx ?? '')
@@ -20,6 +21,8 @@ export const Riemann = ({ payload, visible, setPayload }) => {
 	const [direction, setDirection] = useState(payload.direction ?? 'left')
 	const [n, setN] = useState(payload.n ?? 1)
 	const [area, setArea] = useState(NaN)
+
+	const ctx = useContext(Context)
 
 	useEffect(() => {
 		setPayload({
@@ -88,7 +91,7 @@ export const Riemann = ({ payload, visible, setPayload }) => {
 					latex={'s\\left(x\\right)=a+w\\left(x+c\\right)'}
 					hidden={true}
 				/>
-				<Expression id="function" latex={'f\\left(x\\right)=' + fx} />
+				<Expression id="function" latex={'f\\left(x\\right)=' + fx} color={ctx.riemann.functionColorRiemann}/>
 				<Expression
 					id="nOfX"
 					latex={
@@ -108,12 +111,14 @@ export const Riemann = ({ payload, visible, setPayload }) => {
 					latex={
 						'0\\le y\\le f\\left(s_{x}\\left(x\\right)\\right)\\left\\{a\\le x\\le b\\right\\}'
 					}
+					color={ctx.riemann.riemannColorPos}
 				/>
 				<Expression
 					id="areaNeg"
 					latex={
 						'f\\left(s_{x}\\left(x\\right)\\right)\\le y\\le0\\left\\{a\\le x\\le b\\right\\}'
 					}
+					color={ctx.riemann.riemannColorNeg}
 				/>
 				<Expression
 					id="areaValue"
@@ -224,6 +229,8 @@ export const Riemann = ({ payload, visible, setPayload }) => {
 			graphSlot={renderGraph}
 			helpSlot={renderHelp}
 			output={area}
+			colorArray={["Function", "Rectangles Positive", "Rectangles Negative"]}
+			experiment="Riemann"
 		/>
 	) : null
 }

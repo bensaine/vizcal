@@ -7,10 +7,15 @@ import { HelpCircle, ArrowLeftCircle, ArrowRightCircle } from 'react-feather'
 import '../../assets/desmos.css'
 import { GraphingCalculator } from 'desmos-react'
 import { NumericalOutput } from '../NumericalOutput/NumericalOutput'
+import {Colors} from "../ColorContainer/Colors";
 
-export const ExperimentBase = ({ optionsSlot, graphSlot, helpSlot, output }) => {
+export const ExperimentBase = ({ optionsSlot, graphSlot, helpSlot, output, colorArray, experiment}) => {
 	const [helpOpen, setHelpOpen] = useState(false)
 	const [isCollapsed, setIsCollapsed] = useState(false)
+	const [color, setColor] = useState("black")
+	const chooseColors = (color) => {
+		setColor(color)
+	}
 
 	return (
 		<div className={styles.container}>
@@ -42,8 +47,9 @@ export const ExperimentBase = ({ optionsSlot, graphSlot, helpSlot, output }) => 
 					border={false}
 					invertedColors={localStorage.getItem('theme') === 'Light'}
 				>
-					{graphSlot()}
+					{graphSlot(color)}
 				</GraphingCalculator>
+				<Colors color={chooseColors} colorArray={colorArray} experiment={experiment}></Colors>
 			</div>
 			<Dialog open={helpOpen} title={'Help'} onClose={() => setHelpOpen(false)}>
 				{helpSlot()}

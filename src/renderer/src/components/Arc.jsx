@@ -1,25 +1,20 @@
 import '../../jquery.js'
 import '../../desmos.js'
 import { Expression } from 'desmos-react'
-import { useEffect, useState } from 'react'
+import {useContext, useEffect, useState} from 'react'
 import { ExperimentBase } from './ExperimentBase/ExperimentBase'
 import { MathInput } from './Controls/MathInput'
 import { Slider } from './Controls/Slider/Slider'
-import { StaticMath } from './StaticMath'
-import ArcImg1 from '../assets/images/arclength1.png'
-import ArcImg2 from '../assets/images/arclength2.png'
 import { ExpressionListener } from './ExpressionListener.jsx'
-import {Colors} from "./Colors";
+import {Context} from "./ColorContainer/ContextProvider"
 
 export const Arc = ({ payload, visible, setPayload }) => {
 	const [fx, setFx] = useState(payload.fx ?? '')
 	const [x, setX] = useState(payload.x ?? [0, 10])
 	const [n, setN] = useState(payload.n ?? 0)
 	const [length, setLength] = useState(NaN)
-	const [color, setColor] = useState("white")
-	const chooseColors = (color) => {
-		setColor(color)
-	}
+
+	const ctx = useContext(Context)
 
 	useEffect(() => {
 		setPayload({
@@ -32,7 +27,6 @@ export const Arc = ({ payload, visible, setPayload }) => {
 	const renderOptions = () => {
 		return (
 			<>
-				<Colors color={chooseColors}></Colors>
 				<h2>Arc Length</h2>
 				<MathInput
 					id="function"
@@ -73,7 +67,7 @@ export const Arc = ({ payload, visible, setPayload }) => {
 				<Expression id="a" latex={'a=' + x[0]} />
 				<Expression id="b" latex={'b=' + x[1]} />
 				<Expression id="n" latex={'n=' + n} />
-				<Expression id="function" latex={'f(x)=' + fx} color={() => chooseColors(color)}/>
+				<Expression id="function" latex={'f(x)=' + fx} color={ctx.arc.functionColorArc}/>
 				<Expression id="listofn" latex={'l_{istofN}=\\left[0,1,...,n\\right]'} />
 				<Expression id="delx" latex={'d_{elX}=\\frac{b-a}{n}'} />
 				<Expression id="xpoints" latex={'x_{points}=a+l_{istofN}\\cdot d_{elX}'} />
@@ -104,7 +98,7 @@ export const Arc = ({ payload, visible, setPayload }) => {
 					id="lines"
 					latex={'\\left(x_{points},f\\left(x_{points}\\right)\\right)'}
 					lines
-					color="orange"
+					color={ctx.arc.arcColor}
 				/>
 				<ExpressionListener latex={'e_{stimation}'} onExpressionChange={setLength} />
 
@@ -119,37 +113,10 @@ export const Arc = ({ payload, visible, setPayload }) => {
 					The arc length is an application of integration that lets us find the length of
 					a function within a certain range. The method by which this is achieved it very
 					similar to the approximation of the area under a curve where Riemann sums where
-					exhaustively used.
+					exhaustively used. In short, subdivisions in x of a function are joined by straight lines
+					and they are all joined to approximate the curve of the function. The approximation
+					is simply given by the sum of the length of each small line section.
 				</p>
-
-				<h3>What is the formula?</h3>
-				<p>
-					We start by dividing our range into n sections with equal width
-					<StaticMath>{' \\Delta x=\\frac{b-a}{n}'}</StaticMath>
-					and define <StaticMath>{'x_{i}*=a+i\\Delta x'}</StaticMath>
-					where <StaticMath>{'0 < i \\leq n'}</StaticMath>. Then, we join all points for{' '}
-					<StaticMath>{'f(x_{i}) \\space and \\space f(x_{i-1})'}</StaticMath>
-					to create line segments that approximate the length of the curve.
-				</p>
-				<img src={ArcImg1} />
-				<p>
-					To get the numerical approximation, we repeatedly use the distance formula
-					<StaticMath>
-						{
-							"\\sqrt{(\\Delta x)^2 + (f'(x_{i}*)\\Delta x)^2} = \\sqrt{1 + [f'(x_{i}*)]^2}\\Delta x"
-						}
-					</StaticMath>
-					. Lastly, we take{' '}
-					<StaticMath>
-						{"\\lim_{n\\to\\infty}\\sum_{i=1}^{n}{{\\sqrt{1+[f'(x_{i}*)]^2}}\\Delta x}"}
-					</StaticMath>{' '}
-					to go over all line segments as well as refining the approximation infinitely
-					well.
-				</p>
-				<img src={ArcImg2} />
-				<p>This gives us the formula for the arc length:</p>
-
-				<StaticMath>{"L = \\int_{a}^{b}{\\sqrt{1+[f'(x)]^2}}dx"}</StaticMath>
 
 				<h3>How to experiment with Arc Length:</h3>
 				<p>
@@ -175,6 +142,12 @@ export const Arc = ({ payload, visible, setPayload }) => {
 					Use the second slider to select the range on which you want to approximate the
 					length of the curve. Default is 0 - 10.
 				</p>
+
+				<h4>4. Refine your estimation</h4>
+				<p>As is true with Riemann sums, the arc length's estimation gets better and better
+					as you increase the number of subdivisions. On the bottom of the controls is an output box that shows
+				the sum of the line segments which will get closer to the true arc length as you increase the number of
+				subdivisions.</p>
 			</>
 		)
 	}
@@ -185,6 +158,8 @@ export const Arc = ({ payload, visible, setPayload }) => {
 			graphSlot={renderGraph}
 			helpSlot={renderHelp}
 			output={length}
+			colorArray={["Function", "Arc Lines"]}
+			experiment="Arc"
 		/>
 	) : null
 }

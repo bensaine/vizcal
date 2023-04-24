@@ -1,0 +1,130 @@
+.color-selector{
+	position: absolute;
+	background-color: #212936;
+	bottom: -5px;
+	right: -5px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	border-radius: 12px 0 0 0;
+	padding: 15px;
+}
+
+.selector-open{
+	animation: button-container-open 0.5s ease-in-out;
+}
+
+//.selector-close{
+//	animation: button-container-close 0.5s ease-in-out;
+//}
+
+@keyframes button-container-open {
+	0%{
+		opacity: 0;
+		transform: translateY(100%);
+	}
+	100%{
+		opacity: 100%;
+		transform: translateY(0);
+	}
+}
+
+@keyframes button-container-close {
+	0%{
+		opacity: 100%;
+		transform: translateY(-100%);
+	}
+	100%{
+		opacity: 0;
+		transform: translateY(0);
+	}
+}
+
+
+button {
+	box-sizing: border-box;
+	background-color: #1e2b68;
+	border: #1e2b68;
+	border-radius: 12px;
+	color:  white;
+	cursor: pointer;
+	margin: 10px;
+	padding: 1em 2em;
+	text-decoration: none;
+	font-family: 'Inter', sans-serif;
+	font-style: normal;
+	font-size: 12px;
+	font-weight: 700;
+	height: 40px;
+	width: 350px;
+	align-items: center;
+	display: flex;
+	justify-content: center;
+}
+
+.button:hover {
+	opacity: 50%;
+}
+
+.button-main {
+	background-color: #111827;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	cursor: pointer;
+	align-items: center;
+	justify-content: center;
+	display: flex;
+}
+
+.button-container{
+	cursor: pointer;
+	align-items: center;
+	justify-content: center;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	height: fit-content;
+	padding: 10px;
+}
+
+.button-color{
+	transition: all 0.4s ease-in-out;
+}
+
+.button-color:hover{
+	opacity: 50%;
+}
+
+
+.button-color-active{
+	text-align: left;
+	padding-top: 2px;
+	height: 75px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	justify-content: center;
+	transition: all 0.4s ease-in-out;
+}
+
+.color-item {
+	width: 2rem;
+	height: 2rem;
+	border-radius: 50%;
+}
+
+.color-item:hover{
+	stroke: #ffffff;
+	stroke-width: 5px;
+	transition: stroke-width 0.25s ease-in-out;
+}
+
+.color-list {
+	position: relative;
+	align-items: center;
+	display: grid;
+	grid-template-columns: repeat(7, 0.05fr);
+	gap: 1rem;
+}
+

@@ -6,6 +6,7 @@ import { Home } from './components/Home/Home'
 import { v4 as uuidv4 } from 'uuid'
 import { Experiment } from './components/Experiment'
 import { Settings } from './components/Settings/Settings'
+import ContextProvider from "./components/ColorContainer/ContextProvider";
 
 function App() {
 	const [openExperiments, setOpenExperiments] = useState([])
@@ -51,6 +52,7 @@ function App() {
 	}
 
 	return (
+		<ContextProvider>
 		<div className={styles.container} data-theme={theme} data-font={font}>
 			<Nav
 				experiments={openExperiments}
@@ -71,6 +73,7 @@ function App() {
 				))}
 			</WindowContainer>
 		</div>
+		</ContextProvider>
 	)
 }
 

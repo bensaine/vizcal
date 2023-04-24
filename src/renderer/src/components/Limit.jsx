@@ -1,12 +1,13 @@
 import '../../jquery.js'
 import '../../desmos.js'
 import { Expression } from 'desmos-react'
-import { useEffect, useState } from 'react'
+import {useContext, useEffect, useState } from 'react'
 import { ExperimentBase } from './ExperimentBase/ExperimentBase'
 import { MathInput } from './Controls/MathInput'
 import { Slider } from './Controls/Slider/Slider'
 import { StaticMath } from './StaticMath'
 import { ExpressionListener } from './ExpressionListener.jsx'
+import {Context} from "./ColorContainer/ContextProvider"
 
 export const Limit = ({ payload, visible, setPayload }) => {
 	const [fx, setFx] = useState(payload.fx ?? '')
@@ -14,6 +15,8 @@ export const Limit = ({ payload, visible, setPayload }) => {
 	const [epsilon, setEpsilon] = useState(payload.epsilon ?? 0.1)
 	const [delta, setDelta] = useState(payload.delta ?? 0.1)
 	const [limit, setLimit] = useState(NaN)
+
+	const ctx = useContext(Context)
 
 	useEffect(() => {
 		setPayload({
@@ -73,7 +76,7 @@ export const Limit = ({ payload, visible, setPayload }) => {
 	const renderGraph = () => {
 		return (
 			<>
-				<Expression id="function" latex={'f\\left(x\\right)=' + fx} color="#fff" />
+				<Expression id="function" latex={'f\\left(x\\right)=' + fx} color={ctx.limit.functionColorLimit} />
 				{fx != '' && (
 					<>
 						<Expression id="x" latex={'x_{point}=' + x} />
@@ -105,7 +108,7 @@ export const Limit = ({ payload, visible, setPayload }) => {
 							lineStyle="DASHED"
 							lineWidth={1.5}
 							lineOpacity={0.6}
-							color="#fff"
+							color={ctx.limit.epsilonColor}
 						/>
 						<Expression
 							id="yUpLine"
@@ -113,7 +116,7 @@ export const Limit = ({ payload, visible, setPayload }) => {
 							lineStyle="DASHED"
 							lineWidth={1.5}
 							lineOpacity={0.6}
-							color="#fff"
+							color={ctx.limit.epsilonColor}
 						/>
 						<Expression id="xLeft" latex={'x_{left}=x_{point}-d_{elta}'} />
 						<Expression id="xRight" latex={'x_{right}=x_{point}+d_{elta}'} />
@@ -123,7 +126,7 @@ export const Limit = ({ payload, visible, setPayload }) => {
 							lineStyle="DASHED"
 							lineWidth={1.5}
 							lineOpacity={0.6}
-							color="#fff"
+							color={ctx.limit.deltaColor}
 						/>
 						<Expression
 							id="xRightLine"
@@ -131,7 +134,7 @@ export const Limit = ({ payload, visible, setPayload }) => {
 							lineStyle="DASHED"
 							lineWidth={1}
 							lineOpacity={0.6}
-							color="#fff"
+							color={ctx.limit.deltaColor}
 						/>
 						<Expression id="yUpDelta" latex={'y_{upDelta}=f\\left(x_{right}\\right)'} />
 						<Expression
@@ -180,6 +183,8 @@ export const Limit = ({ payload, visible, setPayload }) => {
 			graphSlot={renderGraph}
 			helpSlot={renderHelp}
 			output={limit}
+			colorArray={["Function", "Delta Lines", "Epsilon Lines"]}
+			experiment="Limit"
 		/>
 	) : null
 }
