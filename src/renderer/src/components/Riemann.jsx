@@ -8,10 +8,6 @@ import { MathInput } from './Controls/MathInput'
 import { Slider } from './Controls/Slider/Slider'
 import { ExpressionListener } from './ExpressionListener.jsx'
 import { StaticMath } from './StaticMath.jsx'
-import fig1 from '../assets/images/reimannDark/reimann1.png'
-import fig2 from '../assets/images/reimannDark/reimann2.png'
-import fig3 from '../assets/images/reimannDark/reimann3.png'
-import fig4 from '../assets/images/reimannDark/reimann4.png'
 
 export const Riemann = ({ payload, visible, setPayload }) => {
 	const [fx, setFx] = useState(payload.fx ?? '')
@@ -142,17 +138,8 @@ export const Riemann = ({ payload, visible, setPayload }) => {
 				<h3>How does it work?</h3>
 				<p>
 					When approximating the area under a function's graph, one usually uses
-					rectangular subdivisions.
-				</p>
-				<img src={fig1} alt="Approximating the area under a graph with rectangles" />
-				<p>
-					As seen in the figure below, using more subdivisions results in a better
-					approximation:
-				</p>
-				<img src={fig2} alt="Increasing the number of rectangles for the approximation" />
-				<p>
-					The subdivisions can be either uniform or non-uniform. However, this program
-					will strictly use uniform subdivisions.
+					rectangular subdivisions. The subdivisions can be either uniform or non-uniform.
+					However, this program will strictly use uniform subdivisions.
 				</p>
 				<p>
 					The rectangles place themselves under the curve in 4 different ways, generating{' '}
@@ -168,17 +155,13 @@ export const Riemann = ({ payload, visible, setPayload }) => {
 				<h4>Left Reimann sum:</h4>
 				<p>
 					With this method, each rectangular subdivision touches the curve through their
-					top-left corner.
+					top-left corner.This results in an underestimation.
 				</p>
-				<img src={fig3} alt="Left Hand Reimann Sum" />
-				<p>As seen in the figure 3, this results in an underestimation.</p>
 				<h4>Right Reimann sum:</h4>
 				<p>
 					With this method, each rectangular subdivision touches the curve through their
-					top-right corner.
+					top-right corner. This results in an overestimation.
 				</p>
-				<img src={fig4} alt="Right Hand Reimann Sum" />
-				<p>As seen in the figure 4, this results in an overestimation.</p>
 				<h3>Steps to Approximating the Area Through Reimann Sums:</h3>
 				<p> The approximation can be represented as the sum of each rectangles' areas:</p>
 				<StaticMath>{'\\sum_{i=1}^{n}f\\left(x_{i}^*\\right)\\cdot\\Delta {x}'}</StaticMath>
@@ -213,6 +196,16 @@ export const Riemann = ({ payload, visible, setPayload }) => {
 					}
 				</StaticMath>
 				<p>which introduces the concept of integrals.</p>
+				<h3>How to use It?</h3>
+				<p>
+					Input your function. No need to add "f(x)", just directly input the function in
+					terms of x.
+				</p>
+				<p>1-Select a range.</p>
+				<p>2-Select the number of rectangles.</p>
+				<p>3-Select a direction.</p>
+				<p>The graph updates in real time, as well as the output.</p>
+				<p>4-Enjoy your graph!</p>
 			</>
 		)
 	}
