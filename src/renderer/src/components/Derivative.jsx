@@ -146,6 +146,36 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 					points at which the derivative is calculated and then yields the average slope
 					of the function between these points.
 				</p>
+				<h3>How to experiment with Slope:</h3>
+				<p>
+					Experimenting with the slope yourself is simple. Here are the components that
+					you see on the screen and how to use them:
+				</p>
+
+				<h4>1. Input a function</h4>
+				<p>
+					Type any explicit function you like in the textbox. Just like other math tools,
+					this is a LaTeX textbox, so you can type your function in easily.
+				</p>
+
+				<h4>2. Select the point on the x-axis</h4>
+				<p>
+					Use the first slider to indicate the point on the x-axis where you want to
+					calculate and show the slope. The default value is 0.
+				</p>
+
+				<h4>3. Select a value for run and rise</h4>
+				<p>
+					Use the second slider to select the run and rise values which will be used to
+					modify the slope value. The default value is 0.00001.
+				</p>
+
+				<h4>3. Slect a derivative order</h4>
+				<p>
+					Use the dropdown button to choose between the first and second derivatives.
+					The second derivative option will show the second derivative function and
+					its instaneous slope. The default value is the first derivative.
+				</p>
 			</>
 		)
 	}
