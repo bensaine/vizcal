@@ -11,6 +11,7 @@ asarUnpack:
     - resources/*
 win:
     executableName: Vizcal
+    target: portable
 nsis:
     artifactName: ${name}-${version}-setup.${ext}
     shortcutName: ${productName}
