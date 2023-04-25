@@ -5,9 +5,6 @@ import { useEffect, useState } from 'react'
 import { ExperimentBase } from './ExperimentBase/ExperimentBase'
 import { MathInput } from './Controls/MathInput'
 import { Slider } from './Controls/Slider/Slider'
-import { StaticMath } from './StaticMath'
-import ArcImg1 from '../assets/images/arclength1.png'
-import ArcImg2 from '../assets/images/arclength2.png'
 import { ExpressionListener } from './ExpressionListener.jsx'
 
 export const Arc = ({ payload, visible, setPayload }) => {
@@ -111,61 +108,41 @@ export const Arc = ({ payload, visible, setPayload }) => {
 					The arc length is an application of integration that lets us find the length of
 					a function within a certain range. The method by which this is achieved it very
 					similar to the approximation of the area under a curve where Riemann sums where
-					exhaustively used.
+					exhaustively used. In short, subdivisions in x of a function are joined by
+					straight lines and they are all joined to approximate the curve of the function.
+					The approximation is simply given by the sum of the length of each small line
+					section.
 				</p>
-
-				<h3>What is the formula?</h3>
-				<p>
-					We start by dividing our range into n sections with equal width
-					<StaticMath>{' \\Delta x=\\frac{b-a}{n}'}</StaticMath>
-					and define <StaticMath>{'x_{i}*=a+i\\Delta x'}</StaticMath>
-					where <StaticMath>{'0 < i \\leq n'}</StaticMath>. Then, we join all points for{' '}
-					<StaticMath>{'f(x_{i}) \\space and \\space f(x_{i-1})'}</StaticMath>
-					to create line segments that approximate the length of the curve.
-				</p>
-				<img src={ArcImg1} />
-				<p>
-					To get the numerical approximation, we repeatedly use the distance formula
-					<StaticMath>
-						{
-							"\\sqrt{(\\Delta x)^2 + (f'(x_{i}*)\\Delta x)^2} = \\sqrt{1 + [f'(x_{i}*)]^2}\\Delta x"
-						}
-					</StaticMath>
-					. Lastly, we take{' '}
-					<StaticMath>
-						{"\\lim_{n\\to\\infty}\\sum_{i=1}^{n}{{\\sqrt{1+[f'(x_{i}*)]^2}}\\Delta x}"}
-					</StaticMath>{' '}
-					to go over all line segments as well as refining the approximation infinitely
-					well.
-				</p>
-				<img src={ArcImg2} />
-				<p>This gives us the formula for the arc length:</p>
-
-				<StaticMath>{"L = \\int_{a}^{b}{\\sqrt{1+[f'(x)]^2}}dx"}</StaticMath>
-
 				<h3>How to experiment with Arc Length:</h3>
 				<p>
-					Experimenting with the arc length yourself is simple. Here are the
-					components that you see on the screen and how to use them:
+					Experimenting with the arc length yourself is simple. Here are the components
+					that you see on the screen and how to use them:
 				</p>
 
 				<h4>1. Input a function</h4>
 				<p>
-					Type any explicit function you like in the textbox. Just like other math tools, this is a
-					LaTeX textbox, so you can type your function in easily.
+					Type any explicit function you like in the textbox. Just like other math tools,
+					this is a LaTeX textbox, so you can type your function in easily.
 				</p>
 
 				<h4>2. Select the number of subdivisions</h4>
 				<p>
-					Use the first slider to indicate the number of subdivisions you
-					want. Remember, the higher the number, the better the approximation. The default is set to
-					1.
+					Use the first slider to indicate the number of subdivisions you want. Remember,
+					the higher the number, the better the approximation. The default is set to 1.
 				</p>
 
 				<h4>3. Select a range</h4>
 				<p>
 					Use the second slider to select the range on which you want to approximate the
 					length of the curve. The default is set to 0 - 10.
+				</p>
+
+				<h4>4. Refine your estimation</h4>
+				<p>
+					As is true with Riemann sums, the arc length's estimation gets better and better
+					as you increase the number of subdivisions. On the bottom of the controls is an
+					output box that shows the sum of the line segments which will get closer to the
+					true arc length as you increase the number of subdivisions.
 				</p>
 			</>
 		)
