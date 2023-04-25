@@ -15,7 +15,7 @@ export const Home = ({ createNewExperiment }) => {
 				<span>
 					... or{' '}
 					<span className="link" onClick={handleLoadExisting}>
-						load an existing experiment from file
+						load an existing experiment from a file
 					</span>
 				</span>
 			</div>
