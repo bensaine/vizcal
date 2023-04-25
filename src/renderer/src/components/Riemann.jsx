@@ -135,77 +135,25 @@ export const Riemann = ({ payload, visible, setPayload }) => {
 					by a finite sum. Riemann sums help us approximate definite integrals, but they
 					also help us formally define definite integrals.
 				</p>
-				<h3>How does it work?</h3>
+				<h3>How to experiment with Riemann Sums:</h3>
+				<h4>1. Input a function</h4>
+				<p>No need to add "f(x)", just directly input the function in terms of x.</p>
+				<h4>2. Select a range</h4>
 				<p>
-					When approximating the area under a function's graph, one usually uses
-					rectangular subdivisions. The subdivisions can be either uniform or non-uniform.
-					However, this program will strictly use uniform subdivisions.
+					Use this slider to set the lower and upper limit on which the area will be
+					approximated.
 				</p>
+				<h4>3. Select the number of rectangles</h4>
 				<p>
-					The rectangles place themselves under the curve in 4 different ways, generating{' '}
-					<b>4 types of Reimann sums</b>:
+					Use this slider to define the amound of subdivisions used for the calculation.
+					The more rectangles/subdivisions you have, the more precise the area
+					approximation gets.
 				</p>
-				<ol type="I">
-					<li>Left Reimann sum</li>
-					<li>Right Reimann Sum</li>
-					<li>Midpoint Reimann sum </li>
-					<li>Trapezoidal Reimann sum</li>
-				</ol>
-				<p>This program only consists of Left and Right Reimann sums.</p>
-				<h4>Left Reimann sum:</h4>
+				<h4>4. Select a direction</h4>
 				<p>
-					With this method, each rectangular subdivision touches the curve through their
-					top-left corner.This results in an underestimation.
+					Use this dropdown menu to switch between right hand Reimann Sum and left hand
+					Reimann Sum.
 				</p>
-				<h4>Right Reimann sum:</h4>
-				<p>
-					With this method, each rectangular subdivision touches the curve through their
-					top-right corner. This results in an overestimation.
-				</p>
-				<h3>Steps to Approximating the Area Through Reimann Sums:</h3>
-				<p> The approximation can be represented as the sum of each rectangles' areas:</p>
-				<StaticMath>{'\\sum_{i=1}^{n}f\\left(x_{i}^*\\right)\\cdot\\Delta {x}'}</StaticMath>
-				,
-				<p>
-					where <StaticMath>{' \\Delta{x}'}</StaticMath> represents the width of each
-					rectangle and <StaticMath>{'f\\left(x_{i}^*\\right)'}</StaticMath> represents
-					the height of each rectangle.
-				</p>
-				<b>When using the left hand point:</b>
-				<p>
-					<StaticMath>{'\\Delta x=\\frac{\\left(a-b\\right)}{n}'}</StaticMath>, where a
-					and b represent the starting and ending points for the area approximation, and n
-					is the number of subdivisions.
-				</p>
-				<p>
-					<StaticMath>{'x_{i}^*= x_{i-1}'}</StaticMath>
-				</p>
-				<b>When using the right hand point:</b>
-				<p>
-					<StaticMath>{'\\Delta x=\\frac{\\left(a-b\\right)}{n}'}</StaticMath>, where a
-					and b represent the starting and ending points for the area approximation, and n
-					is the number of subdivisions.
-				</p>
-				<p>
-					<StaticMath>{'x_{i}^*= x_{i}'}</StaticMath>
-				</p>
-				<p>As the number of subdivisions approaches infinity, the sum becomes:</p>
-				<StaticMath>
-					{
-						'\\lim_{n\\rightarrow \\infty}\\sum_{i=1}^{n}f\\left(x_{i}^*\\right)\\cdot\\Delta{x}'
-					}
-				</StaticMath>
-				<p>which introduces the concept of integrals.</p>
-				<h3>How to use It?</h3>
-				<p>
-					Input your function. No need to add "f(x)", just directly input the function in
-					terms of x.
-				</p>
-				<p>1-Select a range.</p>
-				<p>2-Select the number of rectangles.</p>
-				<p>3-Select a direction.</p>
-				<p>The graph updates in real time, as well as the output.</p>
-				<p>4-Enjoy your graph!</p>
 			</>
 		)
 	}
