@@ -2,7 +2,7 @@ import { Home, Settings } from 'react-feather'
 import styles from './Nav.module.scss'
 import { NavItem } from './NavItem'
 
-export const Nav = ({ experiments, focus, setFocus }) => {
+export const Nav = ({ experiments, focus, setFocus, closeExperiment }) => {
 	return (
 		<nav className={styles.nav}>
 			<ul>
@@ -18,6 +18,7 @@ export const Nav = ({ experiments, focus, setFocus }) => {
 						focus={focus == experiment}
 						onClick={setFocus}
 						key={experiment}
+						closeExperiment={closeExperiment}
 					/>
 				))}
 			</ul>

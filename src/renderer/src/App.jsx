@@ -28,6 +28,15 @@ function App() {
 		setFocusedExperiment(id)
 	}
 
+	const closeExperiment = (id) => {
+		const index = openExperiments.indexOf(id)
+		if (index < 0) return
+
+		openExperiments.splice(index, 1)
+		setOpenExperiments([...openExperiments])
+		setFocusedExperiment(index - 1 >= 0 ? openExperiments[index - 1] : 'home')
+	}
+
 	if (window.electron) {
 		window.electron.ipcRenderer.on('open-file', (event, experiment) => {
 			localStorage.setItem(experiment.id, JSON.stringify(experiment.save))
@@ -56,6 +65,7 @@ function App() {
 				experiments={openExperiments}
 				focus={focusedExperiment}
 				setFocus={setFocusedExperiment}
+				closeExperiment={closeExperiment}
 			/>
 			<WindowContainer>
 				{focusedExperiment == 'home' && <Home createNewExperiment={createExperiment} />}
