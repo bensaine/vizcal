@@ -8,6 +8,27 @@ Visualizing concepts is a great way to learn them. It is also a great way to tea
 
 -   [VSCode](https://code.visualstudio.com/) + [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) + [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 
+## Project Structure
+
+```bash
+.
+├──src
+│  ├──main
+│  │  └──index.js
+│  ├──preload
+│  │  └──index.js
+│  └──renderer # React
+│     ├──src
+│     │  ├──assets
+│     │  ├──components
+│     │  └──hooks
+│     ├──index.html
+│     └──...
+├──electron.vite.config.js
+├──package.json
+└──...
+```
+
 ## Project Setup (Node.js & NPM required)
 
 ### Install Dependencies

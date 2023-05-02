@@ -1,3 +1,7 @@
+/*!
+ * Desmos Graphing Calculator SDK v1.8.0
+ * https://www.desmos.com/api/v1.8/docs/index.html
+ */
 ;(function () {
 	var desmosEnabledFeatures = {
 		GraphingCalculator: true,
