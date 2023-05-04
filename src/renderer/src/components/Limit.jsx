@@ -5,9 +5,25 @@ import { useEffect, useState } from 'react'
 import { ExperimentBase } from './ExperimentBase/ExperimentBase'
 import { MathInput } from './Controls/MathInput'
 import { Slider } from './Controls/Slider/Slider'
-import { StaticMath } from './StaticMath'
 import { ExpressionListener } from './ExpressionListener.jsx'
 
+/**
+ * Component for the Limit experiment.
+ *
+ * This component allows users to interactively visualize and experiment with the concept
+ * of limits in calculus. Users can input a function, select a point on the x-axis, and
+ * choose epsilon and delta values to approximate the limit. The component also includes
+ * a help section to guide users on how to use the interactive features.
+ *
+ * @component
+ * @param {Object} props
+ * @param {Object} props.payload - The initial payload containing function, x point, epsilon, and delta values. Used if the experiment is opened from a file.
+ * @param {boolean} props.visible - Determines whether the component is visible or not.
+ * @param {Function} props.setPayload - Callback function to update the payload when it changes. Used to save experiment state to a file.
+ * @returns {ReactElement|null} The rendered Limit component or null if not visible.
+ * @example
+ * <Limit payload={{fx: 'x^2', x: 2, epsilon: 0.1, delta: 0.1}} visible={true} setPayload={setPayload} />
+ */
 export const Limit = ({ payload, visible, setPayload }) => {
 	const [fx, setFx] = useState(payload.fx ?? '')
 	const [x, setX] = useState(payload.x ?? 0)
@@ -24,6 +40,14 @@ export const Limit = ({ payload, visible, setPayload }) => {
 		})
 	}, [fx, x, epsilon, delta])
 
+	/**
+	 * Renders the options section of the Limit component.
+	 *
+	 * This function returns a React fragment containing the inputs and sliders for the function, x point, epsilon, and delta values.
+	 * Each input/slider includes a corresponding label and callback to update the respective state variables.
+	 *
+	 * @returns {ReactElement} React fragment containing the options section of the Limit component.
+	 */
 	const renderOptions = () => {
 		return (
 			<>
@@ -70,6 +94,14 @@ export const Limit = ({ payload, visible, setPayload }) => {
 		)
 	}
 
+	/**
+	 * Renders the graph section of the Limit component.
+	 *
+	 * This function returns a React fragment containing the visual representation of the limit using the Desmos SDK.
+	 * It includes the function, x-axis point, epsilon, and delta values, as well as lines and points to help illustrate the limit.
+	 *
+	 * @returns {ReactElement} React fragment containing the graph section of the Limit component.
+	 */
 	const renderGraph = () => {
 		return (
 			<>
@@ -158,6 +190,14 @@ export const Limit = ({ payload, visible, setPayload }) => {
 		)
 	}
 
+	/**
+	 * Renders the help section of the Limit component.
+	 *
+	 * This function returns a React fragment containing an explanation of limits and a step-by-step guide on how to use the interactive features.
+	 * It covers how to input a function, select the point on the x-axis, and choose epsilon and delta values.
+	 *
+	 * @returns {ReactElement} React fragment containing the help section of the Limit component.
+	 */
 	const renderHelp = () => {
 		return (
 			<>
