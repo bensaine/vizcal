@@ -1,7 +1,7 @@
 {
 	"name": "vizcal",
 	"version": "1.0.0",
-	"description": "",
+	"description": "Visualizing concepts is a great way to learn them. It is also a great way to teach them. Vizcal is a tool to help you visualize Calculus concepts.",
 	"main": "./out/main/index.js",
 	"author": "Calculus-Oriented Creative Kids",
 	"scripts": {

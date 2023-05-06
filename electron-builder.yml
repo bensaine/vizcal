@@ -1,7 +1,7 @@
 appId: edu.vaniercollege.vizcal
 productName: Vizcal
 directories:
-    buildResources: build
+    buildResources: resources
 files:
     - '!**/.vscode/*'
     - '!src/*'
