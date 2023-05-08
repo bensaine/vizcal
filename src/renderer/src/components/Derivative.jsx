@@ -123,7 +123,7 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 					color="#ffaa00"
 				/>
 				<Expression
-					id="s"
+					id="slopeValue"
 					latex={
 						derivOrd == 'First'
 							? 's=\\frac{f\\left(x_{point}+d_{eltaX}\\right)-f\\left(x_{point}\\right)}{d_{eltaX}}'
@@ -170,11 +170,11 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 					modify the slope value. The default value is 0.00001.
 				</p>
 
-				<h4>3. Slect a derivative order</h4>
+				<h4>3. Select a derivative order</h4>
 				<p>
 					Use the dropdown button to choose between the first and second derivatives.
 					The second derivative option will show the second derivative function and
-					its instaneous slope. The default value is the first derivative.
+					its instantaneous slope. The default value is the first derivative.
 				</p>
 			</>
 		)
