@@ -14,7 +14,6 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 	const [d, setD] = useState(payload.d ?? 0.00001)
 	const [derivOrd, setDerivOrd] = useState(payload.derivOrd ?? 'First')
 	const [slope, setSlope] = useState(NaN)
-
 	useEffect(() => {
 		setPayload({
 			fx: fx,
@@ -78,6 +77,7 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 					<Expression
 						id="function2"
 						latex={'g\\left(x\\right)=\\frac{d}{dx}' + fx}
+						lineOpacity="0.5"
 						color="#444444"
 					/>
 				)}
@@ -123,7 +123,7 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 					color="#ffaa00"
 				/>
 				<Expression
-					id="slopeValue"
+					id="s"
 					latex={
 						derivOrd == 'First'
 							? 's=\\frac{f\\left(x_{point}+d_{eltaX}\\right)-f\\left(x_{point}\\right)}{d_{eltaX}}'
@@ -172,9 +172,10 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 
 				<h4>3. Select a derivative order</h4>
 				<p>
-					Use the dropdown button to choose between the first and second derivatives.
-					The second derivative option will show the second derivative function and
-					its instantaneous slope. The default value is the first derivative.
+					Use the dropdown to choose between the first and second derivatives. The
+					second derivative option will add the second derivative function to the graph in a transparent
+					grey for a clearer visualization and the visualizer will then display its instantaneous slope.
+				    The default value is the first derivative.
 				</p>
 			</>
 		)
