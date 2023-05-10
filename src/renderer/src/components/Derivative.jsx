@@ -9,19 +9,19 @@ import { Dropdown } from './Controls/Dropdown'
 import { ExpressionListener } from './ExpressionListener.jsx'
 
 export const Derivative = ({ payload, visible, setPayload }) => {
-	const [fx, setFx] = useState(payload.fx ?? '')
-	const [x, setX] = useState(payload.x ?? 0)
-	const [d, setD] = useState(payload.d ?? 0.00001)
+	const [equation, setEquation] = useState(payload.equation ?? '')
+	const [pointX, setPointX] = useState(payload.x ?? 0)
+	const [runRiseVal, setRunRiseVal] = useState(payload.d ?? 0.00001)
 	const [derivOrd, setDerivOrd] = useState(payload.derivOrd ?? 'First')
 	const [slope, setSlope] = useState(NaN)
 	useEffect(() => {
 		setPayload({
-			fx: fx,
-			x: x,
-			d: d,
+			equation: equation,
+			pointX: pointX,
+			runRiseVal: runRiseVal,
 			derivOrd: derivOrd
 		})
-	}, [fx, x, d, derivOrd])
+	}, [equation, pointX, runRiseVal, derivOrd])
 
 	const renderOptions = () => {
 		return (
@@ -30,30 +30,30 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 				<MathInput
 					id="function"
 					label="Function"
-					latex={fx}
+					latex={equation}
 					onChange={(input) => {
-						setFx(input.latex())
+						setEquation(input.latex())
 					}}
 				/>
 				<Slider
 					id="x"
 					label={'Slope at x = '}
-					value={x}
-					onChange={setX}
+					value={pointX}
+					onChange={setPointX}
 					min={-20}
 					max={20}
 					step={0.1}
-					disabled={fx == ''}
+					disabled={equation == ''}
 				/>
 				<Slider
 					id="d"
 					label={'Run and Rise'}
-					value={d}
-					onChange={setD}
+					value={runRiseVal}
+					onChange={setRunRiseVal}
 					min={0.00001}
 					max={1}
 					step={0.0001}
-					disabled={fx == ''}
+					disabled={equation == ''}
 				/>
 				<Dropdown
 					id="derivOrd"
@@ -61,7 +61,7 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 					value={derivOrd}
 					options={['First', 'Second']}
 					onChange={setDerivOrd}
-					disabled={fx == ''}
+					disabled={equation == ''}
 				/>
 			</>
 		)
@@ -70,13 +70,13 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 	const renderGraph = () => {
 		return (
 			<>
-				<Expression id="x" latex={'x_{point}=' + x} />
-				<Expression id="d" latex={'d_{eltaX}=' + d} />
-				<Expression id="function" latex={'f\\left(x\\right)=' + fx} color="#ffffff" />
+				<Expression id="x" latex={'x_{point}=' + pointX} />
+				<Expression id="d" latex={'d_{eltaX}=' + runRiseVal} />
+				<Expression id="function" latex={'f\\left(x\\right)=' + equation} color="#ffffff" />
 				{derivOrd == 'Second' && (
 					<Expression
 						id="function2"
-						latex={'g\\left(x\\right)=\\frac{d}{dx}' + fx}
+						latex={'g\\left(x\\right)=\\frac{d}{dx}' + equation}
 						lineOpacity="0.5"
 						color="#444444"
 					/>
@@ -123,7 +123,7 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 					color="#ffaa00"
 				/>
 				<Expression
-					id="s"
+					id="slopeVal"
 					latex={
 						derivOrd == 'First'
 							? 's=\\frac{f\\left(x_{point}+d_{eltaX}\\right)-f\\left(x_{point}\\right)}{d_{eltaX}}'
