@@ -12,10 +12,7 @@ import {Colors} from "../ColorContainer/Colors";
 export const ExperimentBase = ({ optionsSlot, graphSlot, helpSlot, output, colorArray, experiment}) => {
 	const [helpOpen, setHelpOpen] = useState(false)
 	const [isCollapsed, setIsCollapsed] = useState(false)
-	const [color, setColor] = useState("black")
-	const chooseColors = (color) => {
-		setColor(color)
-	}
+	const [color] = useState("black")
 
 	return (
 		<div className={styles.container}>
@@ -49,7 +46,7 @@ export const ExperimentBase = ({ optionsSlot, graphSlot, helpSlot, output, color
 				>
 					{graphSlot(color)}
 				</GraphingCalculator>
-				<Colors color={chooseColors} colorArray={colorArray} experiment={experiment}></Colors>
+				<Colors colorArray={colorArray} experiment={experiment}></Colors>
 			</div>
 			<Dialog open={helpOpen} title={'Help'} onClose={() => setHelpOpen(false)}>
 				{helpSlot()}

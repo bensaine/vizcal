@@ -2,28 +2,24 @@ import React, {Component, useEffect, useState} from 'react'
 import { ColorItems } from './ColorItems'
 import "./color.scss"
 import styles from "../ExperimentBase/ExperimentBase.module.scss";
+import { Droplet, X} from 'react-feather'
 
-export const Colors = ({color, colorArray, experiment}) => {
+export const Colors = ({colorArray, experiment}) => {
 	const [open, setOpen] = useState(false)
-	const [colors, setColors] = useState("white")
-
-	useEffect(() => {
-		setColors(color)
-	}, [color])
 
 	return (
-		<div className={`color-selector ${open ? 'selector-open button-main-open' : 'selector-close button-main-close'}`}>
-			<div style={{backgroundColor: "#111827", borderRadius: "5px", display: "flex", flexDirection: "column"}}>
-				<div style={{display: "flex"}}>
-					<button className="button-main" onClick={() => setOpen((prev) => !prev)}/>
-					{/*<span style={{fontSize: "20px", fontFamily: 'Inter', textAlign: "center", width: "100%"}}>*/}
-					{/*	Color Picker*/}
-					{/*</span>*/}
-				</div>
+		<div className={"outer-color-container"}>
+			<div className={"inner-color-container"}>
+				<span className={"inner-color-container-top"}>
+					<span className={"color-menu-button"} onClick={() => setOpen((prev) => !prev)}>
+						{open ? <X/> : <Droplet/>}
+					</span>
+					{open && (<h2 className={"color-selector-title"}> Color Selector </h2>)}
+				</span>
 				{open && (
-					<div className={"button-container"} >
+					<div className={"options-container"} >
 						{colorArray.map(names => {
-								return <ColorItems key={Math.random()} title={names} chooseColor={color} experiment={experiment}></ColorItems>
+								return <ColorItems key={Math.random()} title={names} experiment={experiment}></ColorItems>
 							}
 						)}
 					</div>
