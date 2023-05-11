@@ -22,10 +22,10 @@ import { ExpressionListener } from './ExpressionListener.jsx'
  * @param {Function} props.setPayload - Callback function to update the payload when it changes. Used to save experiment state to a file.
  * @returns {ReactElement|null} The rendered Limit component or null if not visible.
  * @example
- * <Limit payload={{fx: 'x^2', x: 2, epsilon: 0.1, delta: 0.1}} visible={true} setPayload={setPayload} />
+ * <Limit payload={{equation: 'x^2', x: 2, epsilon: 0.1, delta: 0.1}} visible={true} setPayload={setPayload} />
  */
 export const Limit = ({ payload, visible, setPayload }) => {
-	const [fx, setFx] = useState(payload.fx ?? '')
+	const [equation, setEquation] = useState(payload.equation ?? '')
 	const [x, setX] = useState(payload.x ?? 0)
 	const [epsilon, setEpsilon] = useState(payload.epsilon ?? 0.1)
 	const [delta, setDelta] = useState(payload.delta ?? 0.1)
@@ -33,12 +33,12 @@ export const Limit = ({ payload, visible, setPayload }) => {
 
 	useEffect(() => {
 		setPayload({
-			fx: fx,
+			equation: equation,
 			x: x,
 			epsilon: epsilon,
 			delta: delta
 		})
-	}, [fx, x, epsilon, delta])
+	}, [equation, x, epsilon, delta])
 
 	/**
 	 * Renders the options section of the Limit component.
@@ -55,9 +55,9 @@ export const Limit = ({ payload, visible, setPayload }) => {
 				<MathInput
 					id="function"
 					label="Function"
-					latex={fx}
+					latex={equation}
 					onChange={(input) => {
-						setFx(input.latex())
+						setEquation(input.latex())
 					}}
 				/>
 				<Slider
@@ -68,7 +68,7 @@ export const Limit = ({ payload, visible, setPayload }) => {
 					min={-20}
 					max={10}
 					step={0.1}
-					disabled={fx == ''}
+					disabled={equation == ''}
 				/>
 				<Slider
 					id="epsilon"
@@ -78,7 +78,7 @@ export const Limit = ({ payload, visible, setPayload }) => {
 					min={0}
 					max={20}
 					step={0.0001}
-					disabled={fx == ''}
+					disabled={equation == ''}
 				/>
 				<Slider
 					id="delta"
@@ -88,7 +88,7 @@ export const Limit = ({ payload, visible, setPayload }) => {
 					min={0}
 					max={20}
 					step={0.0001}
-					disabled={fx == ''}
+					disabled={equation == ''}
 				/>
 			</>
 		)
@@ -105,8 +105,8 @@ export const Limit = ({ payload, visible, setPayload }) => {
 	const renderGraph = () => {
 		return (
 			<>
-				<Expression id="function" latex={'f\\left(x\\right)=' + fx} color="#fff" />
-				{fx != '' && (
+				<Expression id="function" latex={'f\\left(x\\right)=' + equation} color="#fff" />
+				{equation != '' && (
 					<>
 						<Expression id="x" latex={'x_{point}=' + x} />
 						<Expression id="epsilon" latex={'e_{psilon}=' + epsilon} />
