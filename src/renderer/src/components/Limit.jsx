@@ -16,6 +16,7 @@ import { ExpressionListener } from './ExpressionListener.jsx'
  * a help section to guide users on how to use the interactive features.
  *
  * @component
+ * @author Benjamin Saine
  * @param {Object} props
  * @param {Object} props.payload - The initial payload containing function, x point, epsilon, and delta values. Used if the experiment is opened from a file.
  * @param {boolean} props.visible - Determines whether the component is visible or not.
