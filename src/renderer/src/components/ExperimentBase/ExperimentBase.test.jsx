@@ -15,7 +15,6 @@ describe('ExperimentBase', () => {
 		)
 
 		const options = experimentBase.container.querySelector('.options')
-		console.log(getComputedStyle(options))
 		act(() => {
 			experimentBase.container.querySelector('.collapseButton').click()
 		})
