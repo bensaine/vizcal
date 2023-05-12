@@ -20,7 +20,7 @@ The derivative of a function at a given point is the instaneous slope of said
 function at said point. The values for the run and rise dictate the range of
 points at which the derivative is calculated and then yields the average slope
 of the function between these points.
-
+![derivative explanation image](https://cdn.discordapp.com/attachments/1069616366476349482/1106680696195530813/IMG_0556.webp)<figcaption align = "center"><b>Derivative explanation. Reference:https://machinelearningmastery.com/a-gentle-introduction-to-function-derivatives/</b></figcaption>
 ### Riemann Sums
 
 In mathematics, a Riemann sum is a certain kind of approximation of an integral
