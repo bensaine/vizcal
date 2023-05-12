@@ -1,8 +1,18 @@
 import styles from './Home.module.scss'
-import { useRef } from 'react'
 import { ExperimentCarousel } from '../ExperimentCarousel/ExperimentCarousel'
 import { experiments } from '../../data/experiments.js'
 
+/**
+ *
+ * Renders the home component
+ * This component allows the user to create a new experiment or load an existing one.
+ * It contains a carousel of 4 different options, each of them representing one experiment.
+ *
+ * @param {Object} props - The component props.
+ * @param {Function} props.createNewExperiment - A callback function to create a new experiment.
+ *
+ * @returns {JSX.Element} The Home component.
+ */
 export const Home = ({ createNewExperiment }) => {
 	const handleLoadExisting = () => {
 		window.api.openExperiment()
