@@ -14,6 +14,8 @@ In other words, it is the value that a function approaches as the input gets
 arbitrarily close to a specific point. Limits are used to define the concepts of
 continuity, derivatives, and integrals in calculus.
 
+![limit explanation image](https://tutorial.math.lamar.edu/classes/calcI/DefnOfLimit_Files/image001.png)<figcaption align = "center"><b>Limit explanation. Reference: https://tutorial.math.lamar.edu/classes/calcI/defnoflimit.aspx.</b></figcaption>
+
 ### Derivative
 
 The derivative of a function at a given point is the instaneous slope of said
