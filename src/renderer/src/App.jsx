@@ -6,12 +6,14 @@ import { Home } from './components/Home/Home'
 import { v4 as uuidv4 } from 'uuid'
 import { Experiment } from './components/Experiment'
 import { Settings } from './components/Settings/Settings'
+import { Dialog } from './components/Dialog/Dialog'
 
 function App() {
 	const [openExperiments, setOpenExperiments] = useState([])
 	const [focusedExperiment, setFocusedExperiment] = useState('home')
 	const [theme, setTheme] = useState(localStorage.getItem('theme') ?? 'Dark')
 	const [font, setFont] = useState(localStorage.getItem('font') ?? 'Helvetica Neue')
+	const [helpOpen, setHelpOpen] = useState(false)
 
 	useEffect(() => {
 		localStorage.setItem('theme', theme)
@@ -66,6 +68,7 @@ function App() {
 				focus={focusedExperiment}
 				setFocus={setFocusedExperiment}
 				closeExperiment={closeExperiment}
+				setHelpOpen={setHelpOpen}
 			/>
 			<WindowContainer>
 				{focusedExperiment == 'home' && <Home createNewExperiment={createExperiment} />}
@@ -80,6 +83,16 @@ function App() {
 					/>
 				))}
 			</WindowContainer>
+			<Dialog open={helpOpen} title={'Help Menu'} onClose={() => setHelpOpen(false)}>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+					incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+					nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+					Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+					fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+					culpa qui officia deserunt mollit anim id est laborum.
+				</p>
+			</Dialog>
 		</div>
 	)
 }
