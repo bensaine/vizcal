@@ -49,7 +49,7 @@ section.
 
 ```bash
 .
-├──src
+├──src # Electron
 │  ├──main
 │  │  └──index.js
 │  ├──preload
