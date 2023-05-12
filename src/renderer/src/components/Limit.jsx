@@ -23,11 +23,11 @@ import { ExpressionListener } from './ExpressionListener.jsx'
  * @param {Function} props.setPayload - Callback function to update the payload when it changes. Used to save experiment state to a file.
  * @returns {ReactElement|null} The rendered Limit component or null if not visible.
  * @example
- * <Limit payload={{equation: 'x^2', x: 2, epsilon: 0.1, delta: 0.1}} visible={true} setPayload={setPayload} />
+ * <Limit payload={{equation: 'x^2', xPoint: 2, epsilon: 0.1, delta: 0.1}} visible={true} setPayload={setPayload} />
  */
 export const Limit = ({ payload, visible, setPayload }) => {
 	const [equation, setEquation] = useState(payload.equation ?? '')
-	const [x, setX] = useState(payload.x ?? 0)
+	const [xPoint, setXPoint] = useState(payload.xPoint ?? 0)
 	const [epsilon, setEpsilon] = useState(payload.epsilon ?? 0.1)
 	const [delta, setDelta] = useState(payload.delta ?? 0.1)
 	const [limit, setLimit] = useState(NaN)
@@ -35,11 +35,11 @@ export const Limit = ({ payload, visible, setPayload }) => {
 	useEffect(() => {
 		setPayload({
 			equation: equation,
-			x: x,
+			xPoint: xPoint,
 			epsilon: epsilon,
 			delta: delta
 		})
-	}, [equation, x, epsilon, delta])
+	}, [equation, xPoint, epsilon, delta])
 
 	/**
 	 * Renders the options section of the Limit component.
@@ -64,8 +64,8 @@ export const Limit = ({ payload, visible, setPayload }) => {
 				<Slider
 					id="x"
 					label="x point"
-					value={x}
-					onChange={setX}
+					value={xPoint}
+					onChange={setXPoint}
 					min={-20}
 					max={10}
 					step={0.1}
@@ -109,7 +109,7 @@ export const Limit = ({ payload, visible, setPayload }) => {
 				<Expression id="function" latex={'f\\left(x\\right)=' + equation} color="#fff" />
 				{equation != '' && (
 					<>
-						<Expression id="x" latex={'x_{point}=' + x} />
+						<Expression id="x" latex={'x_{point}=' + xPoint} />
 						<Expression id="epsilon" latex={'e_{psilon}=' + epsilon} />
 						<Expression id="delta" latex={'d_{elta}=' + delta} />
 						<Expression id="xLine" latex={'x=x_{point}'} color="#37a" />
