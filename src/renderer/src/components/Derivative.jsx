@@ -124,12 +124,12 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 					onChange={setDerivOrder}
 					disabled={equation == ''}
 				/>
-				{/*explains what the instantaneous slope, or blue line, represents according to the selected derivative order. */}
+				{/*explains what the instantaneous slope represents according to the selected derivative order. */}
 				{derivOrder == 'First' ? (
-					<p>The blue line shows the instantaneous slope of the inputed function.</p>
+					<p>The line shows the instantaneous slope of the inputed function.</p>
 				) : (
 					<p>
-						The blue line shows the instantaneous slope of the derivative of the inputed
+						The line shows the instantaneous slope of the derivative of the inputed
 						function.
 					</p>
 				)}
