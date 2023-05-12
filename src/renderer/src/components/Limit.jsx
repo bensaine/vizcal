@@ -32,6 +32,11 @@ export const Limit = ({ payload, visible, setPayload }) => {
 	const [delta, setDelta] = useState(payload.delta ?? 0.1)
 	const [limit, setLimit] = useState(NaN)
 
+	/**
+	 * Updates the payload state whenever there is a change in the state of the component.
+	 *
+	 * @returns {void}
+	 */
 	useEffect(() => {
 		setPayload({
 			equation: equation,
