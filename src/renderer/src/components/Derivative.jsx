@@ -169,7 +169,7 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 					color="#3377aa"
 				/>
 				<Expression
-					id="runRise"
+					id="riseDown"
 					latex={
 						derivOrd == 'First'
 							? 'x_{2}=x_{point}+d_{eltaX}\\left\\{f\\left(x_{point}+d_{eltaX}\\right)<y<f\\left(x_{point}\\right)\\right\\}'
