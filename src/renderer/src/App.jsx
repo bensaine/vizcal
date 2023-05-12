@@ -27,6 +27,7 @@ function App() {
 	const [font, setFont] = useState(localStorage.getItem('font') ?? 'Helvetica Neue')
 	const [helpOpen, setHelpOpen] = useState(false)
 
+	// Save theme and font settings to local storage
 	useEffect(() => {
 		localStorage.setItem('theme', theme)
 	}, [theme])
@@ -35,6 +36,7 @@ function App() {
 		localStorage.setItem('font', font)
 	}, [font])
 
+	// Create a new experiment when the user clicks the "New Experiment" button
 	const createExperiment = (type) => {
 		const id = uuidv4()
 		localStorage.setItem(id, JSON.stringify({ type: type, payload: {} }))
@@ -42,6 +44,7 @@ function App() {
 		setFocusedExperiment(id)
 	}
 
+	// Close and purge the experiment with the given id
 	const closeExperiment = (id) => {
 		const index = openExperiments.indexOf(id)
 		if (index < 0) return
@@ -51,6 +54,7 @@ function App() {
 		setFocusedExperiment(index - 1 >= 0 ? openExperiments[index - 1] : 'home')
 	}
 
+	// Define the electron event API for opening and saving files
 	if (window.electron) {
 		window.electron.ipcRenderer.on('open-file', (event, experiment) => {
 			localStorage.setItem(experiment.id, JSON.stringify(experiment.save))
