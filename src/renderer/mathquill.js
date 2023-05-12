@@ -9,6 +9,8 @@
  */
 
 ;(function () {
+	if (process.env.NODE_ENV === 'test') return
+
 	var jQuery = window.jQuery,
 		undefined,
 		mqCmdId = 'mathquill-command-id',
