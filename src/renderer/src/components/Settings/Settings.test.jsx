@@ -1,7 +1,6 @@
 import { fireEvent, render } from '@testing-library/react'
 import { Settings } from './Settings'
-import React from 'react'
-import { describe, it, vi } from 'vitest'
+import { describe, it, vi, expect } from 'vitest'
 
 describe('Settings', () => {
 	it('Selecting light mode calls setTheme prop', () => {

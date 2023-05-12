@@ -5,12 +5,11 @@ import styles from './ExperimentCarousel.module.scss'
  *
  * @author Benjamin Saine, Mervin Tounou
  * @component ExperimentSlide
- * @param {string} id - The unique identifier of the slide.
  * @param {string} displayName - The display name of the slide.
  * @param {string} image - The URL of the slide's image.
  * @returns {JSX.Element} The JSX element representing the experiment slide.
  */
-export const ExperimentSlide = ({ id, displayName, image }) => {
+export const ExperimentSlide = ({ displayName, image }) => {
 	return (
 		<div className={styles.experiment}>
 			<img className={styles.icon} src={image} alt={displayName + ' logo'} />
