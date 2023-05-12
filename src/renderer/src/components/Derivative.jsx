@@ -39,7 +39,7 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 			derivOrd: derivOrd
 		})
 	}, [equation, pointX, runRiseVal, derivOrd])
-		/**
+	/**
 	 * Renders the options section of the Derivative component.
 	 *
 	 * This function returns a React fragment containing the inputs, sliders, and dropdown for the function, x point, run and rise values, and derivative order.
@@ -109,7 +109,8 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 						id="function2"
 						latex={
 							//adds the second derivative function on the graph when selected through the dropdwon
-							'g\\left(x\\right)=\\frac{d}{dx}' + equation}
+							'g\\left(x\\right)=\\frac{d}{dx}' + equation
+						}
 						lineOpacity="0.5"
 						color="#444444"
 					/>
@@ -216,10 +217,10 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 
 				<h4>3. Select a derivative order</h4>
 				<p>
-					Use the dropdown to choose between the first and second derivatives. The
-					second derivative option will add the second derivative function to the graph in a transparent
-					grey for a clearer visualization and the visualizer will then display its instantaneous slope.
-				    The default value is the first derivative.
+					Use the dropdown to choose between the first and second derivatives. The second
+					derivative option will add the second derivative function to the graph in a
+					transparent grey for a clearer visualization and the visualizer will then
+					display its instantaneous slope. The default value is the first derivative.
 				</p>
 			</>
 		)
