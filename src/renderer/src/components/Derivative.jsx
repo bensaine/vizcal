@@ -40,21 +40,21 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 	 *
 	 * @type {number}
 	 */
-	const [pointX, setPointX] = useState(payload.pointX ?? 0)
+	const [xPoint, setXPoint] = useState(payload.xPoint ?? 0)
 
 	/**
 	 * The run and rise value state.
 	 *
 	 * @type {number}
 	 */
-	const [runRiseVal, setRunRiseVal] = useState(payload.runRiseVal ?? 0.00001)
+	const [runRiseVal, setRunRiseVal] = useState(payload.runRiseVal ?? 0.001)
 
 	/**
 	 * The derivative order state.
 	 *
 	 * @type {string}
 	 */
-	const [derivOrd, setDerivOrd] = useState(payload.derivOrd ?? 'First')
+	const [derivOrder, setDerivOrder] = useState(payload.derivOrder ?? 'First')
 
 	/**
 	 * The slope value state.
@@ -71,11 +71,11 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 	useEffect(() => {
 		setPayload({
 			equation: equation,
-			pointX: pointX,
+			xPoint: xPoint,
 			runRiseVal: runRiseVal,
-			derivOrd: derivOrd
+			derivOrder: derivOrder
 		})
-	}, [equation, pointX, runRiseVal, derivOrd])
+	}, [equation, xPoint, runRiseVal, derivOrder])
 
 	/**
 	 * Renders the options section of the Derivative component.
@@ -100,8 +100,8 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 				<Slider
 					id="x"
 					label={'Slope at x = '}
-					value={pointX}
-					onChange={setPointX}
+					value={xPoint}
+					onChange={setXPoint}
 					min={-20}
 					max={20}
 					step={0.1}
@@ -112,21 +112,21 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 					label={'Run and Rise'}
 					value={runRiseVal}
 					onChange={setRunRiseVal}
-					min={0.00001}
+					min={0.001}
 					max={1}
-					step={0.0001}
+					step={0.001}
 					disabled={equation == ''}
 				/>
 				<Dropdown
 					id="derivOrd"
 					label="Derivative Order"
-					value={derivOrd}
+					value={derivOrder}
 					options={['First', 'Second']}
-					onChange={setDerivOrd}
+					onChange={setDerivOrder}
 					disabled={equation == ''}
 				/>
 				{/*explains what the instantaneous slope, or blue line, represents according to the selected derivative order. */}
-				{derivOrd == 'First' ? (
+				{derivOrder == 'First' ? (
 					<p>The blue line shows the instantaneous slope of the inputed function.</p>
 				) : (
 					<p>The blue line shows the instantaneous slope of the derivative of the inputed function.</p>
@@ -146,11 +146,11 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 	const renderGraph = () => {
 		return (
 			<>
-				<Expression id="x" latex={'x_{point}=' + pointX} />
+				<Expression id="x" latex={'x_{point}=' + xPoint} />
 				<Expression id="d" latex={'d_{eltaX}=' + runRiseVal} />
 				<Expression id="function" latex={'f\\left(x\\right)=' + equation} color="#ffffff" />
 				{/*adds the second derivative function on the graph when selected through the dropdwon*/}
-				{derivOrd == 'Second' && (
+				{derivOrder == 'Second' && (
 					<Expression
 						id="function2"
 						latex={'g\\left(x\\right)=\\frac{d}{dx}' + equation}
@@ -162,7 +162,7 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 					id="slope"
 					latex={
 						//shows the slope that corresponds to the selected derivative order
-						derivOrd == 'First'
+						derivOrder == 'First'
 							? 'y=\\frac{f\\left(x_{point}+d_{eltaX}\\right)-f\\left(x_{point}\\right)}{d_{eltaX}}\\left(x-x_{point}\\right)+f\\left(x_{point}\\right)'
 							: 'y=\\frac{g\\left(x_{point}+d_{eltaX}\\right)-g\\left(x_{point}\\right)}{d_{eltaX}}\\left(x-x_{point}\\right)+g\\left(x_{point}\\right)'
 					}
@@ -171,7 +171,7 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 				<Expression
 					id="riseDown"
 					latex={
-						derivOrd == 'First'
+						derivOrder == 'First'
 							? 'x_{2}=x_{point}+d_{eltaX}\\left\\{f\\left(x_{point}+d_{eltaX}\\right)<y<f\\left(x_{point}\\right)\\right\\}'
 							: 'x_{2}=x_{point}+d_{eltaX}\\left\\{g\\left(x_{point}+d_{eltaX}\\right)<y<g\\left(x_{point}\\right)\\right\\}'
 					}
@@ -181,7 +181,7 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 					id="run"
 					latex={
 						//applies the run value to the slope corresponding to the requested derivative order
-						derivOrd == 'First'
+						derivOrder == 'First'
 							? 'y_{2}=f\\left(x_{point}\\right)\\left\\{x_{point}+d_{eltaX}>x>x_{point}\\right\\}'
 							: 'y_{2}=g\\left(x_{point}\\right)\\left\\{x_{point}+d_{eltaX}>x>x_{point}\\right\\}'
 					}
@@ -191,7 +191,7 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 					id="rise"
 					latex={
 						//applies the rise value to the slope corresponding to the requested derivative order
-						derivOrd == 'First'
+						derivOrder == 'First'
 							? 'x_{1}=x_{point}+d_{eltaX}\\left\\{f\\left(x_{point}\\right)<y<f\\left(x_{point}+d_{eltaX}\\right)\\right\\}'
 							: 'x_{1}=x_{point}+d_{eltaX}\\left\\{g\\left(x_{point}\\right)<y<g\\left(x_{point}+d_{eltaX}\\right)\\right\\}'
 					}
@@ -206,7 +206,7 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 					id="slopeVal"
 					latex={
 						//calculates the value of the slope corresponding to the requested derivative order
-						derivOrd == 'First'
+						derivOrder == 'First'
 							? 's=\\frac{f\\left(x_{point}+d_{eltaX}\\right)-f\\left(x_{point}\\right)}{d_{eltaX}}'
 							: 's=\\frac{g\\left(x_{point}+d_{eltaX}\\right)-g\\left(x_{point}\\right)}{d_{eltaX}}'
 					}
@@ -256,7 +256,7 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 				<h4>3. Select a value for run and rise</h4>
 				<p>
 					Use the second slider to select the run and rise values which will be used to
-					modify the slope value. The default value is 0.00001.
+					modify the slope value. The default value is 0.001.
 				</p>
 
 				<h4>3. Select a derivative order</h4>
