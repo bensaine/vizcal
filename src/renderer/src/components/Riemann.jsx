@@ -7,32 +7,86 @@ import { ExperimentBase } from './ExperimentBase/ExperimentBase'
 import { MathInput } from './Controls/MathInput'
 import { Slider } from './Controls/Slider/Slider'
 import { ExpressionListener } from './ExpressionListener.jsx'
-import { List } from 'react-feather'
-import { StaticMath } from './StaticMath.jsx'
-import fig1 from '../assets/images/reimannDark/reimann1.png'
-import fig2 from '../assets/images/reimannDark/reimann2.png'
-import fig3 from '../assets/images/reimannDark/reimann3.png'
-import fig4 from '../assets/images/reimannDark/reimann4.png'
 import { Context } from './Colors/ContextProvider.jsx'
 
+/**
+ * Component for the Riemann Sum experiment.
+ *
+ * This component allows users to visualize Riemann sums and approximations of definite integrals
+ * using sliders to change the function, range, number of subdivisions, and direction.
+ *
+ * @param {Object} props - The props object.
+ * @param {Object} props.payload - The payload object containing the state of the experiment.
+ * @param {string} props.payload.equation - The function expression.
+ * @param {number[]} props.payload.range - The range of the function.
+ * @param {string} props.payload.direction - The direction of the Riemann sum.
+ * @param {number} props.payload.subsivisions - The number of subdivisions for the Riemann sum.
+ * @param {boolean} props.visible - Whether the component is visible.
+ * @param {function} props.setPayload - The function to set the payload state.
+ * @returns {React.Component} - The Riemann component.
+ *
+ * @example
+ *<Riemann payload={{equation: 'x^2', range: [-10,10], direction:'left', subdivisions: 500}} visible={true} setPayload={setPayload} />
+ */
 export const Riemann = ({ payload, visible, setPayload }) => {
-	const [fx, setFx] = useState(payload.fx ?? '')
-	const [x, setX] = useState(payload.x ?? [-10, 10])
+	/**
+	 * The function expression state.
+	 *
+	 * @type {string}
+	 */
+	const [equation, setEquation] = useState(payload.equation ?? '')
+
+	/**
+	 * The range state.
+	 *
+	 * @type {number[]}
+	 */
+	const [range, setRange] = useState(payload.range ?? [-10, 10])
+
+	/**
+	 * The direction of the Riemann sum state.
+	 *
+	 * @type {string}
+	 */
 	const [direction, setDirection] = useState(payload.direction ?? 'left')
-	const [n, setN] = useState(payload.n ?? 1)
+
+	/**
+	 * The number of subdivisions state.
+	 *
+	 * @type {number}
+	 */
+	const [subdivisions, setSubdivisions] = useState(payload.subdivisions ?? 1)
+
+	/**
+	 * The area state.
+	 *
+	 * @type {number}
+	 */
 	const [area, setArea] = useState(NaN)
 
 	const ctx = useContext(Context)
 
+	/**
+	 * Updates the payload state whenever there is a change in the state of the component.
+	 *
+	 * @returns {void}
+	 */
 	useEffect(() => {
 		setPayload({
-			fx: fx,
-			x: x,
+			equation: equation,
+			range: range,
 			direction: direction,
-			n: n
+			subdivisions: subdivisions
 		})
-	}, [fx, x, direction, n])
-
+	}, [equation, range, direction, subdivisions])
+	/**
+	 * Renders the options for the component.
+	 *
+	 * This function returns a React fragment containing the inputs and sliders for the function, range array, number of subdivisions n,and direction values.
+	 * Each input/slider includes a corresponding label and callback to update the respective state variables.
+	 *
+	 * @returns {ReactElement} React fragment containing the options section of the Riemann component.
+	 */
 	const renderOptions = () => {
 		return (
 			<>
@@ -40,31 +94,31 @@ export const Riemann = ({ payload, visible, setPayload }) => {
 				<MathInput
 					id="function"
 					label="Function"
-					latex={fx}
+					latex={equation}
 					onChange={(input) => {
-						setFx(input.latex())
+						setEquation(input.latex())
 					}}
 				/>
 
 				<Slider
 					id="range"
 					label="Range"
-					value={x}
-					onChange={setX}
+					value={range}
+					onChange={setRange}
 					min={-100}
 					max={100}
 					step={0.1}
-					disabled={fx == ''}
+					disabled={equation == ''}
 				/>
 				<Slider
 					id="n"
-					label="Number of Rectangles"
-					value={n}
-					onChange={setN}
+					label="Number of Subdivisions"
+					value={subdivisions}
+					onChange={setSubdivisions}
 					min={1}
-					max={1000}
+					max={5000}
 					step={1}
-					disabled={fx == ''}
+					disabled={equation == ''}
 				/>
 				<Dropdown
 					id="direction"
@@ -72,30 +126,35 @@ export const Riemann = ({ payload, visible, setPayload }) => {
 					value={direction}
 					options={['left', 'right']}
 					onChange={setDirection}
-					disabled={fx == ''}
+					disabled={equation == ''}
 				/>
 			</>
 		)
 	}
-
+	/**
+	 * Renders the graph for the component.
+	 *
+	 * This function returns a React fragment containing the visual representation of the area approximation using the Desmos SDK.
+	 * Each Expression element represents a functional parameter used for the mathematical computations.
+	 * It includes the function, lower and upper range a and b,  direction c, and number of subdivisions n.
+	 * Intermediary expressions are used in the final expressions for approximating the area: areaPos and areaNeg
+	 *
+	 * @returns {ReactElement} - The graph component.
+	 */
 	const renderGraph = () => {
 		return (
 			<>
-				<Expression id="a" latex={'a=' + x[0]} />
-				<Expression id="b" latex={'b=' + x[1]} />
+				<Expression id="a" latex={'a=' + range[0]} />
+				<Expression id="b" latex={'b=' + range[1]} />
 				<Expression id="c" latex={'c=' + (direction == 'left' ? 0 : 1)} />
-				<Expression id="n" latex={'n=' + n} />
+				<Expression id="n" latex={'n=' + subdivisions} />
 				<Expression id="w" latex={'w=\\frac{b-a}{n}'} />
 				<Expression
 					id="s"
 					latex={'s\\left(x\\right)=a+w\\left(x+c\\right)'}
 					hidden={true}
 				/>
-				<Expression
-					id="function"
-					latex={'f\\left(x\\right)=' + fx}
-					color={ctx.riemann.functionColorRiemann}
-				/>
+				<Expression id="function" latex={'f\\left(x\\right)=' + equation} color={ctx.riemann.functionColorRiemann}/>
 				<Expression
 					id="nOfX"
 					latex={
@@ -129,7 +188,7 @@ export const Riemann = ({ payload, visible, setPayload }) => {
 					latex={'I=\\sum_{i=0}^{n\\ -\\ 1}f\\left(s\\left(i\\right)\\right)\\cdot w'}
 					hidden
 				/>
-				{fx && (
+				{equation && (
 					<>
 						<Expression id="min" latex={'x=a'} />
 						<Expression id="max" latex={'x=b'} />
@@ -139,6 +198,13 @@ export const Riemann = ({ payload, visible, setPayload }) => {
 			</>
 		)
 	}
+	/**
+	 * Renders the help section of the Riemann Component.
+	 * This function returns a React fragment containing an explanation of Riemann Sums and a step-by-step guide on how to use the interactive features.
+	 * It includes a short definition of the theoretical concept, and explains how to input a function, select a range, select a number of subdivisions, and select a direction.
+	 *
+	 * @returns {ReactElement} React fragment containing the help section of the Reimann component.
+	 */
 	const renderHelp = () => {
 		return (
 			<>
@@ -149,80 +215,25 @@ export const Riemann = ({ payload, visible, setPayload }) => {
 					by a finite sum. Riemann sums help us approximate definite integrals, but they
 					also help us formally define definite integrals.
 				</p>
-				<h3>How does it work?</h3>
+				<h3>How to experiment with Riemann Sums:</h3>
+				<h4>1. Input a function</h4>
+				<p>No need to add f(x), just directly input the function in terms of x.</p>
+				<h4>2. Select a range</h4>
 				<p>
-					When approximating the area under a function's graph, one usually uses
-					rectangular subdivisions.
+					Use this slider to set the lower and upper limit on which the area will be
+					approximated.
 				</p>
-				<img src={fig1} alt="Approximating the area under a graph with rectangles" />
+				<h4>3. Select the number of subdivisions</h4>
 				<p>
-					As seen in the figure below, using more subdivisions results in a better
-					approximation:
+					Use this slider to define the amound of subdivisions used for the calculation.
+					The more rectangles/subdivisions you have, the more precise the area
+					approximation gets.
 				</p>
-				<img src={fig2} alt="Increasing the number of rectangles for the approximation" />
+				<h4>4. Select a direction</h4>
 				<p>
-					The subdivisions can be either uniform or non-uniform. However, this program
-					will strictly use uniform subdivisions.
+					Use this dropdown menu to switch between right hand Riemann Sum and left hand
+					Riemann Sum.
 				</p>
-				<p>
-					The rectangles place themselves under the curve in 4 different ways, generating{' '}
-					<b>4 types of Reimann sums</b>:
-				</p>
-				<ol type="I">
-					<li>Left Reimann sum</li>
-					<li>Right Reimann Sum</li>
-					<li>Midpoint Reimann sum </li>
-					<li>Trapezoidal Reimann sum</li>
-				</ol>
-				<p>This program only consists of Left and Right Reimann sums.</p>
-				<h4>Left Reimann sum:</h4>
-				<p>
-					With this method, each rectangular subdivision touches the curve through their
-					top-left corner.
-				</p>
-				<img src={fig3} alt="Left Hand Reimann Sum" />
-				<p>As seen in the figure 3, this results in an underestimation.</p>
-				<h4>Right Reimann sum:</h4>
-				<p>
-					With this method, each rectangular subdivision touches the curve through their
-					top-right corner.
-				</p>
-				<img src={fig4} alt="Right Hand Reimann Sum" />
-				<p>As seen in the figure 4, this results in an overestimation.</p>
-				<h3>Steps to Approximating the Area Through Reimann Sums:</h3>
-				<p> The approximation can be represented as the sum of each rectangles' areas:</p>
-				<StaticMath>{'\\sum_{i=1}^{n}f\\left(x_{i}^*\\right)\\cdot\\Delta {x}'}</StaticMath>
-				,
-				<p>
-					where <StaticMath>{' \\Delta{x}'}</StaticMath> represents the width of each
-					rectangle and <StaticMath>{'f\\left(x_{i}^*\\right)'}</StaticMath> represents
-					the height of each rectangle.
-				</p>
-				<b>When using the left hand point:</b>
-				<p>
-					<StaticMath>{'\\Delta x=\\frac{\\left(a-b\\right)}{n}'}</StaticMath>, where a
-					and b represent the starting and ending points for the area approximation, and n
-					is the number of subdivisions.
-				</p>
-				<p>
-					<StaticMath>{'x_{i}^*= x_{i-1}'}</StaticMath>
-				</p>
-				<b>When using the right hand point:</b>
-				<p>
-					<StaticMath>{'\\Delta x=\\frac{\\left(a-b\\right)}{n}'}</StaticMath>, where a
-					and b represent the starting and ending points for the area approximation, and n
-					is the number of subdivisions.
-				</p>
-				<p>
-					<StaticMath>{'x_{i}^*= x_{i}'}</StaticMath>
-				</p>
-				<p>As the number of subdivisions approaches infinity, the sum becomes:</p>
-				<StaticMath>
-					{
-						'\\lim_{n\\rightarrow \\infty}\\sum_{i=1}^{n}f\\left(x_{i}^*\\right)\\cdot\\Delta{x}'
-					}
-				</StaticMath>
-				<p>which introduces the concept of integrals.</p>
 			</>
 		)
 	}

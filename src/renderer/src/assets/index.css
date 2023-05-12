@@ -17,7 +17,6 @@
 	--bg-900: #111827;
 
 	--desmos-color-primary: #fff;
-
 }
 
 [data-theme='Light'] {
@@ -40,54 +39,48 @@
 
 	--desmos-color-primary: #000;
 }
-[data-font='Roboto'] {
-	font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', 'Oxygen',
-		'Ubuntu', 'Cantarell', 'Open Sans', sans-serif;
-}
+
 [data-font='Arial'] {
-	font-family: 'Arial', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', 'Oxygen',
-		'Ubuntu', 'Cantarell', 'Open Sans', sans-serif;
+	font-family: 'Arial';
 }
+
 [data-font='Verdana'] {
-	font-family: 'Verdana', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', 'Oxygen',
-		'Ubuntu', 'Cantarell', 'Open Sans', sans-serif;
+	font-family: 'Verdana';
 }
+
 [data-font='Tahoma'] {
-	font-family: 'Tahoma', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', 'Oxygen',
-		'Ubuntu', 'Cantarell', 'Open Sans', sans-serif;
+	font-family: 'Tahoma';
 }
+
 [data-font='Trebuchet MS'] {
-	font-family: 'Trebuchet MS', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', 'Oxygen',
-		'Ubuntu', 'Cantarell', 'Open Sans', sans-serif;
+	font-family: 'Trebuchet MS';
 }
+
 [data-font='Times New Roman'] {
-	font-family: 'Times New Roman', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', 'Oxygen',
-		'Ubuntu', 'Cantarell', 'Open Sans', sans-serif;
+	font-family: 'Times New Roman';
 }
+
 [data-font='Georgia'] {
-	font-family: 'Georgia', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', 'Oxygen',
-		'Ubuntu', 'Cantarell', 'Open Sans', sans-serif;
+	font-family: 'Georgia';
 }
+
 [data-font='Garamond'] {
-	font-family: 'Garamond', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', 'Oxygen',
-		'Ubuntu', 'Cantarell', 'Open Sans', sans-serif;
+	font-family: 'Garamond';
 }
+
 [data-font='Courier New'] {
-	font-family: 'Courier New', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', 'Oxygen',
-		'Ubuntu', 'Cantarell', 'Open Sans', sans-serif;
+	font-family: 'Courier New';
 }
+
 [data-font='Brush Script MT'] {
-	font-family: 'Brush Script MT', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', 'Oxygen',
-		'Ubuntu', 'Cantarell', 'Open Sans', sans-serif;
+	font-family: 'Brush Script MT';
 }
-
-
 
 body {
 	display: flex;
 	flex-direction: column;
-	font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', 'Oxygen',
-		'Ubuntu', 'Cantarell', 'Open Sans', sans-serif;
+	font-family: 'Helvetica Neue', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen', 'Ubuntu',
+		'Cantarell', 'Open Sans', sans-serif;
 }
 
 * {

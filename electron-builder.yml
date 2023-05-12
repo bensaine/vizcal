@@ -1,7 +1,7 @@
 appId: edu.vaniercollege.vizcal
 productName: Vizcal
 directories:
-    buildResources: build
+    buildResources: resources
 files:
     - '!**/.vscode/*'
     - '!src/*'
@@ -11,6 +11,7 @@ asarUnpack:
     - resources/*
 win:
     executableName: Vizcal
+    target: portable
 nsis:
     artifactName: ${name}-${version}-setup.${ext}
     shortcutName: ${productName}

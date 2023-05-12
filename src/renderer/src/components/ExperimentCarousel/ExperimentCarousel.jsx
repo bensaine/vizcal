@@ -1,15 +1,25 @@
-import React from 'react'
+import { useLayoutEffect, useRef, useState } from 'react'
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel'
 import 'pure-react-carousel/dist/react-carousel.es.css'
 import { ExperimentSlide } from './ExperimentSlide'
 import { ArrowLeft, ArrowRight } from 'react-feather'
 import styles from './ExperimentCarousel.module.scss'
 
+/**
+ * Represents a carousel component displaying experiment slides.
+ *
+ * @author Benjamin Saine
+ * @component ExperimentCarousel
+ * @param {Object[]} slides - An array of slide objects to be displayed in the carousel.
+ * @param {Function} onSlideClick - A function to be called when a slide is clicked.
+ * @returns {JSX.Element} The JSX element representing the experiment carousel.
+ */
 export const ExperimentCarousel = ({ slides, onSlideClick }) => {
-	const ref = React.useRef(null)
-	const [numberOfSlides, setNumberOfSlides] = React.useState(1)
+	const ref = useRef(null)
+	const [numberOfSlides, setNumberOfSlides] = useState(1)
 
-	React.useLayoutEffect(() => {
+	// Handles the resize event and adjusts the number of visible slides.
+	useLayoutEffect(() => {
 		const handleResize = () => {
 			const windowWidth = ref.current.offsetWidth
 			const visibleSlides = Math.floor(windowWidth / 300) || 1

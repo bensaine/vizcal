@@ -9,15 +9,15 @@ import arc from '../assets/images/icons/arc.svg'
 
 export const experiments = [
 	{
-		type: 'epsilonDelta',
-		displayName: 'Epsilon-Delta',
+		type: 'limit',
+		displayName: 'Limit',
 		category: 'Limits',
 		image: eps,
 		component: Limit
 	},
 	{
 		type: 'slope',
-		displayName: 'Slope',
+		displayName: 'Derivative',
 		category: 'Derivatives',
 		image: slope,
 		component: Derivative
