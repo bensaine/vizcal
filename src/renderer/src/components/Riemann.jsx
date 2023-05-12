@@ -17,9 +17,9 @@ import { ExpressionListener } from './ExpressionListener.jsx'
  * @param {Object} props - The props object.
  * @param {Object} props.payload - The payload object containing the state of the experiment.
  * @param {string} props.payload.equation - The function expression.
- * @param {number[]} props.payload.x - The range of the function.
+ * @param {number[]} props.payload.range - The range of the function.
  * @param {string} props.payload.direction - The direction of the Riemann sum.
- * @param {number} props.payload.n - The number of subdivisions for the Riemann sum.
+ * @param {number} props.payload.subsivisions - The number of subdivisions for the Riemann sum.
  * @param {boolean} props.visible - Whether the component is visible.
  * @param {function} props.setPayload - The function to set the payload state.
  * @returns {React.Component} - The Riemann component.
@@ -40,7 +40,7 @@ export const Riemann = ({ payload, visible, setPayload }) => {
 	 *
 	 * @type {number[]}
 	 */
-	const [range, setRange] = useState(payload.x ?? [-10, 10])
+	const [range, setRange] = useState(payload.range ?? [-10, 10])
 
 	/**
 	 * The direction of the Riemann sum state.
@@ -54,7 +54,7 @@ export const Riemann = ({ payload, visible, setPayload }) => {
 	 *
 	 * @type {number}
 	 */
-	const [n, setN] = useState(payload.n ?? 1)
+	const [subdivisions, setSubdivisions] = useState(payload.subdivisions ?? 1)
 
 	/**
 	 * The area state.
@@ -73,9 +73,9 @@ export const Riemann = ({ payload, visible, setPayload }) => {
 			equation: equation,
 			range: range,
 			direction: direction,
-			n: n
+			subdivisions: subdivisions
 		})
-	}, [equation, range, direction, n])
+	}, [equation, range, direction, subdivisions])
 	/**
 	 * Renders the options for the component.
 	 *
@@ -110,8 +110,8 @@ export const Riemann = ({ payload, visible, setPayload }) => {
 				<Slider
 					id="n"
 					label="Number of Subdivisions"
-					value={n}
-					onChange={setN}
+					value={subdivisions}
+					onChange={setSubdivisions}
 					min={1}
 					max={5000}
 					step={1}
@@ -144,7 +144,7 @@ export const Riemann = ({ payload, visible, setPayload }) => {
 				<Expression id="a" latex={'a=' + range[0]} />
 				<Expression id="b" latex={'b=' + range[1]} />
 				<Expression id="c" latex={'c=' + (direction == 'left' ? 0 : 1)} />
-				<Expression id="n" latex={'n=' + n} />
+				<Expression id="n" latex={'n=' + subdivisions} />
 				<Expression id="w" latex={'w=\\frac{b-a}{n}'} />
 				<Expression
 					id="s"
