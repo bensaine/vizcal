@@ -3,7 +3,7 @@ import { ControlContainer } from './ControlContainer/ControlContainer'
 /**
  * Dropdown component. A dropdown control that allows user to choose between options that change the dropdown's value.
  *
- * @author Benjamin Saine
+ * @author Benjamin Saine, Wassim Yahia
  * @component
  * @param {Object} props - The component props.
  * @param {string} props.id - The unique identifier of the dropdown element.
