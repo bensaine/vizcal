@@ -8,6 +8,8 @@ import { Dropdown } from '../Controls/Dropdown'
  * Changes applied in this component also apply to the rest of the program.
  * For example, changing the font will change the font of each experiments, as well as the main menu.
  *
+ * @author Benjamin Saine, Mervin Tounou
+ * @component Settings
  * @param {string} theme - The selected theme.
  * @param {function} setTheme - The function to set the selected theme.
  * @param {string} font - The selected font.

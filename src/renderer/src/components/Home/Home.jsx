@@ -8,6 +8,8 @@ import { experiments } from '../../data/experiments.js'
  * This component allows the user to create a new experiment or load an existing one.
  * It contains a carousel of 4 different options, each of them representing one experiment.
  *
+ * @author Benjamin Saine
+ * @component Home
  * @param {Object} props - The component props.
  * @param {Function} props.createNewExperiment - A callback function to create a new experiment.
  *

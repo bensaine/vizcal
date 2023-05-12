@@ -7,6 +7,8 @@ import styles from './NumericalOutput.module.scss'
  * Generates a numerical output along with a copy button to copy the output to the clipboard.
  * This component is included in each experiment.
  *
+ * @author Steven Thao
+ * @component NumericalOutput
  * @param {Object} props - The component props.
  * @param {number} props.output - The numerical output to display.
  * @returns {JSX.Element} The NumericalOutput component.
