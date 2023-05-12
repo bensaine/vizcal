@@ -16,6 +16,7 @@ export default defineConfig({
 		environment: 'jsdom',
 		setupFiles: [resolve(__dirname, 'src/renderer/src/test.js')],
 		css: {
+			include: [/.+/],
 			modules: {
 				classNameStrategy: 'non-scoped'
 			}
