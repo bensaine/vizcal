@@ -25,7 +25,7 @@ import { ExpressionListener } from './ExpressionListener.jsx'
  * @returns {React.Component} - The Riemann component.
  *
  * @example
- *<Limit payload={{equation: 'x^2', x: 2, n: 5000, delta: 0.1}} visible={true} setPayload={setPayload} />
+ *<Riemann payload={{equation: 'x^2', range: [-10,10], direction:'left', subdivisions: 500}} visible={true} setPayload={setPayload} />
  */
 export const Riemann = ({ payload, visible, setPayload }) => {
 	/**
