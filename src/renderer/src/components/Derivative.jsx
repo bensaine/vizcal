@@ -7,6 +7,7 @@ import { Expression } from 'desmos-react'
 import { Slider } from './Controls/Slider/Slider'
 import { Dropdown } from './Controls/Dropdown'
 import { ExpressionListener } from './ExpressionListener.jsx'
+
 /**
  * Component for the Derivative/Slope experiment.
  *
@@ -39,6 +40,7 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 			derivOrd: derivOrd
 		})
 	}, [equation, pointX, runRiseVal, derivOrd])
+
 	/**
 	 * Renders the options section of the Derivative component.
 	 *
@@ -90,6 +92,7 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 			</>
 		)
 	}
+
 	/**
 	 * Renders the graph section of the Derivative component.
 	 *
@@ -104,11 +107,11 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 				<Expression id="x" latex={'x_{point}=' + pointX} />
 				<Expression id="d" latex={'d_{eltaX}=' + runRiseVal} />
 				<Expression id="function" latex={'f\\left(x\\right)=' + equation} color="#ffffff" />
+				{/*/adds the second derivative function on the graph when selected through the dropdwon*/}
 				{derivOrd == 'Second' && (
 					<Expression
 						id="function2"
 						latex={
-							//adds the second derivative function on the graph when selected through the dropdwon
 							'g\\left(x\\right)=\\frac{d}{dx}' + equation
 						}
 						lineOpacity="0.5"
@@ -172,6 +175,7 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 			</>
 		)
 	}
+	
 	/**
 	 * Renders the help section of the Derivative component.
 	 *
