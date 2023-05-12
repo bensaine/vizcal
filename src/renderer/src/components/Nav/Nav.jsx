@@ -1,25 +1,29 @@
 import { Home, Settings, HelpCircle } from 'react-feather'
 import styles from './Nav.module.scss'
 import { NavItem } from './NavItem'
-import { useState } from 'react'
-import { Dialog } from '../Dialog/Dialog'
 
-export const Nav = ({ experiments, focus, setFocus, closeExperiment }) => {
-	const [helpOpen, setHelpOpen] = useState(false)
-	const renderHelp = () => {
-		return (
-			<>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-					incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-					nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-					Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-					fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-					culpa qui officia deserunt mollit anim id est laborum.
-				</p>
-			</>
-		)
-	}
+/**
+ * The `Nav` component renders a navigation bar with home, settings, and dynamically rendered experiment navigation items.
+ *
+ * @component Nav
+ * @param {object} props - The properties passed to the component.
+ * @param {string[]} props.experiments - An array of strings representing the unique identifiers of the experiments to be listed in the navigation.
+ * @param {string} props.focus - A string representing the currently focused navigation item.
+ * @param {function} props.setFocus - A function that updates the currently focused navigation item.
+ * @param {function} props.closeExperiment - A function that handles the closing of an experiment.
+ * @param {function} props.setHelpOpen - A function that opens the help dialog when invoked.
+ * @returns {JSX.Element} The rendered navigation component.
+ *
+ * @example
+ * <Nav
+ *    experiments={['experiment1', 'experiment2']}
+ *    focus={'home'}
+ *    setFocus={setFocusFunction}
+ *    closeExperiment={closeExperimentFunction}
+ *    setHelpOpen={setHelpOpenFunction}
+ * />
+ */
+export const Nav = ({ experiments, focus, setFocus, closeExperiment, setHelpOpen }) => {
 	return (
 		<nav className={styles.nav}>
 			<ul>
@@ -29,6 +33,7 @@ export const Nav = ({ experiments, focus, setFocus, closeExperiment }) => {
 				>
 					<Home />
 				</li>
+				{/* For each open experiment, render a nav item */}
 				{experiments.map((experiment) => (
 					<NavItem
 						id={experiment}
@@ -39,18 +44,17 @@ export const Nav = ({ experiments, focus, setFocus, closeExperiment }) => {
 					/>
 				))}
 			</ul>
+			{/* help item */}
+			<span className={styles.helpButton} onClick={() => setHelpOpen(true)}>
+				<HelpCircle />
+			</span>
+			{/* settings item */}
 			<span
 				className={styles.settings + (focus == 'settings' ? ' ' + styles.active : '')}
 				onClick={() => setFocus('settings')}
 			>
 				<Settings />
 			</span>
-			<span className={styles.helpButton} onClick={() => setHelpOpen(true)}>
-				<HelpCircle />
-			</span>
-			<Dialog open={helpOpen} title={'Help Menu'} onClose={() => setHelpOpen(false)}>
-				{renderHelp()}
-			</Dialog>
 		</nav>
 	)
 }
