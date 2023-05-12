@@ -27,8 +27,8 @@ import { ExpressionListener } from './ExpressionListener.jsx'
  */
 export const Derivative = ({ payload, visible, setPayload }) => {
 	const [equation, setEquation] = useState(payload.equation ?? '')
-	const [pointX, setPointX] = useState(payload.x ?? 0)
-	const [runRiseVal, setRunRiseVal] = useState(payload.d ?? 0.00001)
+	const [pointX, setPointX] = useState(payload.pointX ?? 0)
+	const [runRiseVal, setRunRiseVal] = useState(payload.runRiseVal ?? 0.00001)
 	const [derivOrd, setDerivOrd] = useState(payload.derivOrd ?? 'First')
 	const [slope, setSlope] = useState(NaN)
 	useEffect(() => {
@@ -131,7 +131,7 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 					color="#ffffff"
 				/>
 				<Expression
-					id="riseRun"
+					id="run"
 					latex={
 						derivOrd == 'First'
 							? 'y_{2}=f\\left(x_{point}\\right)\\left\\{x_{point}+d_{eltaX}>x>x_{point}\\right\\}'
@@ -140,7 +140,7 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 					color="#ffffff"
 				/>
 				<Expression
-					id="riseRunU"
+					id="rise"
 					latex={
 						derivOrd == 'First'
 							? 'x_{1}=x_{point}+d_{eltaX}\\left\\{f\\left(x_{point}\\right)<y<f\\left(x_{point}+d_{eltaX}\\right)\\right\\}'
