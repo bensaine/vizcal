@@ -1,21 +1,33 @@
-import {useContext, useState} from 'react'
+import {useContext, useEffect, useState} from 'react'
 import './color.scss'
 import {Context} from "./ContextProvider.jsx"
 
+/**
+ * Responsible to render the different option buttons as well as the list of color options.
+ * @param {Object} props - The component props
+ * @param {string} props.title - The title of the button
+ * @param {string} props.experiment - The experiment type
+ * @returns {JSX.Element} - Returns the UI components for color selection
+ */
 export const ColorItems = ({ title, experiment}) => {
 	const [open, setOpen] = useState(false)
-	const [optionButtonStyle, setOptionButtonStyle] = useState("button-color")
+	const [optionButtonStyle, setOptionButtonStyle] = useState("option-button")
 
 	const ctx = useContext(Context)
 
-
 	const colors = ['#ffffff','#c74440', '#2d70b3', '#388c46', '#6042a6','#fa7e19', '#000000']
-	const [colorf, setColor] = useState()
+
+	/**
+	 * Changes the style of the button and toggles the open state.
+	 */
 	const changeStyle = () => {
 		setOpen((prev) => !prev)
-		open ? setOptionButtonStyle("option-button"): setOptionButtonStyle("option-button-active")
-	}
+		open ? setOptionButtonStyle("option-button"): setOptionButtonStyle("option-button-active")}
 
+	/**
+	 * Changes the color of the selected graph line.
+	 * @param {string} color - The selected color
+	 */
 	function handleColorChange(color){
 		switch(title){
 			case "Function":
@@ -67,20 +79,21 @@ export const ColorItems = ({ title, experiment}) => {
 	return (
 		<div>
 			<button className={optionButtonStyle} onClick={changeStyle}>
-				<div style={{display: "flex", flexDirection: "column", alignItems: "center", height: "fit-content"}}>
-					<div style={{padding: "1rem"}}>
+					<div style={{position: "absolute", height: (open ? "4.5rem": "1rem"), transition: "height 0.3s ease-in-out"}}>
 						{title}
 					</div>
-					{open && <div className={"color-list"} style={{opacity: open ? "100%" : "0%", transition: "opacity 2s ease-in-out"}}>
+
+					{open && <div className={"color-list"} style={{position: "absolute", height: "0"}}>
 						{colors.map((color) => (
 							// eslint-disable-next-line react/jsx-key
-							<div className="color" style={{ backgroundColor: color }}
-								 onClick={(e) => {handleColorChange(color)}}
+							<div className="color" style={{backgroundColor: color}}
+								 onClick={(e) => {
+									 handleColorChange(color)
+								 }}
 							>
 							</div>
 						))}
 					</div>}
-				</div>
 			</button>
 		</div>
 	)

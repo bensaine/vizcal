@@ -8,8 +8,26 @@ import { Slider } from './Controls/Slider/Slider'
 import { ExpressionListener } from './ExpressionListener.jsx'
 import {Context} from "./ColorContainer/ContextProvider"
 
+/**
+ * Component for the Arc experiment.
+ *
+ * This component allows users to interactively visualize and experiment with the concept
+ * of Arc Length in calculus. Users can input a function, select a range on the x-axis, and
+ * see their arc length estimation be refined as the number of subdivisions is increased.
+ * The component also includes a help section to guide users on how to use the interactive features.
+ *
+ * @component
+ * @author Steven Thao
+ * @param {Object} props
+ * @param {Object} props.payload - The initial payload containing function, range and number of subdivisions. Used if the experiment is opened from a file.
+ * @param {boolean} props.visible - Determines whether the component is visible or not.
+ * @param {Function} props.setPayload - Callback function to update the payload when it changes. Used to save experiment state to a file.
+ * @returns {ReactElement|null} The rendered Arc Length component or null if not visible.
+ * @example
+ * <Arc payload={{equation: 'x^2', x: 2, n: 10}} visible={true} setPayload={setPayload} />
+ */
 export const Arc = ({ payload, visible, setPayload }) => {
-	const [fx, setFx] = useState(payload.fx ?? '')
+	const [equation, setEquation] = useState(payload.equation ?? '')
 	const [x, setX] = useState(payload.x ?? [0, 10])
 	const [n, setN] = useState(payload.n ?? 0)
 	const [length, setLength] = useState(NaN)
@@ -18,12 +36,20 @@ export const Arc = ({ payload, visible, setPayload }) => {
 
 	useEffect(() => {
 		setPayload({
-			fx: fx,
+			equation: equation,
 			x: x,
 			n: n
 		})
-	}, [fx, x, n])
+	}, [equation, x, n])
 
+	/**
+	 * Renders the options section of the Arc Length component.
+	 *
+	 * This function returns a React fragment containing the inputs and sliders for the function, range, and number of subdivisions.
+	 * Each input/slider includes a corresponding label and callback to update the respective state variables.
+	 *
+	 * @returns {ReactElement} React fragment containing the options section of the Arc Length component.
+	 */
 	const renderOptions = () => {
 		return (
 			<>
@@ -31,9 +57,9 @@ export const Arc = ({ payload, visible, setPayload }) => {
 				<MathInput
 					id="function"
 					label="Function"
-					latex={fx}
+					latex={equation}
 					onChange={(input) => {
-						setFx(input.latex())
+						setEquation(input.latex())
 					}}
 				/>
 				<Slider
@@ -44,7 +70,7 @@ export const Arc = ({ payload, visible, setPayload }) => {
 					min={1}
 					max={100}
 					step={1}
-					disabled={fx == ''}
+					disabled={equation == ''}
 				/>
 				<Slider
 					id="lengthRange"
@@ -54,12 +80,20 @@ export const Arc = ({ payload, visible, setPayload }) => {
 					min={-20}
 					max={20}
 					step={0.01}
-					disabled={fx == ''}
+					disabled={equation == ''}
 				/>
 			</>
 		)
 	}
 
+	/**
+	 * Renders the graph section of the Arc Length component.
+	 *
+	 * This function returns a React fragment containing the visual representation of the Arc Length using the Desmos SDK.
+	 * It includes the function, range, and number of subdivisions, as well as lines to help illustrate the arc length.
+	 *
+	 * @returns {ReactElement} React fragment containing the graph section of the Arc Length component.
+	 */
 	const renderGraph = () => {
 		return (
 			<>
@@ -67,7 +101,7 @@ export const Arc = ({ payload, visible, setPayload }) => {
 				<Expression id="a" latex={'a=' + x[0]} />
 				<Expression id="b" latex={'b=' + x[1]} />
 				<Expression id="n" latex={'n=' + n} />
-				<Expression id="function" latex={'f(x)=' + fx} color={ctx.arc.functionColorArc}/>
+				<Expression id="function" latex={'f(x)=' + equation} color={ctx.arc.functionColorArc}/>
 				<Expression id="listofn" latex={'l_{istofN}=\\left[0,1,...,n\\right]'} />
 				<Expression id="delx" latex={'d_{elX}=\\frac{b-a}{n}'} />
 				<Expression id="xpoints" latex={'x_{points}=a+l_{istofN}\\cdot d_{elX}'} />
@@ -105,6 +139,15 @@ export const Arc = ({ payload, visible, setPayload }) => {
 				</>
 		)
 	}
+
+	/**
+	 * Renders the help section of the Arc Length component.
+	 *
+	 * This function returns a React fragment containing an explanation of the arc length and a step-by-step guide on how to use the interactive features.
+	 * It covers how to input a function, select the range, and choose the number of subdivisions.
+	 *
+	 * @returns {ReactElement} React fragment containing the help section of the Arc Length component.
+	 */
 	const renderHelp = () => {
 		return (
 			<>
