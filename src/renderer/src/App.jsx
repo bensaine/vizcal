@@ -71,7 +71,6 @@ function App() {
 			const updatePayloadEvent = new CustomEvent('updatePayload:' + focusedExperiment)
 			document.dispatchEvent(updatePayloadEvent)
 			const experiment = JSON.parse(localStorage.getItem(focusedExperiment))
-			console.log(experiment)
 			const output = { id: focusedExperiment, save: experiment, sign: 'vizcal' }
 			window.api.writeFile(path, JSON.stringify(output))
 		})
