@@ -99,13 +99,75 @@ function App() {
 				))}
 			</WindowContainer>
 			<Dialog open={helpOpen} title={'Help Menu'} onClose={() => setHelpOpen(false)}>
+				<h2>Introduction to Vizcal</h2>
 				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-					incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-					nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-					Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-					fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-					culpa qui officia deserunt mollit anim id est laborum.
+					Visualizing concepts is a great way to learn them. It is also a great way to
+					teach them. Vizcal is a tool to help you visualize Calculus concepts.
+				</p>
+				<p>Here are the application's main functionalities:</p>
+
+				<h3>1- Home menu</h3>
+				<p>
+					The home menu allows for experiment creation. Experiments are vizualisation
+					tools created to clarify calculus concepts. In this menu, you will be able to
+					open a new experiment or load an existing one from a file.
+				</p>
+
+				<p>
+					This application contains 4 different experiments:
+					<strong> Limit, Derivative, Riemann Sum, and Arc Length</strong>. Clicking on
+					one experiment will create a new instance of it in a new tab.
+				</p>
+				<p>
+					Clicking on "load an existing experiment from a file" will open the file
+					explorer and allow you to select a ".viz " type file, which will be opened in a
+					new tab.
+				</p>
+
+				<h3>2- Experiments</h3>
+				<p>
+					Each experiment contains an option and a graph section. The option section
+					allows you to modify the experiment's parameters. The graph section displays the
+					experiment in real time.
+				</p>
+				<h4>2.1- Limit</h4>
+				<p>This experiment focuses on the Epsilon-Delta definition of the limit.</p>
+
+				<h4>2.2- Derivative</h4>
+				<p>
+					This experiment focuses on introducing the derivative through the concept of
+					rise over run.
+				</p>
+
+				<h4>2.3- Riemann Sums</h4>
+				<p>
+					This experiment focuses on introducing the integral through the concept of
+					Riemann Sums.
+				</p>
+
+				<h4>2.4- Arc Length</h4>
+				<p>
+					This experiment focuses on using integration to approximate the arc lenght of a
+					function.
+				</p>
+				<p>
+					For more information on each experiment, refer to the Help section of that
+					experiment.This section is accessed through a question mark button located at
+					the top right corner of every experiment's option section.
+				</p>
+
+				<h3>3- Settings</h3>
+				<p>
+					The "Settings" tab is represented by a grear icon found at the bottom left
+					corner of the page. There, you will be able to change the application's theme,
+					as well as the font.
+				</p>
+
+				<h3>4- Menu Bar</h3>
+				<p>
+					The menu bar located at the top section of the app allows you to open and save
+					an experiment using the "file" tab, as well as reload the application and enable
+					full screen mode using the "view" tab.
 				</p>
 			</Dialog>
 		</div>
