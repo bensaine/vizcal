@@ -1,6 +1,5 @@
-import { fireEvent, render } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import { Derivative } from './Derivative'
-import React from 'react'
 import { describe, expect, it, vi } from 'vitest'
 import { act } from 'react-dom/test-utils'
 

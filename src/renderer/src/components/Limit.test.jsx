@@ -1,6 +1,5 @@
-import { fireEvent, render } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import { Limit } from './Limit'
-import React from 'react'
 import { describe, expect, it, vi } from 'vitest'
 import { act } from 'react-dom/test-utils'
 

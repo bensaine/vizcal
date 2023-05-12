@@ -139,10 +139,10 @@ export const Arc = ({ payload, visible, setPayload }) => {
 
 				<h4>4. Refine your estimation</h4>
 				<p>
-					As is true with Riemann sums, the arc length's estimation gets better and better
-					as you increase the number of subdivisions. On the bottom of the controls is an
-					output box that shows the sum of the line segments which will get closer to the
-					true arc length as you increase the number of subdivisions.
+					As is true with Riemann sums, the arc length&apos;s estimation gets better and
+					better as you increase the number of subdivisions. On the bottom of the controls
+					is an output box that shows the sum of the line segments which will get closer
+					to the true arc length as you increase the number of subdivisions.
 				</p>
 			</>
 		)

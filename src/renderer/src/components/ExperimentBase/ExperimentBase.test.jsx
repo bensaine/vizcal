@@ -1,7 +1,6 @@
-import { fireEvent, render } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import { ExperimentBase } from './ExperimentBase'
-import React from 'react'
-import { describe, it, vi } from 'vitest'
+import { describe, it, vi, expect } from 'vitest'
 import { act } from 'react-dom/test-utils'
 
 describe('ExperimentBase', () => {
@@ -14,7 +13,6 @@ describe('ExperimentBase', () => {
 				output={vi.fn()}
 			/>
 		)
-
 
 		const options = experimentBase.container.querySelector('.options')
 		console.log(getComputedStyle(options))

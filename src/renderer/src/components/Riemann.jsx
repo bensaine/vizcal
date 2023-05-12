@@ -212,7 +212,7 @@ export const Riemann = ({ payload, visible, setPayload }) => {
 				</p>
 				<h3>How to experiment with Riemann Sums:</h3>
 				<h4>1. Input a function</h4>
-				<p>No need to add "f(x)", just directly input the function in terms of x.</p>
+				<p>No need to add f(x), just directly input the function in terms of x.</p>
 				<h4>2. Select a range</h4>
 				<p>
 					Use this slider to set the lower and upper limit on which the area will be

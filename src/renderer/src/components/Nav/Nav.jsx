@@ -5,6 +5,7 @@ import { NavItem } from './NavItem'
 /**
  * The `Nav` component renders a navigation bar with home, settings, and dynamically rendered experiment navigation items.
  *
+ * @author Benjamin Saine
  * @component Nav
  * @param {object} props - The properties passed to the component.
  * @param {string[]} props.experiments - An array of strings representing the unique identifiers of the experiments to be listed in the navigation.

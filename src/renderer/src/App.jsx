@@ -8,6 +8,18 @@ import { Experiment } from './components/Experiment'
 import { Settings } from './components/Settings/Settings'
 import { Dialog } from './components/Dialog/Dialog'
 
+/**
+ * The main application component. It manages the creation, focus, and closure of experiments.
+ * The component also controls theme and font settings, and displays a dialog for help.
+ *
+ * @author Benjamin Saine, Mervin Tounou
+ * @component
+ *
+ * @example
+ * <App />
+ *
+ * @returns {JSX.Element} The rendered App component.
+ */
 function App() {
 	const [openExperiments, setOpenExperiments] = useState([])
 	const [focusedExperiment, setFocusedExperiment] = useState('home')

@@ -27,7 +27,6 @@ import { ExpressionListener } from './ExpressionListener.jsx'
  * <Derivative payload={{equation: 'x^2', x: 2, riseRun: 2, derivativeOrder: 1}} visible={true} setPayload={setPayload} />
  */
 export const Derivative = ({ payload, visible, setPayload }) => {
-
 	/**
 	 * The equation expression state.
 	 *
@@ -129,7 +128,10 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 				{derivOrder == 'First' ? (
 					<p>The blue line shows the instantaneous slope of the inputed function.</p>
 				) : (
-					<p>The blue line shows the instantaneous slope of the derivative of the inputed function.</p>
+					<p>
+						The blue line shows the instantaneous slope of the derivative of the inputed
+						function.
+					</p>
 				)}
 			</>
 		)
