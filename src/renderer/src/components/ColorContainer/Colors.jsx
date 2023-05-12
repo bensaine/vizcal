@@ -6,15 +6,20 @@ import { Droplet, X} from 'react-feather'
 
 export const Colors = ({colorArray, experiment}) => {
 	const [open, setOpen] = useState(false)
+	const [colorMenuButtonStyle, setColorMenuButtonStyle] = useState("color-menu-button")
+	const changeStyle = () => {
+		open ? setColorMenuButtonStyle("color-menu-button-active"): setColorMenuButtonStyle("color-menu-button")
+	}
+
 
 	return (
 		<div className={"outer-color-container"}>
 			<div className={"inner-color-container"}>
-				<span className={"inner-color-container-top"}>
-					<span className={"color-menu-button"} onClick={() => setOpen((prev) => !prev)}>
+				<span className={colorMenuButtonStyle} onClick={() => setOpen((prev) => !prev) && changeStyle()}>
 						{open ? <X/> : <Droplet/>}
-					</span>
-					{open && (<h2 className={"color-selector-title"}> Color Selector </h2>)}
+				</span>
+				<span className={"inner-color-container-top"}>
+				 {open && (<h2 className={"color-selector-title"} > Color Selector </h2>)}
 				</span>
 				{open && (
 					<div className={"options-container"} >
