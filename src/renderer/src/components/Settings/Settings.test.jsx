@@ -20,4 +20,14 @@ describe('Settings', () => {
 		fireEvent.change(themeSetting, { target: { value: 'Dark' } })
 		expect(setTheme).toHaveBeenCalledWith('Dark')
 	})
+	/**
+	 * @author Mervin Tounou
+	 */
+	it('Selecting Courrier New calls setFont prop', () => {
+		const setFont = vi.fn()
+		const { getByText } = render(<Settings setFont={setFont} />)
+		const fontSetting = getByText('Font').nextSibling
+		fireEvent.change(fontSetting, { target: { value: 'Helvetica Neue' } })
+		expect(setFont).toHaveBeenCalledWith('Helvetica Neue')
+	})
 })
