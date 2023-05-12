@@ -4,6 +4,21 @@ import '../../../jquery.js'
 import '../../../mathquill.js'
 import { ControlContainer } from './ControlContainer/ControlContainer'
 
+/**
+ * MathInput component. A text input box that serves as a formula editor through the use of MathQuill and LaTex
+ *
+ * @author Benjamin Saine
+ * @component
+ * @param {Object} props - The component props.
+ * @param {string} props.id - The unique identifier of the input element.
+ * @param {string} props.label - The label for the input element.
+ * @param {string} props.latex - The initial LaTeX value of the input.
+ * @param {function} props.onChange - The callback function called when the input value changes.
+ * @param {Object} props.config - Additional configuration options for MathQuill.
+ * @param {function} props.mathquillDidMount - The callback function called when MathQuill is mounted.
+ * @param {Object} props.otherProps - Additional props to be spread onto the underlying HTML element.
+ * @returns {ReactElement} The rendered MathInput component.
+ */
 export const MathInput = ({
 	id,
 	label,
