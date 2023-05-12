@@ -27,11 +27,47 @@ import { ExpressionListener } from './ExpressionListener.jsx'
  * <Derivative payload={{equation: 'x^2', x: 2, riseRun: 2, derivativeOrder: 1}} visible={true} setPayload={setPayload} />
  */
 export const Derivative = ({ payload, visible, setPayload }) => {
+
+	/**
+	 * The equation expression state.
+	 *
+	 * @type {string}
+	 */
 	const [equation, setEquation] = useState(payload.equation ?? '')
+
+	/**
+	 * The X point state.
+	 *
+	 * @type {number}
+	 */
 	const [pointX, setPointX] = useState(payload.pointX ?? 0)
+
+	/**
+	 * The run and rise value state.
+	 *
+	 * @type {number}
+	 */
 	const [runRiseVal, setRunRiseVal] = useState(payload.runRiseVal ?? 0.00001)
+
+	/**
+	 * The derivative order state.
+	 *
+	 * @type {string}
+	 */
 	const [derivOrd, setDerivOrd] = useState(payload.derivOrd ?? 'First')
+
+	/**
+	 * The slope value state.
+	 *
+	 * @type {number}
+	 */
 	const [slope, setSlope] = useState(NaN)
+
+	/**
+	 * Updates the payload state whenever there is a change in the state of the component.
+	 *
+	 * @returns {void}
+	 */
 	useEffect(() => {
 		setPayload({
 			equation: equation,
@@ -111,9 +147,7 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 				{derivOrd == 'Second' && (
 					<Expression
 						id="function2"
-						latex={
-							'g\\left(x\\right)=\\frac{d}{dx}' + equation
-						}
+						latex={'g\\left(x\\right)=\\frac{d}{dx}' + equation}
 						lineOpacity="0.5"
 						color="#444444"
 					/>
@@ -175,7 +209,7 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 			</>
 		)
 	}
-	
+
 	/**
 	 * Renders the help section of the Derivative component.
 	 *
