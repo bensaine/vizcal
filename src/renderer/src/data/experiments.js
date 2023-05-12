@@ -17,7 +17,7 @@ export const experiments = [
 	},
 	{
 		type: 'slope',
-		displayName: 'Slope',
+		displayName: 'Derivative',
 		category: 'Derivatives',
 		image: slope,
 		component: Derivative
