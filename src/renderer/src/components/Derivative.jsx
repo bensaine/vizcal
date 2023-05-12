@@ -7,7 +7,24 @@ import { Expression } from 'desmos-react'
 import { Slider } from './Controls/Slider/Slider'
 import { Dropdown } from './Controls/Dropdown'
 import { ExpressionListener } from './ExpressionListener.jsx'
-
+/**
+ * Component for the Derivative/Slope experiment.
+ *
+ * This component allows users to interactively visualize and experiment with the concept
+ * of instantaneous slopes in calculus. Users can input a function, select a point on the x-axis,
+ * choose rise and run values, and choose to see the first or second derivative. The component also includes
+ * a help section to guide users on how to use the interactive features.
+ *
+ * @component
+ * @author Wassim Yahia
+ * @param {Object} props
+ * @param {Object} props.payload - The initial payload containing function, x point, rise and run value, and derivative order. Used if the experiment is opened from a file.
+ * @param {boolean} props.visible - Determines whether the component is visible or not.
+ * @param {Function} props.setPayload - Callback function to update the payload when it changes. Used to save experiment state to a file.
+ * @returns {ReactElement|null} The rendered Derivative/Slope component or null if not visible.
+ * @example
+ * <Derivative payload={{equation: 'x^2', x: 2, riseRun: 2, derivativeOrder: 1}} visible={true} setPayload={setPayload} />
+ */
 export const Derivative = ({ payload, visible, setPayload }) => {
 	const [equation, setEquation] = useState(payload.equation ?? '')
 	const [pointX, setPointX] = useState(payload.x ?? 0)
@@ -22,7 +39,14 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 			derivOrd: derivOrd
 		})
 	}, [equation, pointX, runRiseVal, derivOrd])
-
+		/**
+	 * Renders the options section of the Derivative component.
+	 *
+	 * This function returns a React fragment containing the inputs, sliders, and dropdown for the function, x point, run and rise values, and derivative order.
+	 * Each input/slider/drop down includes a corresponding label and callback to update the respective state variables.
+	 *
+	 * @returns {ReactElement} React fragment containing the options section of the Derivative component.
+	 */
 	const renderOptions = () => {
 		return (
 			<>
@@ -66,7 +90,14 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 			</>
 		)
 	}
-
+	/**
+	 * Renders the graph section of the Derivative component.
+	 *
+	 * This function returns a React fragment containing the visual representation of the derivative using the Desmos SDK.
+	 * It includes the function, x-axis point, run and rise values, and derivative order, as well as lines and points to help illustrate the derivative.
+	 *
+	 * @returns {ReactElement} React fragment containing the graph section of the Derivative component.
+	 */
 	const renderGraph = () => {
 		return (
 			<>
@@ -134,7 +165,14 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 			</>
 		)
 	}
-
+	/**
+	 * Renders the help section of the Derivative component.
+	 *
+	 * This function returns a React fragment containing an explanation of derivatives and a step-by-step guide on how to use the interactive features.
+	 * It covers how to input a function, select the point on the x-axis, choose rise and run values, and select a derivative order.
+	 *
+	 * @returns {ReactElement} React fragment containing the help section of the Derivative component.
+	 */
 	const renderHelp = () => {
 		return (
 			<>
