@@ -80,7 +80,7 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 	/**
 	 * Renders the options section of the Derivative component.
 	 *
-	 * This function returns a React fragment containing the inputs, sliders, and dropdown for the function, x point, run and rise values, and derivative order.
+	 * This function returns a React fragment containing the inputs, sliders, and dropdown for the function, x point, run and rise values, derivative order, and an explanation for the instantaneous slope line.
 	 * Each input/slider/drop down includes a corresponding label and callback to update the respective state variables.
 	 *
 	 * @returns {ReactElement} React fragment containing the options section of the Derivative component.
@@ -125,6 +125,12 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 					onChange={setDerivOrd}
 					disabled={equation == ''}
 				/>
+				{/*explains what the instantaneous slope, or blue line, represents according to the selected derivative order. */}
+				{derivOrd == 'First' ? (
+					<p>The blue line shows the instantaneous slope of the inputed function.</p>
+				) : (
+					<p>The blue line shows the instantaneous slope of the derivative of the inputed function.</p>
+				)}
 			</>
 		)
 	}
@@ -143,7 +149,7 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 				<Expression id="x" latex={'x_{point}=' + pointX} />
 				<Expression id="d" latex={'d_{eltaX}=' + runRiseVal} />
 				<Expression id="function" latex={'f\\left(x\\right)=' + equation} color="#ffffff" />
-				{/*/adds the second derivative function on the graph when selected through the dropdwon*/}
+				{/*adds the second derivative function on the graph when selected through the dropdwon*/}
 				{derivOrd == 'Second' && (
 					<Expression
 						id="function2"
