@@ -34,8 +34,8 @@ export const Colors = ({colorArray, experiment}) => {
 				</span>
 				{open && (
 					<div className={"options-container"} >
-						{colorArray.map(names => {
-								return <ColorItems key={Math.random()} title={names} experiment={experiment}></ColorItems>
+						{colorArray.map((names) => {
+								return <ColorItems key={names} title={names} experiment={experiment}></ColorItems>
 							}
 						)}
 					</div>

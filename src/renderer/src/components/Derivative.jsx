@@ -116,7 +116,7 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 							? 'x_{1}=x_{point}+d_{eltaX}\\left\\{f\\left(x_{point}\\right)<y<f\\left(x_{point}+d_{eltaX}\\right)\\right\\}'
 							: 'x_{1}=x_{point}+d_{eltaX}\\left\\{g\\left(x_{point}\\right)<y<g\\left(x_{point}+d_{eltaX}\\right)\\right\\}'
 					}
-					color={ctx.runRiseColor}
+					color={ctx.derivative.runRiseColor}
 				/>
 				<Expression
 					id="point"

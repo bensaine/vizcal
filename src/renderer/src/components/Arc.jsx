@@ -8,7 +8,7 @@ import { Slider } from './Controls/Slider/Slider'
 import { ExpressionListener } from './ExpressionListener.jsx'
 import {Context} from "./ColorContainer/ContextProvider"
 
-/**
+/**+
  * Component for the Arc experiment.
  *
  * This component allows users to interactively visualize and experiment with the concept
