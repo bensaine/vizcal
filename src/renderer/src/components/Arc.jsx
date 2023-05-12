@@ -1,14 +1,14 @@
 import '../../jquery.js'
 import '../../desmos.js'
 import { Expression } from 'desmos-react'
-import {useContext, useEffect, useState} from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { ExperimentBase } from './ExperimentBase/ExperimentBase'
 import { MathInput } from './Controls/MathInput'
 import { Slider } from './Controls/Slider/Slider'
 import { ExpressionListener } from './ExpressionListener.jsx'
-import {Context} from "./ColorContainer/ContextProvider"
+import { Context } from './Colors/ContextProvider.jsx'
 
-/**+
+/**
  * Component for the Arc experiment.
  *
  * This component allows users to interactively visualize and experiment with the concept
@@ -97,11 +97,14 @@ export const Arc = ({ payload, visible, setPayload }) => {
 	const renderGraph = () => {
 		return (
 			<>
-
 				<Expression id="a" latex={'a=' + x[0]} />
 				<Expression id="b" latex={'b=' + x[1]} />
 				<Expression id="n" latex={'n=' + n} />
-				<Expression id="function" latex={'f(x)=' + equation} color={ctx.arc.functionColorArc}/>
+				<Expression
+					id="function"
+					latex={'f(x)=' + equation}
+					color={ctx.arc.functionColorArc}
+				/>
 				<Expression id="listofn" latex={'l_{istofN}=\\left[0,1,...,n\\right]'} />
 				<Expression id="delx" latex={'d_{elX}=\\frac{b-a}{n}'} />
 				<Expression id="xpoints" latex={'x_{points}=a+l_{istofN}\\cdot d_{elX}'} />
@@ -135,8 +138,7 @@ export const Arc = ({ payload, visible, setPayload }) => {
 					color={ctx.arc.arcColor}
 				/>
 				<ExpressionListener latex={'e_{stimation}'} onExpressionChange={setLength} />
-
-				</>
+			</>
 		)
 	}
 
@@ -156,9 +158,10 @@ export const Arc = ({ payload, visible, setPayload }) => {
 					The arc length is an application of integration that lets us find the length of
 					a function within a certain range. The method by which this is achieved it very
 					similar to the approximation of the area under a curve where Riemann sums where
-					exhaustively used. In short, subdivisions in x of a function are joined by straight lines
-					and they are all joined to approximate the curve of the function. The approximation
-					is simply given by the sum of the length of each small line section.
+					exhaustively used. In short, subdivisions in x of a function are joined by
+					straight lines and they are all joined to approximate the curve of the function.
+					The approximation is simply given by the sum of the length of each small line
+					section.
 				</p>
 
 				<h3>How to experiment with Arc Length:</h3>
@@ -187,10 +190,12 @@ export const Arc = ({ payload, visible, setPayload }) => {
 				</p>
 
 				<h4>4. Refine your estimation</h4>
-				<p>As is true with Riemann sums, the arc length's estimation gets better and better
-					as you increase the number of subdivisions. On the bottom of the controls is an output box that shows
-				the sum of the line segments which will get closer to the true arc length as you increase the number of
-				subdivisions.</p>
+				<p>
+					As is true with Riemann sums, the arc length's estimation gets better and better
+					as you increase the number of subdivisions. On the bottom of the controls is an
+					output box that shows the sum of the line segments which will get closer to the
+					true arc length as you increase the number of subdivisions.
+				</p>
 			</>
 		)
 	}
@@ -201,7 +206,7 @@ export const Arc = ({ payload, visible, setPayload }) => {
 			graphSlot={renderGraph}
 			helpSlot={renderHelp}
 			output={length}
-			colorArray={["Function", "Arc Lines"]}
+			colorArray={['Function', 'Arc Lines']}
 			experiment="Arc"
 		/>
 	) : null

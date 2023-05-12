@@ -2,11 +2,11 @@ import '../../jquery.js'
 import '../../desmos.js'
 import { ExperimentBase } from './ExperimentBase/ExperimentBase'
 import { MathInput } from './Controls/MathInput'
-import {useContext, useEffect, useState} from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { Expression } from 'desmos-react'
 import { Slider } from './Controls/Slider/Slider'
 import { Dropdown } from './Controls/Dropdown'
-import {Context} from "./ColorContainer/ContextProvider"
+import { Context } from './Colors/ContextProvider.jsx'
 
 export const Derivative = ({ payload, visible, setPayload }) => {
 	const [fx, setFx] = useState(payload.fx ?? '')
@@ -74,7 +74,11 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 			<>
 				<Expression id="x" latex={'x_{point}=' + x} />
 				<Expression id="d" latex={'d_{eltaX}=' + d} />
-				<Expression id="function" latex={'f\\left(x\\right)=' + fx} color={ctx.derivative.functionColorDerivative} />
+				<Expression
+					id="function"
+					latex={'f\\left(x\\right)=' + fx}
+					color={ctx.derivative.functionColorDerivative}
+				/>
 				{derivOrd == 'Second' && (
 					<Expression
 						id="function2"
@@ -143,6 +147,12 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 	}
 
 	return visible ? (
-		<ExperimentBase optionsSlot={renderOptions} graphSlot={renderGraph} helpSlot={renderHelp} colorArray={["Function", "Run & Rise"]} experiment="Derivative"/>
+		<ExperimentBase
+			optionsSlot={renderOptions}
+			graphSlot={renderGraph}
+			helpSlot={renderHelp}
+			colorArray={['Function', 'Run & Rise']}
+			experiment="Derivative"
+		/>
 	) : null
 }

@@ -13,7 +13,7 @@ import fig1 from '../assets/images/reimannDark/reimann1.png'
 import fig2 from '../assets/images/reimannDark/reimann2.png'
 import fig3 from '../assets/images/reimannDark/reimann3.png'
 import fig4 from '../assets/images/reimannDark/reimann4.png'
-import {Context} from "./ColorContainer/ContextProvider"
+import { Context } from './Colors/ContextProvider.jsx'
 
 export const Riemann = ({ payload, visible, setPayload }) => {
 	const [fx, setFx] = useState(payload.fx ?? '')
@@ -91,7 +91,11 @@ export const Riemann = ({ payload, visible, setPayload }) => {
 					latex={'s\\left(x\\right)=a+w\\left(x+c\\right)'}
 					hidden={true}
 				/>
-				<Expression id="function" latex={'f\\left(x\\right)=' + fx} color={ctx.riemann.functionColorRiemann}/>
+				<Expression
+					id="function"
+					latex={'f\\left(x\\right)=' + fx}
+					color={ctx.riemann.functionColorRiemann}
+				/>
 				<Expression
 					id="nOfX"
 					latex={
@@ -229,7 +233,7 @@ export const Riemann = ({ payload, visible, setPayload }) => {
 			graphSlot={renderGraph}
 			helpSlot={renderHelp}
 			output={area}
-			colorArray={["Function", "Rectangles Positive", "Rectangles Negative"]}
+			colorArray={['Function', 'Rectangles Positive', 'Rectangles Negative']}
 			experiment="Riemann"
 		/>
 	) : null

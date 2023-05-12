@@ -7,12 +7,19 @@ import { HelpCircle, ArrowLeftCircle, ArrowRightCircle } from 'react-feather'
 import '../../assets/desmos.css'
 import { GraphingCalculator } from 'desmos-react'
 import { NumericalOutput } from '../NumericalOutput/NumericalOutput'
-import {Colors} from "../ColorContainer/Colors";
+import { Colors } from '../Colors/Colors'
 
-export const ExperimentBase = ({ optionsSlot, graphSlot, helpSlot, output, colorArray, experiment}) => {
+export const ExperimentBase = ({
+	optionsSlot,
+	graphSlot,
+	helpSlot,
+	output,
+	colorArray,
+	experiment
+}) => {
 	const [helpOpen, setHelpOpen] = useState(false)
 	const [isCollapsed, setIsCollapsed] = useState(false)
-	const [color] = useState("black")
+	const [color] = useState('black')
 
 	return (
 		<div className={styles.container}>

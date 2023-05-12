@@ -6,7 +6,7 @@ import { Home } from './components/Home/Home'
 import { v4 as uuidv4 } from 'uuid'
 import { Experiment } from './components/Experiment'
 import { Settings } from './components/Settings/Settings'
-import ContextProvider from "./components/ColorContainer/ContextProvider";
+import ContextProvider from './components/Colors/ContextProvider'
 
 function App() {
 	const [openExperiments, setOpenExperiments] = useState([])
@@ -53,26 +53,26 @@ function App() {
 
 	return (
 		<ContextProvider>
-		<div className={styles.container} data-theme={theme} data-font={font}>
-			<Nav
-				experiments={openExperiments}
-				focus={focusedExperiment}
-				setFocus={setFocusedExperiment}
-			/>
-			<WindowContainer>
-				{focusedExperiment == 'home' && <Home createNewExperiment={createExperiment} />}
-				{focusedExperiment == 'settings' && (
-					<Settings theme={theme} setTheme={setTheme} font={font} setFont={setFont} />
-				)}
-				{openExperiments.map((experiment) => (
-					<Experiment
-						id={experiment}
-						visible={focusedExperiment == experiment}
-						key={experiment}
-					/>
-				))}
-			</WindowContainer>
-		</div>
+			<div className={styles.container} data-theme={theme} data-font={font}>
+				<Nav
+					experiments={openExperiments}
+					focus={focusedExperiment}
+					setFocus={setFocusedExperiment}
+				/>
+				<WindowContainer>
+					{focusedExperiment == 'home' && <Home createNewExperiment={createExperiment} />}
+					{focusedExperiment == 'settings' && (
+						<Settings theme={theme} setTheme={setTheme} font={font} setFont={setFont} />
+					)}
+					{openExperiments.map((experiment) => (
+						<Experiment
+							id={experiment}
+							visible={focusedExperiment == experiment}
+							key={experiment}
+						/>
+					))}
+				</WindowContainer>
+			</div>
 		</ContextProvider>
 	)
 }

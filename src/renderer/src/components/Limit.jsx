@@ -1,13 +1,13 @@
 import '../../jquery.js'
 import '../../desmos.js'
 import { Expression } from 'desmos-react'
-import {useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { ExperimentBase } from './ExperimentBase/ExperimentBase'
 import { MathInput } from './Controls/MathInput'
 import { Slider } from './Controls/Slider/Slider'
 import { StaticMath } from './StaticMath'
 import { ExpressionListener } from './ExpressionListener.jsx'
-import {Context} from "./ColorContainer/ContextProvider"
+import { Context } from './Colors/ContextProvider.jsx'
 
 export const Limit = ({ payload, visible, setPayload }) => {
 	const [fx, setFx] = useState(payload.fx ?? '')
@@ -76,7 +76,11 @@ export const Limit = ({ payload, visible, setPayload }) => {
 	const renderGraph = () => {
 		return (
 			<>
-				<Expression id="function" latex={'f\\left(x\\right)=' + fx} color={ctx.limit.functionColorLimit} />
+				<Expression
+					id="function"
+					latex={'f\\left(x\\right)=' + fx}
+					color={ctx.limit.functionColorLimit}
+				/>
 				{fx != '' && (
 					<>
 						<Expression id="x" latex={'x_{point}=' + x} />
@@ -183,7 +187,7 @@ export const Limit = ({ payload, visible, setPayload }) => {
 			graphSlot={renderGraph}
 			helpSlot={renderHelp}
 			output={limit}
-			colorArray={["Function", "Delta Lines", "Epsilon Lines"]}
+			colorArray={['Function', 'Delta Lines', 'Epsilon Lines']}
 			experiment="Limit"
 		/>
 	) : null
