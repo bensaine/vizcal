@@ -8,7 +8,6 @@
 		"format": "prettier --write .",
 		"lint": "eslint . --ext .js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix",
 		"test": "vitest",
-		"coverage": "vitest --coverage",
 		"start": "electron-vite preview",
 		"dev": "electron-vite dev --watch",
 		"build": "electron-vite build",
