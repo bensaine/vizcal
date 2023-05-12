@@ -11,7 +11,6 @@ import styles from './ControlContainer.module.scss'
  * @param {ReactNode} props.children - The content within the control container.
  * @returns {ReactElement} The rendered ControlContainer component.
  */
-
 export const ControlContainer = ({ id, label, disabled, children }) => {
 	return (
 		<span className={styles.inputContainer + ' ' + (disabled ? styles.disabled : '')}>
