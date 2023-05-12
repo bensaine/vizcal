@@ -8,12 +8,66 @@ import { Slider } from './Controls/Slider/Slider'
 import { Dropdown } from './Controls/Dropdown'
 import { ExpressionListener } from './ExpressionListener.jsx'
 
+/**
+ * Component for the Derivative/Slope experiment.
+ *
+ * This component allows users to interactively visualize and experiment with the concept
+ * of instantaneous slopes in calculus. Users can input a function, select a point on the x-axis,
+ * choose rise and run values, and choose to see the first or second derivative. The component also includes
+ * a help section to guide users on how to use the interactive features.
+ *
+ * @component
+ * @author Wassim Yahia
+ * @param {Object} props
+ * @param {Object} props.payload - The initial payload containing function, x point, rise and run value, and derivative order. Used if the experiment is opened from a file.
+ * @param {boolean} props.visible - Determines whether the component is visible or not.
+ * @param {Function} props.setPayload - Callback function to update the payload when it changes. Used to save experiment state to a file.
+ * @returns {ReactElement|null} The rendered Derivative/Slope component or null if not visible.
+ * @example
+ * <Derivative payload={{equation: 'x^2', x: 2, riseRun: 2, derivativeOrder: 1}} visible={true} setPayload={setPayload} />
+ */
 export const Derivative = ({ payload, visible, setPayload }) => {
+
+	/**
+	 * The equation expression state.
+	 *
+	 * @type {string}
+	 */
 	const [equation, setEquation] = useState(payload.equation ?? '')
-	const [pointX, setPointX] = useState(payload.x ?? 0)
-	const [runRiseVal, setRunRiseVal] = useState(payload.d ?? 0.00001)
+
+	/**
+	 * The X point state.
+	 *
+	 * @type {number}
+	 */
+	const [pointX, setPointX] = useState(payload.pointX ?? 0)
+
+	/**
+	 * The run and rise value state.
+	 *
+	 * @type {number}
+	 */
+	const [runRiseVal, setRunRiseVal] = useState(payload.runRiseVal ?? 0.00001)
+
+	/**
+	 * The derivative order state.
+	 *
+	 * @type {string}
+	 */
 	const [derivOrd, setDerivOrd] = useState(payload.derivOrd ?? 'First')
+
+	/**
+	 * The slope value state.
+	 *
+	 * @type {number}
+	 */
 	const [slope, setSlope] = useState(NaN)
+
+	/**
+	 * Updates the payload state whenever there is a change in the state of the component.
+	 *
+	 * @returns {void}
+	 */
 	useEffect(() => {
 		setPayload({
 			equation: equation,
@@ -23,6 +77,14 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 		})
 	}, [equation, pointX, runRiseVal, derivOrd])
 
+	/**
+	 * Renders the options section of the Derivative component.
+	 *
+	 * This function returns a React fragment containing the inputs, sliders, and dropdown for the function, x point, run and rise values, and derivative order.
+	 * Each input/slider/drop down includes a corresponding label and callback to update the respective state variables.
+	 *
+	 * @returns {ReactElement} React fragment containing the options section of the Derivative component.
+	 */
 	const renderOptions = () => {
 		return (
 			<>
@@ -67,12 +129,21 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 		)
 	}
 
+	/**
+	 * Renders the graph section of the Derivative component.
+	 *
+	 * This function returns a React fragment containing the visual representation of the derivative using the Desmos SDK.
+	 * It includes the function, x-axis point, run and rise values, and derivative order, as well as lines and points to help illustrate the derivative.
+	 *
+	 * @returns {ReactElement} React fragment containing the graph section of the Derivative component.
+	 */
 	const renderGraph = () => {
 		return (
 			<>
 				<Expression id="x" latex={'x_{point}=' + pointX} />
 				<Expression id="d" latex={'d_{eltaX}=' + runRiseVal} />
 				<Expression id="function" latex={'f\\left(x\\right)=' + equation} color="#ffffff" />
+				{/*/adds the second derivative function on the graph when selected through the dropdwon*/}
 				{derivOrd == 'Second' && (
 					<Expression
 						id="function2"
@@ -84,6 +155,7 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 				<Expression
 					id="slope"
 					latex={
+						//shows the slope that corresponds to the selected derivative order
 						derivOrd == 'First'
 							? 'y=\\frac{f\\left(x_{point}+d_{eltaX}\\right)-f\\left(x_{point}\\right)}{d_{eltaX}}\\left(x-x_{point}\\right)+f\\left(x_{point}\\right)'
 							: 'y=\\frac{g\\left(x_{point}+d_{eltaX}\\right)-g\\left(x_{point}\\right)}{d_{eltaX}}\\left(x-x_{point}\\right)+g\\left(x_{point}\\right)'
@@ -100,8 +172,9 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 					color="#ffffff"
 				/>
 				<Expression
-					id="riseRun"
+					id="run"
 					latex={
+						//applies the run value to the slope corresponding to the requested derivative order
 						derivOrd == 'First'
 							? 'y_{2}=f\\left(x_{point}\\right)\\left\\{x_{point}+d_{eltaX}>x>x_{point}\\right\\}'
 							: 'y_{2}=g\\left(x_{point}\\right)\\left\\{x_{point}+d_{eltaX}>x>x_{point}\\right\\}'
@@ -109,8 +182,9 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 					color="#ffffff"
 				/>
 				<Expression
-					id="riseRunU"
+					id="rise"
 					latex={
+						//applies the rise value to the slope corresponding to the requested derivative order
 						derivOrd == 'First'
 							? 'x_{1}=x_{point}+d_{eltaX}\\left\\{f\\left(x_{point}\\right)<y<f\\left(x_{point}+d_{eltaX}\\right)\\right\\}'
 							: 'x_{1}=x_{point}+d_{eltaX}\\left\\{g\\left(x_{point}\\right)<y<g\\left(x_{point}+d_{eltaX}\\right)\\right\\}'
@@ -125,6 +199,7 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 				<Expression
 					id="slopeVal"
 					latex={
+						//calculates the value of the slope corresponding to the requested derivative order
 						derivOrd == 'First'
 							? 's=\\frac{f\\left(x_{point}+d_{eltaX}\\right)-f\\left(x_{point}\\right)}{d_{eltaX}}'
 							: 's=\\frac{g\\left(x_{point}+d_{eltaX}\\right)-g\\left(x_{point}\\right)}{d_{eltaX}}'
@@ -135,6 +210,14 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 		)
 	}
 
+	/**
+	 * Renders the help section of the Derivative component.
+	 *
+	 * This function returns a React fragment containing an explanation of derivatives and a step-by-step guide on how to use the interactive features.
+	 * It covers how to input a function, select the point on the x-axis, choose rise and run values, and select a derivative order.
+	 *
+	 * @returns {ReactElement} React fragment containing the help section of the Derivative component.
+	 */
 	const renderHelp = () => {
 		return (
 			<>
@@ -172,10 +255,10 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 
 				<h4>3. Select a derivative order</h4>
 				<p>
-					Use the dropdown to choose between the first and second derivatives. The
-					second derivative option will add the second derivative function to the graph in a transparent
-					grey for a clearer visualization and the visualizer will then display its instantaneous slope.
-				    The default value is the first derivative.
+					Use the dropdown to choose between the first and second derivatives. The second
+					derivative option will add the second derivative function to the graph in a
+					transparent grey for a clearer visualization and the visualizer will then
+					display its instantaneous slope. The default value is the first derivative.
 				</p>
 			</>
 		)

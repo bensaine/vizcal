@@ -12,5 +12,5 @@ import styles from './WindowContainer.module.scss'
  * @return {JSX.Element} The WindowContainer component.
  */
 export const WindowContainer = ({ children }) => {
-	return <div className={styles.windowContainer}>{children}</div>
+	return <main className={styles.windowContainer}>{children}</main>
 }

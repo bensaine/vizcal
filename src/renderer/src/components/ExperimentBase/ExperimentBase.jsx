@@ -14,7 +14,7 @@ export const ExperimentBase = ({ optionsSlot, graphSlot, helpSlot, output }) => 
 
 	return (
 		<div className={styles.container}>
-			<div className={styles.options + (isCollapsed ? ' ' + styles.collapsed : '')}>
+			<section className={styles.options + (isCollapsed ? ' ' + styles.collapsed : '')}>
 				<span className={styles.helpButton} onClick={() => setHelpOpen(true)}>
 					<HelpCircle />
 				</span>
@@ -22,8 +22,8 @@ export const ExperimentBase = ({ optionsSlot, graphSlot, helpSlot, output }) => 
 				<div className={styles.optionsFooter}>
 					<NumericalOutput output={output} />
 				</div>
-			</div>
-			<div className={styles.output}>
+			</section>
+			<section className={styles.output}>
 				<span
 					className={styles.collapseButton}
 					onClick={() => setIsCollapsed(!isCollapsed)}
@@ -44,7 +44,7 @@ export const ExperimentBase = ({ optionsSlot, graphSlot, helpSlot, output }) => 
 				>
 					{graphSlot()}
 				</GraphingCalculator>
-			</div>
+			</section>
 			<Dialog open={helpOpen} title={'Help'} onClose={() => setHelpOpen(false)}>
 				{helpSlot()}
 			</Dialog>
