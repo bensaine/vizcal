@@ -61,3 +61,12 @@ $ npm run build:mac
 # For Linux
 $ npm run build:linux
 ```
+
+## Notable Libraries Used
+
+-   [Electron](https://www.electronjs.org/)
+-   [Vite](https://vitejs.dev/)
+-   [React](https://reactjs.org/)
+-   [Desmos](https://www.desmos.com/)
+-   [MathQuill](http://mathquill.com/)
+-   [JQuery](https://jquery.com/)
