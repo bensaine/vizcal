@@ -43,6 +43,12 @@ $ npm install
 $ npm run dev
 ```
 
+### Run Unit Tests
+
+```bash
+$ npm run test
+```
+
 ### Build a Single-File Executable
 
 ```bash
