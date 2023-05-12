@@ -3,6 +3,15 @@ import { Derivative } from './Derivative'
 import { describe, expect, it, vi } from 'vitest'
 import { act } from 'react-dom/test-utils'
 
+/**
+ * Unit tests for the Derivative component.
+ *
+ * This test suite includes a test to verify the functionality of the payload.
+ * A test verifies the help menu is functional.
+ * A test verifies the component is properly hidden when the visible prop is set to false.
+ *
+ * @author Wassim Yahia
+ */
 describe('Derivative', () => {
 	it('Initial payload correctly sets sliders', () => {
 		const setPayload = vi.fn()
