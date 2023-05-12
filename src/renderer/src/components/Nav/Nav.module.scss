@@ -85,12 +85,9 @@
 			}
 		}
 
-
-
 		&:hover > .closeBtn {
 			opacity: 0.75;
 		}
-
 	}
 	.helpButton {
 		position: relative;
@@ -112,5 +109,4 @@
 			filter: var(--image-invert);
 		}
 	}
-
 }
