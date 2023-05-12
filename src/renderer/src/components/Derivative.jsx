@@ -107,7 +107,9 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 				{derivOrd == 'Second' && (
 					<Expression
 						id="function2"
-						latex={'g\\left(x\\right)=\\frac{d}{dx}' + equation}
+						latex={
+							//adds the second derivative function on the graph when selected through the dropdwon
+							'g\\left(x\\right)=\\frac{d}{dx}' + equation}
 						lineOpacity="0.5"
 						color="#444444"
 					/>
@@ -115,6 +117,7 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 				<Expression
 					id="slope"
 					latex={
+						//shows the slope that corresponds to the selected derivative order
 						derivOrd == 'First'
 							? 'y=\\frac{f\\left(x_{point}+d_{eltaX}\\right)-f\\left(x_{point}\\right)}{d_{eltaX}}\\left(x-x_{point}\\right)+f\\left(x_{point}\\right)'
 							: 'y=\\frac{g\\left(x_{point}+d_{eltaX}\\right)-g\\left(x_{point}\\right)}{d_{eltaX}}\\left(x-x_{point}\\right)+g\\left(x_{point}\\right)'
@@ -133,6 +136,7 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 				<Expression
 					id="run"
 					latex={
+						//applies the run value to the slope corresponding to the requested derivative order
 						derivOrd == 'First'
 							? 'y_{2}=f\\left(x_{point}\\right)\\left\\{x_{point}+d_{eltaX}>x>x_{point}\\right\\}'
 							: 'y_{2}=g\\left(x_{point}\\right)\\left\\{x_{point}+d_{eltaX}>x>x_{point}\\right\\}'
@@ -142,6 +146,7 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 				<Expression
 					id="rise"
 					latex={
+						//applies the rise value to the slope corresponding to the requested derivative order
 						derivOrd == 'First'
 							? 'x_{1}=x_{point}+d_{eltaX}\\left\\{f\\left(x_{point}\\right)<y<f\\left(x_{point}+d_{eltaX}\\right)\\right\\}'
 							: 'x_{1}=x_{point}+d_{eltaX}\\left\\{g\\left(x_{point}\\right)<y<g\\left(x_{point}+d_{eltaX}\\right)\\right\\}'
@@ -156,6 +161,7 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 				<Expression
 					id="slopeVal"
 					latex={
+						//calculates the value of the slope corresponding to the requested derivative order
 						derivOrd == 'First'
 							? 's=\\frac{f\\left(x_{point}+d_{eltaX}\\right)-f\\left(x_{point}\\right)}{d_{eltaX}}'
 							: 's=\\frac{g\\left(x_{point}+d_{eltaX}\\right)-g\\left(x_{point}\\right)}{d_{eltaX}}'
