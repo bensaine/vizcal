@@ -101,7 +101,9 @@ $ npm run build:linux
 
 -   [Electron](https://www.electronjs.org/)
 -   [Vite](https://vitejs.dev/)
+-   [electron-vite](https://evite.netlify.app/)
 -   [React](https://reactjs.org/)
 -   [Desmos](https://www.desmos.com/)
 -   [MathQuill](http://mathquill.com/)
 -   [JQuery](https://jquery.com/)
+-   [Vitest](https://vitest.dev/)
