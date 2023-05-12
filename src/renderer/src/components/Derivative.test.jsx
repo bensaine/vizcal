@@ -28,12 +28,10 @@ describe('Derivative', () => {
 			/>
 		)
 		const dialog = derivative.container.querySelector('.dialog').parentElement
-		console.log(getComputedStyle(dialog).display)
 		expect(getComputedStyle(dialog).display).toBe('none')
 		act(() => {
 			derivative.container.querySelector('.helpButton').click()
 		})
-		console.log(getComputedStyle(dialog).display)
 		expect(getComputedStyle(dialog).display).toBe('flex')
 	})
 

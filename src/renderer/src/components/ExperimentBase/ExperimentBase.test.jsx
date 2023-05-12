@@ -15,6 +15,7 @@ describe('ExperimentBase', () => {
 		)
 
 		const options = experimentBase.container.querySelector('.options')
+		expect(getComputedStyle(options).marginRight).toBe('2rem')
 		act(() => {
 			experimentBase.container.querySelector('.collapseButton').click()
 		})
