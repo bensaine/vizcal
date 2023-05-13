@@ -58,12 +58,14 @@ also help us formally define definite integrals. Through Rieman sums, we give th
 ### Arc Length
 
 The arc length is an application of integration that lets us find the length of
-a function within a certain range. The method by which this is achieved it very
+a function within a certain range. The method by which this is achieved is very
 similar to the approximation of the area under a curve where Riemann sums where
 exhaustively used. In short, subdivisions in x of a function are joined by
 straight lines and they are all joined to approximate the curve of the function.
 The approximation is simply given by the sum of the length of each small line
 section.
+
+![arc length explanation image](https://s3-us-west-2.amazonaws.com/courses-images/wp-content/uploads/sites/2332/2018/01/11213108/CNX_Calc_Figure_06_04_001.jpg)<figcaption align = "center"><b>Arc Length explanation. Reference: https://www.mathsisfun.com/calculus/arc-length.html</b></figcaption>
 
 ## Recommended IDE Setup
 
