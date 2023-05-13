@@ -70,6 +70,21 @@ export const Experiment = ({ id, visible }) => {
 	)
 }
 
+/**
+ * This context is used to pass the experiment data to the experiment components.
+ * It also provides a function to update the experiment's colors.
+ *
+ * @author Steven Thao
+ * @example
+ * import { ExperimentContext } from '../Experiment'
+ *
+ * const { experiment, colors, setColors } = useContext(ExperimentContext)
+ *
+ * @see Experiment
+ * @see Colors
+ *
+ * @returns {React.Context} The context object
+ */
 export const ExperimentContext = createContext({
 	experiment: {},
 	colors: {},

@@ -6,17 +6,24 @@ import { ExperimentContext } from '../Experiment'
 import { experiments } from '../../data/experiments'
 
 /**
- * A component that renders a color menu button and allows users to select a color from a list of options.
+ * Colors is a React component for a color picker.
+ * It uses the ExperimentContext to get the current experiment and its associated colors.
+ * It provides an interface to select and modify these colors.
  *
  * @author Steven Thao
  * @component
- * @returns {JSX.Element} - A JSX element that renders a color menu button and a list of color options.
+ * @example
+ * You would typically render this component within an ExperimentContext.Provider to ensure it has access to the necessary context.
+ * <Colors />
+ *
+ * @returns {React.Element} The rendered component
  */
 export const Colors = () => {
 	const [open, setOpen] = useState(false)
 	const { experiment, colors, setColors } = useContext(ExperimentContext)
 	const [titles, setTitles] = useState({})
 
+	// Set the titles of the color options once the experiment is loaded
 	useEffect(() => {
 		if (!experiment) return
 		const colors = experiments.find((e) => e.type === experiment.type).colors
@@ -27,6 +34,7 @@ export const Colors = () => {
 		setTitles(titles)
 	}, [experiment])
 
+	// Propagate color changes to the ExperimentContext
 	const setColor = (id, color) => {
 		colors[id] = color
 		setColors(colors)
