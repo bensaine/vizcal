@@ -19,7 +19,7 @@ import { experiments } from './data/experiments'
  * @example
  * <App />
  *
- * @returns {JSX.Element} The rendered App component.
+ * @returns {ReactElement} The rendered App component.
  */
 function App() {
 	const [openExperiments, setOpenExperiments] = useState([])
@@ -132,8 +132,8 @@ function App() {
 				<h3>2- Experiments</h3>
 				<p>
 					Each experiment contains an options and a graph section. The options section
-					allows you to modify the experimen&apos;s parameters. The graph section displays the
-					experiment in real time.
+					allows you to modify the experimen&apos;s parameters. The graph section displays
+					the experiment in real time.
 				</p>
 				<h4>2.1- Limit</h4>
 				<p>This experiment focuses on the Epsilon-Delta definition of the limit.</p>
@@ -164,8 +164,8 @@ function App() {
 				<h3>3- Settings</h3>
 				<p>
 					The Settings tab is represented by a grear icon found at the bottom left corner
-					of the page. There, you will be able to change the application&apos;s theme, as well
-					as the font.
+					of the page. There, you will be able to change the application&apos;s theme, as
+					well as the font.
 				</p>
 
 				<h3>4- Menu Bar</h3>

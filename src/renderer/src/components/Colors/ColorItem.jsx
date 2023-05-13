@@ -3,14 +3,23 @@ import styles from './Colors.module.scss'
 import { Palette } from './Palette'
 
 /**
- * Responsible to render the different option buttons as well as the list of color options.
+ * ColorItems is a React component for a single color item within a color picker.
+ * It receives an id, title, color, and setColor function as props.
+ * The color can be clicked to open a Palette component for color selection.
  *
  * @author Steven Thao
  * @component
- * @param {Object} props - The component props
- * @param {string} props.title - The title of the button
- * @param {string} props.experiment - The experiment type
- * @returns {JSX.Element} - Returns the UI components for color selection
+ * @example
+ * You would typically render this component within a Colors component, passing the required props.
+ * <ColorItems id={id} title={title} color={color} setColor={setColor} />
+ *
+ * @param {Object} props The props for the ColorItems component
+ * @param {string} props.id The unique identifier for the color
+ * @param {string} props.title The title for the color
+ * @param {string} props.color The current color, expressed as a string
+ * @param {Function} props.setColor The function to call when a new color is selected
+ *
+ * @returns {ReactElement} The rendered component
  */
 export const ColorItems = ({ id, title, color, setColor }) => {
 	const [open, setOpen] = useState(false)

@@ -13,7 +13,7 @@ import { NavItem } from './NavItem'
  * @param {function} props.setFocus - A function that updates the currently focused navigation item.
  * @param {function} props.closeExperiment - A function that handles the closing of an experiment.
  * @param {function} props.setHelpOpen - A function that opens the help dialog when invoked.
- * @returns {JSX.Element} The rendered navigation component.
+ * @returns {ReactElement} The rendered navigation component.
  *
  * @example
  * <Nav

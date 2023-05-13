@@ -15,7 +15,7 @@ import { X } from 'react-feather'
  * @param {Function} props.onClick - A handler function for the click event.
  * @param {Function} props.closeExperiment - A method to close the experiment.
  *
- * @returns {JSX.Element|null} A list item element for the navigation menu or null if the experiment is loading or there is an error.
+ * @returns {ReactElement|null} A list item element for the navigation menu or null if the experiment is loading or there is an error.
  */
 export const NavItem = ({ id, focus, onClick, closeExperiment }) => {
 	// Get the experiment data based on the id

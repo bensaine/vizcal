@@ -22,7 +22,7 @@ import useExperiment from '../hooks/useExperiment'
  *   visible={true}
  * />
  *
- * @returns {JSX.Element|null} If loading, returns null. If there's an error, returns an error message. Otherwise, returns the rendered experiment component.
+ * @returns {ReactElement|null} If loading, returns null. If there's an error, returns an error message. Otherwise, returns the rendered experiment component.
  */
 export const Experiment = ({ id, visible }) => {
 	// Get the experiment data based on the id
@@ -70,6 +70,21 @@ export const Experiment = ({ id, visible }) => {
 	)
 }
 
+/**
+ * This context is used to pass the experiment data to the experiment components.
+ * It also provides a function to update the experiment's colors.
+ *
+ * @author Steven Thao
+ * @example
+ * import { ExperimentContext } from '../Experiment'
+ *
+ * const { experiment, colors, setColors } = useContext(ExperimentContext)
+ *
+ * @see Experiment
+ * @see Colors
+ *
+ * @returns {React.Context} The context object
+ */
 export const ExperimentContext = createContext({
 	experiment: {},
 	colors: {},
