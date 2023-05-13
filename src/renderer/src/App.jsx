@@ -132,7 +132,7 @@ function App() {
 
 				<h3>2- Experiments</h3>
 				<p>
-					Each experiment contains an option and a graph section. The option section
+					Each experiment contains an options and a graph section. The options section
 					allows you to modify the experiment's parameters. The graph section displays the
 					experiment in real time.
 				</p>
@@ -159,7 +159,7 @@ function App() {
 				<p>
 					For more information on each experiment, refer to the Help section of that
 					experiment.This section is accessed through a question mark button located at
-					the top right corner of every experiment's option section.
+					the top right corner of every experiment's options section.
 				</p>
 
 				<h3>3- Settings</h3>
@@ -174,6 +174,15 @@ function App() {
 					The menu bar located at the top section of the app allows you to open and save
 					an experiment using the "file" tab, as well as reload the application and enable
 					full screen mode using the "view" tab.
+				</p>
+				<h3>Additional Features</h3>
+				<h4>Collapsable menus</h4>
+				<p>
+					Each experiment has a collapsable options section. To collapse an options menu,
+					click on the collapse button. This button is circular and has a white arrow
+					inside of it. It portrudes from the options section onto the graph.
+					<br />
+					collapsing an options will resize the graph section to fit the whole window.
 				</p>
 			</Dialog>
 		</div>
