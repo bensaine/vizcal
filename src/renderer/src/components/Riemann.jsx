@@ -26,7 +26,7 @@ import { ExperimentContext } from './Experiment.jsx'
  * @returns {React.Component} - The Riemann component.
  *
  * @example
- *<Riemann payload={{equation: 'x^2', range: [-10,10], direction:'left', subdivisions: 500}} visible={true} setPayload={setPayload} />
+ * <Riemann payload={{equation: 'x^2', range: [-10,10], direction:'left', subdivisions: 500}} visible={true} setPayload={setPayload} />
  */
 export const Riemann = ({ payload, visible, setPayload }) => {
 	/**
@@ -79,6 +79,7 @@ export const Riemann = ({ payload, visible, setPayload }) => {
 			subdivisions: subdivisions
 		})
 	}, [equation, range, direction, subdivisions])
+
 	/**
 	 * Renders the options for the component.
 	 *
@@ -131,6 +132,7 @@ export const Riemann = ({ payload, visible, setPayload }) => {
 			</>
 		)
 	}
+
 	/**
 	 * Renders the graph for the component.
 	 *
@@ -202,6 +204,7 @@ export const Riemann = ({ payload, visible, setPayload }) => {
 			</>
 		)
 	}
+	
 	/**
 	 * Renders the help section of the Riemann Component.
 	 * This function returns a React fragment containing an explanation of Riemann Sums and a step-by-step guide on how to use the interactive features.

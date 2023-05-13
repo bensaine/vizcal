@@ -1,10 +1,13 @@
 import { X } from 'react-feather'
 import styles from './Dialog.module.scss'
+
 /**
  * A dialog component that can be opened or closed by changing the value of the `open` prop.
  * It displays a title, content and a close button. It also includes a backdrop that can be clicked
  * to close the dialog.
  *
+ * @author Benjamin Saine
+ * @component
  * @param {Object} props - The props object.
  * @param {string} props.title - The title of the dialog.
  * @param {JSX.Element} props.children - The content to be displayed in the dialog.
