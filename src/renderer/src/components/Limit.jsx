@@ -6,7 +6,7 @@ import { ExperimentBase } from './ExperimentBase/ExperimentBase'
 import { MathInput } from './Controls/MathInput'
 import { Slider } from './Controls/Slider/Slider'
 import { ExpressionListener } from './ExpressionListener.jsx'
-import { Context } from './Colors/ContextProvider.jsx'
+import { ExperimentContext } from './Experiment.jsx'
 
 /**
  * Component for the Limit experiment.
@@ -26,14 +26,14 @@ import { Context } from './Colors/ContextProvider.jsx'
  * @example
  * <Limit payload={{equation: 'x^2', xPoint: 2, epsilon: 0.1, delta: 0.1}} visible={true} setPayload={setPayload} />
  */
-export const Limit = ({ payload, visible, setPayload }) => {
+export const Limit = ({ payload, visible, setPayload, colors }) => {
 	const [equation, setEquation] = useState(payload.equation ?? '')
 	const [xPoint, setXPoint] = useState(payload.xPoint ?? 0)
 	const [epsilon, setEpsilon] = useState(payload.epsilon ?? 0.1)
 	const [delta, setDelta] = useState(payload.delta ?? 0.1)
 	const [limit, setLimit] = useState(NaN)
 
-	const ctx = useContext(Context)
+	const experimentContext = useContext(ExperimentContext)
 
 	/**
 	 * Updates the payload state whenever there is a change in the state of the component.
@@ -117,7 +117,7 @@ export const Limit = ({ payload, visible, setPayload }) => {
 				<Expression
 					id="function"
 					latex={'f\\left(x\\right)=' + equation}
-					color={ctx.limit.functionColorLimit}
+					color={experimentContext.colors.function}
 				/>
 				{equation != '' && (
 					<>
@@ -150,7 +150,7 @@ export const Limit = ({ payload, visible, setPayload }) => {
 							lineStyle="DASHED"
 							lineWidth={1.5}
 							lineOpacity={0.6}
-							color={ctx.limit.epsilonColor}
+							color={experimentContext.colors.epsilon}
 						/>
 						<Expression
 							id="yUpLine"
@@ -158,7 +158,7 @@ export const Limit = ({ payload, visible, setPayload }) => {
 							lineStyle="DASHED"
 							lineWidth={1.5}
 							lineOpacity={0.6}
-							color={ctx.limit.epsilonColor}
+							color={experimentContext.colors.epsilon}
 						/>
 						<Expression id="xLeft" latex={'x_{left}=x_{point}-d_{elta}'} />
 						<Expression id="xRight" latex={'x_{right}=x_{point}+d_{elta}'} />
@@ -168,7 +168,7 @@ export const Limit = ({ payload, visible, setPayload }) => {
 							lineStyle="DASHED"
 							lineWidth={1.5}
 							lineOpacity={0.6}
-							color={ctx.limit.deltaColor}
+							color={experimentContext.colors.delta}
 						/>
 						<Expression
 							id="xRightLine"
@@ -176,7 +176,7 @@ export const Limit = ({ payload, visible, setPayload }) => {
 							lineStyle="DASHED"
 							lineWidth={1}
 							lineOpacity={0.6}
-							color={ctx.limit.deltaColor}
+							color={experimentContext.colors.delta}
 						/>
 						<Expression id="yUpDelta" latex={'y_{upDelta}=f\\left(x_{right}\\right)'} />
 						<Expression
@@ -262,8 +262,6 @@ export const Limit = ({ payload, visible, setPayload }) => {
 			graphSlot={renderGraph}
 			helpSlot={renderHelp}
 			output={limit}
-			colorArray={['Function', 'Delta Lines', 'Epsilon Lines']}
-			experiment="Limit"
 		/>
 	) : null
 }

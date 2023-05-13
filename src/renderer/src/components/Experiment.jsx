@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, createContext } from 'react'
 import { experiments } from '../data/experiments'
 import useExperiment from '../hooks/useExperiment'
 
@@ -28,28 +28,46 @@ export const Experiment = ({ id, visible }) => {
 	// Get the experiment data based on the id
 	const { experiment, loading, error } = useExperiment(id)
 	const [payload, setPayload] = useState({})
+	const [colors, setColors] = useState({})
 
 	// Add a listener to update the payload in local storage whenever it changes (used when saving to file)
 	useEffect(() => {
 		document.addEventListener('updatePayload:' + id, (e) => {
-			localStorage.setItem(id, JSON.stringify({ ...experiment, payload: payload }))
+			localStorage.setItem(id, JSON.stringify({ ...experiment, payload, colors }))
 		})
 
 		return () => {
 			document.removeEventListener('updatePayload:' + id, (e) =>
-				localStorage.setItem(id, JSON.stringify({ ...experiment, payload: payload }))
+				localStorage.setItem(id, JSON.stringify({ ...experiment, payload, colors }))
 			)
 		}
-	}, [id, payload])
+	}, [id, payload, colors])
+
+	useEffect(() => {
+		if (!experiment) return
+		setColors(experiment.colors)
+	}, [experiment])
 
 	if (loading) return null
 
 	if (error) return <div>Error: {error.message}</div>
 
 	// Get the experiment component based on the experiment type
-	return React.createElement(experiments.find((exp) => exp.type == experiment.type).component, {
-		payload: experiment.payload,
-		visible,
-		setPayload
-	})
+	return (
+		<ExperimentContext.Provider
+			value={{
+				experiment,
+				colors,
+				setColors: (colors) => setColors({ ...colors })
+			}}
+		>
+			{React.createElement(experiments.find((exp) => exp.type == experiment.type).component, {
+				payload: experiment.payload,
+				visible,
+				setPayload
+			})}
+		</ExperimentContext.Provider>
+	)
 }
+
+export const ExperimentContext = createContext({})

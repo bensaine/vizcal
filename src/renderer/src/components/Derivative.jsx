@@ -6,8 +6,8 @@ import { useContext, useEffect, useState } from 'react'
 import { Expression } from 'desmos-react'
 import { Slider } from './Controls/Slider/Slider'
 import { Dropdown } from './Controls/Dropdown'
-import { Context } from './Colors/ContextProvider.jsx'
 import { ExpressionListener } from './ExpressionListener.jsx'
+import { ExperimentContext } from './Experiment.jsx'
 
 /**
  * Component for the Derivative/Slope experiment.
@@ -35,7 +35,7 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 	 */
 	const [equation, setEquation] = useState(payload.equation ?? '')
 
-	const ctx = useContext(Context)
+	const experimentContext = useContext(ExperimentContext)
 
 	/**
 	 * The X point state.
@@ -153,7 +153,11 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 			<>
 				<Expression id="x" latex={'x_{point}=' + xPoint} />
 				<Expression id="d" latex={'d_{eltaX}=' + runRiseVal} />
-				<Expression id="function" latex={'f\\left(x\\right)=' + equation} color={ctx.derivative.functionColorDerivative} />
+				<Expression
+					id="function"
+					latex={'f\\left(x\\right)=' + equation}
+					color={experimentContext.colors.function}
+				/>
 				{/*adds the second derivative function on the graph when selected through the dropdwon*/}
 				{derivOrder == 'Second' && (
 					<Expression
@@ -180,7 +184,7 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 							? 'x_{2}=x_{point}+d_{eltaX}\\left\\{f\\left(x_{point}+d_{eltaX}\\right)<y<f\\left(x_{point}\\right)\\right\\}'
 							: 'x_{2}=x_{point}+d_{eltaX}\\left\\{g\\left(x_{point}+d_{eltaX}\\right)<y<g\\left(x_{point}\\right)\\right\\}'
 					}
-					color={ctx.derivative.runRiseColor}
+					color={experimentContext.colors.runRise}
 				/>
 				<Expression
 					id="run"
@@ -190,7 +194,7 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 							? 'y_{2}=f\\left(x_{point}\\right)\\left\\{x_{point}+d_{eltaX}>x>x_{point}\\right\\}'
 							: 'y_{2}=g\\left(x_{point}\\right)\\left\\{x_{point}+d_{eltaX}>x>x_{point}\\right\\}'
 					}
-					color={ctx.derivative.runRiseColor}
+					color={experimentContext.colors.runRise}
 				/>
 				<Expression
 					id="rise"
@@ -200,7 +204,7 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 							? 'x_{1}=x_{point}+d_{eltaX}\\left\\{f\\left(x_{point}\\right)<y<f\\left(x_{point}+d_{eltaX}\\right)\\right\\}'
 							: 'x_{1}=x_{point}+d_{eltaX}\\left\\{g\\left(x_{point}\\right)<y<g\\left(x_{point}+d_{eltaX}\\right)\\right\\}'
 					}
-					color={ctx.derivative.runRiseColor}
+					color={experimentContext.colors.runRise}
 				/>
 				<Expression
 					id="point"
@@ -280,8 +284,6 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 			optionsSlot={renderOptions}
 			graphSlot={renderGraph}
 			helpSlot={renderHelp}
-			colorArray={['Function', 'Run & Rise']}
-			experiment="Derivative"
 			output={slope}
 		/>
 	) : null

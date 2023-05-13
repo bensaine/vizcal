@@ -31,7 +31,7 @@ import { Colors } from '../Colors/Colors'
  *
  * @returns {JSX.Element} The rendered ExperimentBase component.
  */
-export const ExperimentBase = ({ optionsSlot, graphSlot, helpSlot, output, colorArray, experiment }) => {
+export const ExperimentBase = ({ optionsSlot, graphSlot, helpSlot, output }) => {
 	const [helpOpen, setHelpOpen] = useState(false)
 	const [isCollapsed, setIsCollapsed] = useState(false)
 	const [color] = useState('black')
@@ -68,7 +68,7 @@ export const ExperimentBase = ({ optionsSlot, graphSlot, helpSlot, output, color
 				>
 					{graphSlot(color)}
 				</GraphingCalculator>
-				<Colors colorArray={colorArray} experiment={experiment}></Colors>
+				<Colors />
 			</section>
 			<Dialog open={helpOpen} title={'Help'} onClose={() => setHelpOpen(false)}>
 				{helpSlot()}

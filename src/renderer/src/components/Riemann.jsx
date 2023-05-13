@@ -7,7 +7,7 @@ import { ExperimentBase } from './ExperimentBase/ExperimentBase'
 import { MathInput } from './Controls/MathInput'
 import { Slider } from './Controls/Slider/Slider'
 import { ExpressionListener } from './ExpressionListener.jsx'
-import { Context } from './Colors/ContextProvider.jsx'
+import { ExperimentContext } from './Experiment.jsx'
 
 /**
  * Component for the Riemann Sum experiment.
@@ -64,7 +64,7 @@ export const Riemann = ({ payload, visible, setPayload }) => {
 	 */
 	const [area, setArea] = useState(NaN)
 
-	const ctx = useContext(Context)
+	const experimentContext = useContext(ExperimentContext)
 
 	/**
 	 * Updates the payload state whenever there is a change in the state of the component.
@@ -154,7 +154,11 @@ export const Riemann = ({ payload, visible, setPayload }) => {
 					latex={'s\\left(x\\right)=a+w\\left(x+c\\right)'}
 					hidden={true}
 				/>
-				<Expression id="function" latex={'f\\left(x\\right)=' + equation} color={ctx.riemann.functionColorRiemann}/>
+				<Expression
+					id="function"
+					latex={'f\\left(x\\right)=' + equation}
+					color={experimentContext.colors.function}
+				/>
 				<Expression
 					id="nOfX"
 					latex={
@@ -174,14 +178,14 @@ export const Riemann = ({ payload, visible, setPayload }) => {
 					latex={
 						'0\\le y\\le f\\left(s_{x}\\left(x\\right)\\right)\\left\\{a\\le x\\le b\\right\\}'
 					}
-					color={ctx.riemann.riemannColorPos}
+					color={experimentContext.colors.rectanglesPos}
 				/>
 				<Expression
 					id="areaNeg"
 					latex={
 						'f\\left(s_{x}\\left(x\\right)\\right)\\le y\\le0\\left\\{a\\le x\\le b\\right\\}'
 					}
-					color={ctx.riemann.riemannColorNeg}
+					color={experimentContext.colors.rectanglesNeg}
 				/>
 				<Expression
 					id="areaValue"
@@ -244,8 +248,6 @@ export const Riemann = ({ payload, visible, setPayload }) => {
 			graphSlot={renderGraph}
 			helpSlot={renderHelp}
 			output={area}
-			colorArray={['Function', 'Rectangles Positive', 'Rectangles Negative']}
-			experiment="Riemann"
 		/>
 	) : null
 }

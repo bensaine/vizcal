@@ -6,7 +6,7 @@ import { ExperimentBase } from './ExperimentBase/ExperimentBase'
 import { MathInput } from './Controls/MathInput'
 import { Slider } from './Controls/Slider/Slider'
 import { ExpressionListener } from './ExpressionListener.jsx'
-import { Context } from './Colors/ContextProvider.jsx'
+import { ExperimentContext } from './Experiment.jsx'
 
 /**
  * Component for the Arc experiment.
@@ -32,7 +32,7 @@ export const Arc = ({ payload, visible, setPayload }) => {
 	const [n, setN] = useState(payload.n ?? 0)
 	const [length, setLength] = useState(NaN)
 
-	const ctx = useContext(Context)
+	const experimentContext = useContext(ExperimentContext)
 
 	useEffect(() => {
 		setPayload({
@@ -103,7 +103,7 @@ export const Arc = ({ payload, visible, setPayload }) => {
 				<Expression
 					id="function"
 					latex={'f(x)=' + equation}
-					color={ctx.arc.functionColorArc}
+					color={experimentContext.colors.function}
 				/>
 				<Expression id="listofn" latex={'l_{istofN}=\\left[0,1,...,n\\right]'} />
 				<Expression id="delx" latex={'d_{elX}=\\frac{b-a}{n}'} />
@@ -135,7 +135,7 @@ export const Arc = ({ payload, visible, setPayload }) => {
 					id="lines"
 					latex={'\\left(x_{points},f\\left(x_{points}\\right)\\right)'}
 					lines
-					color={ctx.arc.arcColor}
+					color={experimentContext.colors.arcLines}
 				/>
 				<ExpressionListener latex={'e_{stimation}'} onExpressionChange={setLength} />
 			</>
@@ -212,8 +212,6 @@ export const Arc = ({ payload, visible, setPayload }) => {
 			graphSlot={renderGraph}
 			helpSlot={renderHelp}
 			output={length}
-			colorArray={['Function', 'Arc Lines']}
-			experiment="Arc"
 		/>
 	) : null
 }
