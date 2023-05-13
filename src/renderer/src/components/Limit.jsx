@@ -26,7 +26,7 @@ import { ExperimentContext } from './Experiment.jsx'
  * @example
  * <Limit payload={{equation: 'x^2', xPoint: 2, epsilon: 0.1, delta: 0.1}} visible={true} setPayload={setPayload} />
  */
-export const Limit = ({ payload, visible, setPayload, colors }) => {
+export const Limit = ({ payload, visible, setPayload }) => {
 	const [equation, setEquation] = useState(payload.equation ?? '')
 	const [xPoint, setXPoint] = useState(payload.xPoint ?? 0)
 	const [epsilon, setEpsilon] = useState(payload.epsilon ?? 0.1)

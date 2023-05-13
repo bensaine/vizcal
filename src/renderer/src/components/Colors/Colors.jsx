@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { ColorItems } from './ColorItem'
 import styles from './Colors.module.scss'
 import { Tool, X } from 'react-feather'

@@ -1,6 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react'
+import { useState } from 'react'
 import styles from './Colors.module.scss'
-import { X } from 'react-feather'
 import { Palette } from './Palette'
 
 /**
