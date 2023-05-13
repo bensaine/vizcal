@@ -15,6 +15,8 @@ import { ExperimentContext } from './Experiment.jsx'
  * This component allows users to visualize Riemann sums and approximations of definite integrals
  * using sliders to change the function, range, number of subdivisions, and direction.
  *
+ * @author Mervin Tounou
+ * @component
  * @param {Object} props - The props object.
  * @param {Object} props.payload - The payload object containing the state of the experiment.
  * @param {string} props.payload.equation - The function expression.
