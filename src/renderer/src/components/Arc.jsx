@@ -29,7 +29,9 @@ import { ExperimentContext } from './Experiment.jsx'
 export const Arc = ({ payload, visible, setPayload }) => {
 	const [equation, setEquation] = useState(payload.equation ?? '')
 	const [range, setRange] = useState(payload.range ?? [0, 10])
-	const [numberOfSubdivisions, setNumberOfSubdivisions] = useState(payload.numberOfSubdivisions ?? 0)
+	const [numberOfSubdivisions, setNumberOfSubdivisions] = useState(
+		payload.numberOfSubdivisions ?? 0
+	)
 	const [length, setLength] = useState(NaN)
 
 	const experimentContext = useContext(ExperimentContext)

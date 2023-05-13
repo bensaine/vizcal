@@ -7,7 +7,7 @@ import styles from './ExperimentCarousel.module.scss'
  * @component ExperimentSlide
  * @param {string} displayName - The display name of the slide.
  * @param {string} image - The URL of the slide's image.
- * @returns {JSX.Element} The JSX element representing the experiment slide.
+ * @returns {ReactElement} The JSX element representing the experiment slide.
  */
 export const ExperimentSlide = ({ displayName, image }) => {
 	return (

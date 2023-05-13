@@ -17,8 +17,8 @@ import { ExperimentContext } from './Experiment.jsx'
  * choose rise and run values, and choose to see the first or second derivative. The component also includes
  * a help section to guide users on how to use the interactive features.
  *
- * @component
  * @author Wassim Yahia
+ * @component
  * @param {Object} props
  * @param {Object} props.payload - The initial payload containing function, x point, rise and run value, and derivative order. Used if the experiment is opened from a file.
  * @param {boolean} props.visible - Determines whether the component is visible or not.

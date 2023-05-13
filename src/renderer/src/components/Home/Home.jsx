@@ -13,7 +13,7 @@ import { experiments } from '../../data/experiments.js'
  * @param {Object} props - The component props.
  * @param {Function} props.createNewExperiment - A callback function to create a new experiment.
  *
- * @returns {JSX.Element} The Home component.
+ * @returns {ReactElement} The Home component.
  */
 export const Home = ({ createNewExperiment }) => {
 	const handleLoadExisting = () => {
