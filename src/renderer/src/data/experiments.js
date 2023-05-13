@@ -7,6 +7,14 @@ import slope from '../assets/images/icons/slope.svg'
 import riemann from '../assets/images/icons/riemann.svg'
 import arc from '../assets/images/icons/arc.svg'
 
+/**
+ * Experiments
+ * Defines the experiments that are available to the user.
+ *
+ * @author Benjamin Saine
+ * @typedef {Object} Experiment
+ *
+ */
 export const experiments = [
 	{
 		type: 'limit',
