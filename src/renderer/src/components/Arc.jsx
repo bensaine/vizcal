@@ -28,8 +28,8 @@ import { ExperimentContext } from './Experiment.jsx'
  */
 export const Arc = ({ payload, visible, setPayload }) => {
 	const [equation, setEquation] = useState(payload.equation ?? '')
-	const [x, setX] = useState(payload.x ?? [0, 10])
-	const [n, setN] = useState(payload.n ?? 0)
+	const [range, setRange] = useState(payload.range ?? [0, 10])
+	const [numberOfSubdivisions, setNumberOfSubdivisions] = useState(payload.numberOfSubdivisions ?? 0)
 	const [length, setLength] = useState(NaN)
 
 	const experimentContext = useContext(ExperimentContext)
@@ -37,10 +37,10 @@ export const Arc = ({ payload, visible, setPayload }) => {
 	useEffect(() => {
 		setPayload({
 			equation: equation,
-			x: x,
-			n: n
+			range: range,
+			numberOfSubdivisions: numberOfSubdivisions
 		})
-	}, [equation, x, n])
+	}, [equation, range, numberOfSubdivisions])
 
 	/**
 	 * Renders the options section of the Arc Length component.
@@ -65,8 +65,8 @@ export const Arc = ({ payload, visible, setPayload }) => {
 				<Slider
 					id="numberSubdivisions"
 					label="Number of Subdivisions"
-					value={n}
-					onChange={setN}
+					value={numberOfSubdivisions}
+					onChange={setNumberOfSubdivisions}
 					min={1}
 					max={100}
 					step={1}
@@ -75,8 +75,8 @@ export const Arc = ({ payload, visible, setPayload }) => {
 				<Slider
 					id="lengthRange"
 					label="Length Range"
-					value={x}
-					onChange={setX}
+					value={range}
+					onChange={setRange}
 					min={-20}
 					max={20}
 					step={0.01}
@@ -97,9 +97,9 @@ export const Arc = ({ payload, visible, setPayload }) => {
 	const renderGraph = () => {
 		return (
 			<>
-				<Expression id="a" latex={'a=' + x[0]} />
-				<Expression id="b" latex={'b=' + x[1]} />
-				<Expression id="n" latex={'n=' + n} />
+				<Expression id="a" latex={'a=' + range[0]} />
+				<Expression id="b" latex={'b=' + range[1]} />
+				<Expression id="n" latex={'n=' + numberOfSubdivisions} />
 				<Expression
 					id="function"
 					latex={'f(x)=' + equation}
