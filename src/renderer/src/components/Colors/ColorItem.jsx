@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import styles from './Colors.module.scss'
 import { X } from 'react-feather'
+import { Palette } from './Palette'
 
 /**
  * Responsible to render the different option buttons as well as the list of color options.
@@ -14,7 +15,6 @@ import { X } from 'react-feather'
  */
 export const ColorItems = ({ id, title, color, setColor }) => {
 	const [open, setOpen] = useState(false)
-	const COLORS = ['#ffffff', '#c74440', '#ffc0cb', '#388c46', '#6042a6', '#fa7e19', '#000000']
 
 	return (
 		<div className={styles.colorItem}>
@@ -26,21 +26,7 @@ export const ColorItems = ({ id, title, color, setColor }) => {
 			></div>
 
 			{/* popup palette selector */}
-			{open && (
-				<div className={styles.palette}>
-					{COLORS.map((color) => (
-						<div
-							key={color}
-							className={styles.color}
-							style={{ backgroundColor: color }}
-							onClick={() => {
-								setColor(id, color)
-								setOpen(false)
-							}}
-						></div>
-					))}
-				</div>
-			)}
+			{open && <Palette setColor={(color) => setColor(id, color)} setOpen={setOpen} />}
 		</div>
 	)
 }
