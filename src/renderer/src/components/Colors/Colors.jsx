@@ -43,7 +43,11 @@ export const Colors = () => {
 	return (
 		<div className={styles.outerColorContainer}>
 			{!open && (
-				<span className={styles.colorMenuButton} onClick={() => setOpen(true)} data-testid="wrenchButton">
+				<span
+					className={styles.colorMenuButton}
+					onClick={() => setOpen(true)}
+					data-testid="wrenchButton"
+				>
 					<Tool />
 				</span>
 			)}

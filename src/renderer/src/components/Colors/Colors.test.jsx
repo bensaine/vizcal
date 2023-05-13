@@ -1,5 +1,5 @@
-import { queryByTestId, render } from '@testing-library/react'
-import { describe, it, vi, expect } from 'vitest'
+import { render } from '@testing-library/react'
+import { describe, it, expect } from 'vitest'
 import { Colors } from './Colors'
 import { ExperimentContext } from '../Experiment'
 import { act } from 'react-dom/test-utils'
