@@ -1,0 +1,96 @@
+.outerColorContainer {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	padding: 0.5rem;
+	border-top-left-radius: 1rem;
+	background-color: var(--bg-800);
+	display: flex;
+	flex-direction: column;
+	border: 3px solid var(--bg-700);
+	border-bottom: none;
+	border-right: none;
+	cursor: pointer;
+}
+
+.colorSelectorTitle {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	padding: 0.5rem;
+	font-weight: 700;
+}
+
+.optionsContainer {
+	align-items: center;
+	justify-content: center;
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+}
+
+.closeButton {
+	position: absolute;
+	top: -1rem;
+	left: -1rem;
+	aspect-ratio: 1;
+	padding: 0.25rem;
+	cursor: pointer;
+	border-radius: 50%;
+	background-color: var(--bg-800);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 3px solid var(--bg-700);
+}
+
+.colorItem {
+	width: 100%;
+	position: relative;
+	transition: all 0.5s ease-in-out;
+	display: flex;
+	flex-direction: row;
+	padding: 0.5rem;
+	gap: 1rem;
+	align-items: center;
+}
+
+.optionButtonTitle {
+	transition: all 0.3s ease-in-out;
+	font-size: 1rem;
+	flex-grow: 1;
+}
+
+.color {
+	width: 1.5rem;
+	aspect-ratio: 1;
+	border-radius: 50%;
+	cursor: pointer;
+	border: 2px solid #fff;
+}
+
+[data-theme='Light'] .color {
+	filter: invert(1);
+}
+
+.palette {
+	position: absolute;
+	background-color: var(--bg-700);
+	padding: 1rem;
+	border-radius: 1rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	right: -0.5rem;
+	top: -600%;
+}
+
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}

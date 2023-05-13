@@ -7,6 +7,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { Experiment } from './components/Experiment'
 import { Settings } from './components/Settings/Settings'
 import { Dialog } from './components/Dialog/Dialog'
+import { experiments } from './data/experiments'
 
 /**
  * The main application component. It manages the creation, focus, and closure of experiments.
@@ -39,7 +40,12 @@ function App() {
 	// Create a new experiment when the user clicks the "New Experiment" button
 	const createExperiment = (type) => {
 		const id = uuidv4()
-		localStorage.setItem(id, JSON.stringify({ type: type, payload: {} }))
+		const colors = experiments.find((e) => e.type == type).colors
+		const colorsObj = Object.entries(colors).reduce((obj, [key, value]) => {
+			obj[key] = value.default
+			return obj
+		}, {})
+		localStorage.setItem(id, JSON.stringify({ type: type, payload: {}, colors: colorsObj }))
 		setOpenExperiments([...openExperiments, id])
 		setFocusedExperiment(id)
 	}

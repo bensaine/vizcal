@@ -1,12 +1,13 @@
 import '../../jquery.js'
 import '../../desmos.js'
 import { Expression } from 'desmos-react'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { Dropdown } from './Controls/Dropdown'
 import { ExperimentBase } from './ExperimentBase/ExperimentBase'
 import { MathInput } from './Controls/MathInput'
 import { Slider } from './Controls/Slider/Slider'
 import { ExpressionListener } from './ExpressionListener.jsx'
+import { ExperimentContext } from './Experiment.jsx'
 
 /**
  * Component for the Riemann Sum experiment.
@@ -62,6 +63,8 @@ export const Riemann = ({ payload, visible, setPayload }) => {
 	 * @type {number}
 	 */
 	const [area, setArea] = useState(NaN)
+
+	const experimentContext = useContext(ExperimentContext)
 
 	/**
 	 * Updates the payload state whenever there is a change in the state of the component.
@@ -151,7 +154,11 @@ export const Riemann = ({ payload, visible, setPayload }) => {
 					latex={'s\\left(x\\right)=a+w\\left(x+c\\right)'}
 					hidden={true}
 				/>
-				<Expression id="function" latex={'f\\left(x\\right)=' + equation} />
+				<Expression
+					id="function"
+					latex={'f\\left(x\\right)=' + equation}
+					color={experimentContext.colors.function}
+				/>
 				<Expression
 					id="nOfX"
 					latex={
@@ -171,12 +178,14 @@ export const Riemann = ({ payload, visible, setPayload }) => {
 					latex={
 						'0\\le y\\le f\\left(s_{x}\\left(x\\right)\\right)\\left\\{a\\le x\\le b\\right\\}'
 					}
+					color={experimentContext.colors.rectanglesPos}
 				/>
 				<Expression
 					id="areaNeg"
 					latex={
 						'f\\left(s_{x}\\left(x\\right)\\right)\\le y\\le0\\left\\{a\\le x\\le b\\right\\}'
 					}
+					color={experimentContext.colors.rectanglesNeg}
 				/>
 				<Expression
 					id="areaValue"

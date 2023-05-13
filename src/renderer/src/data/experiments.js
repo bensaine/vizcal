@@ -13,27 +13,75 @@ export const experiments = [
 		displayName: 'Limit',
 		category: 'Limits',
 		image: eps,
-		component: Limit
+		component: Limit,
+		colors: {
+			function: {
+				title: 'Function',
+				default: '#ffffff'
+			},
+			delta: {
+				title: 'Delta Lines',
+				default: '#ffffff'
+			},
+			epsilon: {
+				title: 'Epsilon Lines',
+				default: '#ffffff'
+			}
+		}
 	},
 	{
 		type: 'slope',
 		displayName: 'Derivative',
 		category: 'Derivatives',
 		image: slope,
-		component: Derivative
+		component: Derivative,
+		colors: {
+			function: {
+				title: 'Function',
+				default: '#ffffff'
+			},
+			runRise: {
+				title: 'Run & Rise',
+				default: '#ffffff'
+			}
+		}
 	},
 	{
 		type: 'riemannSum',
 		displayName: 'Riemann Sum',
 		category: 'Area Under Curve',
 		image: riemann,
-		component: Riemann
+		component: Riemann,
+		colors: {
+			function: {
+				title: 'Function',
+				default: '#ffffff'
+			},
+			rectanglesPos: {
+				title: 'Rectangles Positive',
+				default: '#0000ff'
+			},
+			rectanglesNeg: {
+				title: 'Rectangles Negative',
+				default: '#ff0000'
+			}
+		}
 	},
 	{
 		type: 'arcLength',
 		displayName: 'Arc Length',
 		category: 'Arc Length',
 		image: arc,
-		component: Arc
+		component: Arc,
+		colors: {
+			function: {
+				title: 'Function',
+				default: '#ffffff'
+			},
+			arcLines: {
+				title: 'Arc Lines',
+				default: '#ffa000'
+			}
+		}
 	}
 ]

@@ -7,6 +7,7 @@ import { HelpCircle, ArrowLeftCircle, ArrowRightCircle } from 'react-feather'
 import '../../assets/desmos.css'
 import { GraphingCalculator } from 'desmos-react'
 import { NumericalOutput } from '../NumericalOutput/NumericalOutput'
+import { Colors } from '../Colors/Colors'
 
 /**
  * This is a base component for experiments. It provides a collapsible options section on the left,
@@ -33,6 +34,7 @@ import { NumericalOutput } from '../NumericalOutput/NumericalOutput'
 export const ExperimentBase = ({ optionsSlot, graphSlot, helpSlot, output }) => {
 	const [helpOpen, setHelpOpen] = useState(false)
 	const [isCollapsed, setIsCollapsed] = useState(false)
+	const [color] = useState('black')
 
 	return (
 		<div className={styles.container}>
@@ -64,8 +66,9 @@ export const ExperimentBase = ({ optionsSlot, graphSlot, helpSlot, output }) => 
 					border={false}
 					invertedColors={localStorage.getItem('theme') === 'Light'}
 				>
-					{graphSlot()}
+					{graphSlot(color)}
 				</GraphingCalculator>
+				<Colors />
 			</section>
 			<Dialog open={helpOpen} title={'Help'} onClose={() => setHelpOpen(false)}>
 				{helpSlot()}

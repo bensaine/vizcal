@@ -1,11 +1,12 @@
 import '../../jquery.js'
 import '../../desmos.js'
 import { Expression } from 'desmos-react'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { ExperimentBase } from './ExperimentBase/ExperimentBase'
 import { MathInput } from './Controls/MathInput'
 import { Slider } from './Controls/Slider/Slider'
 import { ExpressionListener } from './ExpressionListener.jsx'
+import { ExperimentContext } from './Experiment.jsx'
 
 /**
  * Component for the Limit experiment.
@@ -25,12 +26,14 @@ import { ExpressionListener } from './ExpressionListener.jsx'
  * @example
  * <Limit payload={{equation: 'x^2', xPoint: 2, epsilon: 0.1, delta: 0.1}} visible={true} setPayload={setPayload} />
  */
-export const Limit = ({ payload, visible, setPayload }) => {
+export const Limit = ({ payload, visible, setPayload, colors }) => {
 	const [equation, setEquation] = useState(payload.equation ?? '')
 	const [xPoint, setXPoint] = useState(payload.xPoint ?? 0)
 	const [epsilon, setEpsilon] = useState(payload.epsilon ?? 0.1)
 	const [delta, setDelta] = useState(payload.delta ?? 0.1)
 	const [limit, setLimit] = useState(NaN)
+
+	const experimentContext = useContext(ExperimentContext)
 
 	/**
 	 * Updates the payload state whenever there is a change in the state of the component.
@@ -111,7 +114,11 @@ export const Limit = ({ payload, visible, setPayload }) => {
 	const renderGraph = () => {
 		return (
 			<>
-				<Expression id="function" latex={'f\\left(x\\right)=' + equation} color="#fff" />
+				<Expression
+					id="function"
+					latex={'f\\left(x\\right)=' + equation}
+					color={experimentContext.colors.function}
+				/>
 				{equation != '' && (
 					<>
 						<Expression id="x" latex={'x_{point}=' + xPoint} />
@@ -143,7 +150,7 @@ export const Limit = ({ payload, visible, setPayload }) => {
 							lineStyle="DASHED"
 							lineWidth={1.5}
 							lineOpacity={0.6}
-							color="#fff"
+							color={experimentContext.colors.epsilon}
 						/>
 						<Expression
 							id="yUpLine"
@@ -151,7 +158,7 @@ export const Limit = ({ payload, visible, setPayload }) => {
 							lineStyle="DASHED"
 							lineWidth={1.5}
 							lineOpacity={0.6}
-							color="#fff"
+							color={experimentContext.colors.epsilon}
 						/>
 						<Expression id="xLeft" latex={'x_{left}=x_{point}-d_{elta}'} />
 						<Expression id="xRight" latex={'x_{right}=x_{point}+d_{elta}'} />
@@ -161,7 +168,7 @@ export const Limit = ({ payload, visible, setPayload }) => {
 							lineStyle="DASHED"
 							lineWidth={1.5}
 							lineOpacity={0.6}
-							color="#fff"
+							color={experimentContext.colors.delta}
 						/>
 						<Expression
 							id="xRightLine"
@@ -169,7 +176,7 @@ export const Limit = ({ payload, visible, setPayload }) => {
 							lineStyle="DASHED"
 							lineWidth={1}
 							lineOpacity={0.6}
-							color="#fff"
+							color={experimentContext.colors.delta}
 						/>
 						<Expression id="yUpDelta" latex={'y_{upDelta}=f\\left(x_{right}\\right)'} />
 						<Expression
