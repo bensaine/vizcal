@@ -4,6 +4,28 @@
 
 Visualizing concepts is a great way to learn them. It is also a great way to teach them. Vizcal is a tool to help you visualize Calculus concepts. Find visualization tools for Limits, Derivatives, Riemman Sums, and Arc Length. Made using Electron, Vite, and React - see [evite](https://evite.netlify.app/).
 
+## Demo
+
+### Loading a file from an existing file in home menu
+
+![Loading from existing file gif](https://i.gyazo.com/4782ef7bebbd3828de44d409a92bc067.gif)
+
+### Customizable parameters
+
+![Customizable parameters gif](https://i.gyazo.com/407c0b1e968b8f459035f458fb979448.gif)
+
+### Two different themes
+
+![Different themes gif](https://i.gyazo.com/cb705a5b92eedca1ba086975e67e32a6.gif)
+
+### Customizable colors
+
+![Customizable colors gif](https://i.gyazo.com/407c0b1e968b8f459035f458fb979448.gif)
+
+### Customizable font
+
+![Customizable font gif](https://i.gyazo.com/d3fe3b3920b080a558f89ac74dde6c1d.gif)
+
 ## Math Concepts
 
 ### Limit
