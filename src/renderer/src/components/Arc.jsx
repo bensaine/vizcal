@@ -28,8 +28,8 @@ import { ExperimentContext } from './Experiment.jsx'
  */
 export const Arc = ({ payload, visible, setPayload }) => {
 	const [equation, setEquation] = useState(payload.equation ?? '')
-	const [x, setX] = useState(payload.x ?? [0, 10])
-	const [n, setN] = useState(payload.n ?? 0)
+	const [range, setRange] = useState(payload.range ?? [0, 10])
+	const [numberOfSubdivisions, setNumberOfSubdivisions] = useState(payload.numberOfSubdivisions ?? 0)
 	const [length, setLength] = useState(NaN)
 
 	const experimentContext = useContext(ExperimentContext)
@@ -37,10 +37,10 @@ export const Arc = ({ payload, visible, setPayload }) => {
 	useEffect(() => {
 		setPayload({
 			equation: equation,
-			x: x,
-			n: n
+			range: range,
+			numberOfSubdivisions: numberOfSubdivisions
 		})
-	}, [equation, x, n])
+	}, [equation, range, numberOfSubdivisions])
 
 	/**
 	 * Renders the options section of the Arc Length component.
@@ -65,8 +65,8 @@ export const Arc = ({ payload, visible, setPayload }) => {
 				<Slider
 					id="numberSubdivisions"
 					label="Number of Subdivisions"
-					value={n}
-					onChange={setN}
+					value={numberOfSubdivisions}
+					onChange={setNumberOfSubdivisions}
 					min={1}
 					max={100}
 					step={1}
@@ -75,8 +75,8 @@ export const Arc = ({ payload, visible, setPayload }) => {
 				<Slider
 					id="lengthRange"
 					label="Length Range"
-					value={x}
-					onChange={setX}
+					value={range}
+					onChange={setRange}
 					min={-20}
 					max={20}
 					step={0.01}
@@ -97,38 +97,38 @@ export const Arc = ({ payload, visible, setPayload }) => {
 	const renderGraph = () => {
 		return (
 			<>
-				<Expression id="a" latex={'a=' + x[0]} />
-				<Expression id="b" latex={'b=' + x[1]} />
-				<Expression id="n" latex={'n=' + n} />
+				<Expression id="leftRange" latex={'l_{eftRange}=' + range[0]} />
+				<Expression id="rightRange" latex={'r_{ightRange}=' + range[1]} />
+				<Expression id="numberOfSubdivisions" latex={'n_{umberOfSubdivisions}=' + numberOfSubdivisions} />
 				<Expression
 					id="function"
 					latex={'f(x)=' + equation}
 					color={experimentContext.colors.function}
 				/>
-				<Expression id="listofn" latex={'l_{istofN}=\\left[0,1,...,n\\right]'} />
-				<Expression id="delx" latex={'d_{elX}=\\frac{b-a}{n}'} />
-				<Expression id="xpoints" latex={'x_{points}=a+l_{istofN}\\cdot d_{elX}'} />
+				<Expression id="listofn" latex={'l_{istofN}=\\left[0,1,...,n_{umberOfSubdivisions}\\right]'} />
+				<Expression id="delx" latex={'d_{elX}=\\frac{r_{ightRange}-l_{eftRange}}{n_{umberOfSubdivisions}}'} />
+				<Expression id="xpoints" latex={'x_{points}=l_{eftRange}+l_{istofN}\\cdot d_{elX}'} />
 				<Expression
 					id="estimation"
 					latex={
-						'e_{stimation}=\\sum_{i=1}^{n}\\sqrt{d_{elX}^{2}+\\left(f\\left(x_{pointsoffRight}\\left[i\\right]\\right)-f\\left(x_{pointsoffLeft}\\left[i\\right]\\right)\\right)^{2}}'
+						'e_{stimation}=\\sum_{i=1}^{n_{umberOfSubdivisions}}\\sqrt{d_{elX}^{2}+\\left(f\\left(x_{pointsoffRight}\\left[i\\right]\\right)-f\\left(x_{pointsoffLeft}\\left[i\\right]\\right)\\right)^{2}}'
 					}
 					hidden
 				/>
 				<Expression
 					id="actual"
-					latex={"a_{ctual}=\\int_{a}^{b}\\sqrt{1+f'\\left(x\\right)^{2}}dx"}
+					latex={"a_{ctual}=\\int_{l_{eftRange}}^{r_{ightRange}}\\sqrt{1+f'\\left(x\\right)^{2}}dx"}
 				/>
 				<Expression
 					id="xpointsright"
 					latex={
-						'x_{pointsoffRight}=a+\\left(\\left[1,...,n\\right]\\right)\\cdot d_{elX}'
+						'x_{pointsoffRight}=l_{eftRange}+\\left(\\left[1,...,n_{umberOfSubdivisions}\\right]\\right)\\cdot d_{elX}'
 					}
 				/>
 				<Expression
 					id="xpointsleft"
 					latex={
-						'x_{pointsoffLeft}=a+\\left(\\left[0,...,n-1\\right]\\right)\\cdot d_{elX}'
+						'x_{pointsoffLeft}=l_{eftRange}+\\left(\\left[0,...,n_{umberOfSubdivisions}-1\\right]\\right)\\cdot d_{elX}'
 					}
 				/>
 				<Expression
@@ -155,8 +155,8 @@ export const Arc = ({ payload, visible, setPayload }) => {
 			<>
 				<h3>What is an arc length?</h3>
 				<p>
-					The arc length is an application of integration that lets us find the length of
-					a function within a certain range. The method by which this is achieved it very
+					The arc length is an application of integration that lets us find the length of the curve
+					of a function within a certain range. The method by which this is achieved it very
 					similar to the approximation of the area under a curve where Riemann sums where
 					exhaustively used. In short, subdivisions in x of a function are joined by
 					straight lines and they are all joined to approximate the curve of the function.
