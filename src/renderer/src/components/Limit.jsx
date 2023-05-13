@@ -129,8 +129,9 @@ export const Limit = ({ payload, visible, setPayload, colors }) => {
 							id="pointOnFunction"
 							latex={'\\left(x_{point},f\\left(x_{point}\\right)\\right)'}
 							dragMode="NONE"
+							color="red"
 						/>
-						<Expression id="yLine" latex={'y=f\\left(x_{point}\\right)'} />
+						<Expression id="yLine" latex={'y=f\\left(x_{point}\\right)'} color="#37a" />
 						<Expression
 							id="xAxisPoint"
 							latex={'\\left(x_{point},0\\right)'}
@@ -139,10 +140,12 @@ export const Limit = ({ payload, visible, setPayload, colors }) => {
 						<Expression
 							id="yDown"
 							latex={'y_{down}=f\\left(x_{point}\\right)-e_{psilon}'}
+							color="#37a"
 						/>
 						<Expression
 							id="yUp"
 							latex={'y_{up}=f\\left(x_{point}\\right)+e_{psilon}'}
+							color="#37a"
 						/>
 						<Expression
 							id="yDownLine"
