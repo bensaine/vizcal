@@ -43,10 +43,7 @@ export const Colors = () => {
 	return (
 		<div className={styles.outerColorContainer}>
 			{!open && (
-				<span
-					className={open ? styles.colorMenuButtonActive : styles.colorMenuButton}
-					onClick={() => setOpen((prev) => !prev)}
-				>
+				<span className={styles.colorMenuButton} onClick={() => setOpen(true)} data-testid="wrenchButton">
 					<Tool />
 				</span>
 			)}
@@ -56,7 +53,7 @@ export const Colors = () => {
 						<X size={16} />
 					</span>
 					<span className={styles.colorSelectorTitle}>Color Customization</span>
-					<div className={styles.optionsContainer}>
+					<div className={styles.optionsContainer} data-testid="colors">
 						{Object.entries(colors).map(([id, color]) => (
 							<ColorItems
 								key={id}
