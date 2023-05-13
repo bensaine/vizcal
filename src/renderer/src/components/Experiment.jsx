@@ -22,7 +22,7 @@ import useExperiment from '../hooks/useExperiment'
  *   visible={true}
  * />
  *
- * @returns {JSX.Element|null} If loading, returns null. If there's an error, returns an error message. Otherwise, returns the rendered experiment component.
+ * @returns {ReactElement|null} If loading, returns null. If there's an error, returns an error message. Otherwise, returns the rendered experiment component.
  */
 export const Experiment = ({ id, visible }) => {
 	// Get the experiment data based on the id

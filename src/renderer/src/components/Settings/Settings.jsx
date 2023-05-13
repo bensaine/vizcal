@@ -14,7 +14,7 @@ import { Dropdown } from '../Controls/Dropdown'
  * @param {function} setTheme - The function to set the selected theme.
  * @param {string} font - The selected font.
  * @param {function} setFont - The function to set the selected font.
- * @returns {JSX.Element} The rendered settings component.
+ * @returns {ReactElement} The rendered settings component.
  */
 export const Settings = ({ theme, setTheme, font, setFont }) => {
 	return (

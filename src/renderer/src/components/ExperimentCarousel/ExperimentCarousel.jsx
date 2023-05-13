@@ -12,7 +12,7 @@ import styles from './ExperimentCarousel.module.scss'
  * @component ExperimentCarousel
  * @param {Object[]} slides - An array of slide objects to be displayed in the carousel.
  * @param {Function} onSlideClick - A function to be called when a slide is clicked.
- * @returns {JSX.Element} The JSX element representing the experiment carousel.
+ * @returns {ReactElement} The JSX element representing the experiment carousel.
  */
 export const ExperimentCarousel = ({ slides, onSlideClick }) => {
 	const ref = useRef(null)

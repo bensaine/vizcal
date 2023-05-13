@@ -29,7 +29,7 @@ import { Colors } from '../Colors/Colors'
  *   output={123}
  * />
  *
- * @returns {JSX.Element} The rendered ExperimentBase component.
+ * @returns {ReactElement} The rendered ExperimentBase component.
  */
 export const ExperimentBase = ({ optionsSlot, graphSlot, helpSlot, output }) => {
 	const [helpOpen, setHelpOpen] = useState(false)

@@ -11,7 +11,7 @@ import styles from './NumericalOutput.module.scss'
  * @component NumericalOutput
  * @param {Object} props - The component props.
  * @param {number} props.output - The numerical output to display.
- * @returns {JSX.Element} The NumericalOutput component.
+ * @returns {ReactElement} The NumericalOutput component.
  */
 export const NumericalOutput = ({ output }) => {
 	return (

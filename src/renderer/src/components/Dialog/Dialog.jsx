@@ -10,7 +10,7 @@ import styles from './Dialog.module.scss'
  * @component
  * @param {Object} props - The props object.
  * @param {string} props.title - The title of the dialog.
- * @param {JSX.Element} props.children - The content to be displayed in the dialog.
+ * @param {ReactElement} props.children - The content to be displayed in the dialog.
  * @param {boolean} props.open - Whether the dialog is open or closed.
  * @param {function} props.onClose - The function to be called when the dialog is closed.
  *
@@ -19,7 +19,7 @@ import styles from './Dialog.module.scss'
  * <p>This is the content of my dialog.</p>
  * </Dialog>
  *
- * @returns {JSX.Element} The dialog component.
+ * @returns {ReactElement} The dialog component.
  */
 export const Dialog = ({ title, children, open, onClose }) => {
 	return (
