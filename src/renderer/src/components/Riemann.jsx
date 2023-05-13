@@ -204,7 +204,7 @@ export const Riemann = ({ payload, visible, setPayload }) => {
 			</>
 		)
 	}
-	
+
 	/**
 	 * Renders the help section of the Riemann Component.
 	 * This function returns a React fragment containing an explanation of Riemann Sums and a step-by-step guide on how to use the interactive features.

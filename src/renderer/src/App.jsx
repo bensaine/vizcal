@@ -110,7 +110,7 @@ function App() {
 					Visualizing concepts is a great way to learn them. It is also a great way to
 					teach them. Vizcal is a tool to help you visualize Calculus concepts.
 				</p>
-				<p>Here are the application's main functionalities:</p>
+				<p>Here are the application&apos;s main functionalities:</p>
 
 				<h3>1- Home menu</h3>
 				<p>
@@ -125,15 +125,14 @@ function App() {
 					one experiment will create a new instance of it in a new tab.
 				</p>
 				<p>
-					Clicking on "load an existing experiment from a file" will open the file
-					explorer and allow you to select a ".viz " type file, which will be opened in a
-					new tab.
+					Clicking on load an existing experiment from a file will open the file explorer
+					and allow you to select a .viz type file, which will be opened in a new tab.
 				</p>
 
 				<h3>2- Experiments</h3>
 				<p>
 					Each experiment contains an options and a graph section. The options section
-					allows you to modify the experiment's parameters. The graph section displays the
+					allows you to modify the experimen&apos;s parameters. The graph section displays the
 					experiment in real time.
 				</p>
 				<h4>2.1- Limit</h4>
@@ -159,21 +158,21 @@ function App() {
 				<p>
 					For more information on each experiment, refer to the Help section of that
 					experiment.This section is accessed through a question mark button located at
-					the top right corner of every experiment's options section.
+					the top right corner of every experiment&apos;s options section.
 				</p>
 
 				<h3>3- Settings</h3>
 				<p>
-					The "Settings" tab is represented by a grear icon found at the bottom left
-					corner of the page. There, you will be able to change the application's theme,
-					as well as the font.
+					The Settings tab is represented by a grear icon found at the bottom left corner
+					of the page. There, you will be able to change the application&apos;s theme, as well
+					as the font.
 				</p>
 
 				<h3>4- Menu Bar</h3>
 				<p>
 					The menu bar located at the top section of the app allows you to open and save
-					an experiment using the "file" tab, as well as reload the application and enable
-					full screen mode using the "view" tab.
+					an experiment using the file tab, as well as reload the application and enable
+					full screen mode using the view tab.
 				</p>
 				<h3>Additional Features</h3>
 				<h4>Collapsable menus</h4>
