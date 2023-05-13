@@ -29,7 +29,9 @@ of the function between these points.
 
 In mathematics, a Riemann sum is a certain kind of approximation of an integral
 by a finite sum. Riemann sums help us approximate definite integrals, but they
-also help us formally define definite integrals.
+also help us formally define definite integrals. Through Rieman sums, we give the answer to a problem with an approximation, refine it to make it more precice, and use limits to obtain an exact answer. This application focuses on the two first parts of the process.
+
+![riemann sums explanation image](https://i.stack.imgur.com/9hTsL.gif)<figcaption align = "center"><b>Riemann sums explanation. Reference: https://math.libretexts.org/Bookshelves/Calculus/Calculus_3e_(Apex)/05%3A_Integration/5.03%3A_Riemann_Sums.</b></figcaption>
 
 ### Arc Length
 
