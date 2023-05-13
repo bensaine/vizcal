@@ -20,7 +20,7 @@ describe('Settings', () => {
 		fireEvent.change(themeSetting, { target: { value: 'Dark' } })
 		expect(setTheme).toHaveBeenCalledWith('Dark')
 	})
-	
+
 	/**
 	 * @author Mervin Tounou
 	 */
