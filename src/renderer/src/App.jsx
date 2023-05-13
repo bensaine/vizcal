@@ -184,6 +184,13 @@ function App() {
 					<br />
 					collapsing an options will resize the graph section to fit the whole window.
 				</p>
+				<h4>Customizable colors</h4>
+				<p>
+					Each experiment has multiple color customization properties. This functionality
+					allows you to fully change the equation lines present in the graph section. To
+					access the customization options, click on the button represented by a wrench
+					icon. This button is located at the bottom right corner of each experiment.
+				</p>
 			</Dialog>
 		</div>
 	)
