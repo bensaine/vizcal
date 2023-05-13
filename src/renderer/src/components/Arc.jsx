@@ -156,12 +156,12 @@ export const Arc = ({ payload, visible, setPayload }) => {
 				<h3>What is an arc length?</h3>
 				<p>
 					The arc length is an application of integration that lets us find the length of
-					a function within a certain range. The method by which this is achieved it very
-					similar to the approximation of the area under a curve where Riemann sums where
-					exhaustively used. In short, subdivisions in x of a function are joined by
-					straight lines and they are all joined to approximate the curve of the function.
-					The approximation is simply given by the sum of the length of each small line
-					section.
+					the curve of a function within a certain range. The method by which this is
+					achieved it very similar to the approximation of the area under a curve where
+					Riemann sums where exhaustively used. In short, subdivisions in x of a function
+					are joined by straight lines and they are all joined to approximate the curve of
+					the function. The approximation is simply given by the sum of the length of each
+					small line section.
 				</p>
 				<h3>How to experiment with Arc Length:</h3>
 				<p>
