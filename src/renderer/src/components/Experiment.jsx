@@ -70,4 +70,8 @@ export const Experiment = ({ id, visible }) => {
 	)
 }
 
-export const ExperimentContext = createContext({})
+export const ExperimentContext = createContext({
+	experiment: {},
+	colors: {},
+	setColors: () => {}
+})

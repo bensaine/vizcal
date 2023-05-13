@@ -2,6 +2,7 @@ import { render } from '@testing-library/react'
 import { Limit } from './Limit'
 import { describe, expect, it, vi } from 'vitest'
 import { act } from 'react-dom/test-utils'
+import { ExperimentContext } from './Experiment'
 
 /**
  * Unit tests for the Limit component.
@@ -16,11 +17,13 @@ describe('Limit', () => {
 	it('Initial payload correctly sets sliders', () => {
 		const setPayload = vi.fn()
 		const limit = render(
-			<Limit
-				payload={{ equation: 'x^2', xPoint: 1, epsilon: 0.1, delta: 0.2 }}
-				visible={true}
-				setPayload={setPayload}
-			/>
+			<ExperimentContext.Provider value={{ colors: {} }}>
+				<Limit
+					payload={{ equation: 'x^2', xPoint: 1, epsilon: 0.1, delta: 0.2 }}
+					visible={true}
+					setPayload={setPayload}
+				/>
+			</ExperimentContext.Provider>
 		)
 		const values = [1, 0.1, 0.2]
 		limit.container.querySelectorAll('.value').forEach((slider, key) => {
@@ -30,11 +33,13 @@ describe('Limit', () => {
 
 	it('Clicking help button opens dialog', () => {
 		const limit = render(
-			<Limit
-				payload={{ equation: 'x^2', xPoint: 1, epsilon: 0.1, delta: 0.1 }}
-				visible={true}
-				setPayload={vi.fn()}
-			/>
+			<ExperimentContext.Provider value={{ colors: {} }}>
+				<Limit
+					payload={{ equation: 'x^2', xPoint: 1, epsilon: 0.1, delta: 0.1 }}
+					visible={true}
+					setPayload={vi.fn()}
+				/>
+			</ExperimentContext.Provider>
 		)
 		const dialog = limit.container.querySelector('.dialog').parentElement
 		expect(getComputedStyle(dialog).display).toBe('none')
@@ -46,20 +51,24 @@ describe('Limit', () => {
 
 	it('Setting visible to false properly masks experiment', () => {
 		let limit = render(
-			<Limit
-				payload={{ equation: 'x^2', xPoint: 1, epsilon: 0.1, delta: 0.1 }}
-				visible={true}
-				setPayload={vi.fn()}
-			/>
+			<ExperimentContext.Provider value={{ colors: {} }}>
+				<Limit
+					payload={{ equation: 'x^2', xPoint: 1, epsilon: 0.1, delta: 0.1 }}
+					visible={true}
+					setPayload={vi.fn()}
+				/>
+			</ExperimentContext.Provider>
 		)
 		expect(limit.container.querySelector('.container')).toBeTruthy()
 
 		limit = render(
-			<Limit
-				payload={{ equation: 'x^2', xPoint: 1, epsilon: 0.1, delta: 0.1 }}
-				visible={false}
-				setPayload={vi.fn()}
-			/>
+			<ExperimentContext.Provider value={{ colors: {} }}>
+				<Limit
+					payload={{ equation: 'x^2', xPoint: 1, epsilon: 0.1, delta: 0.1 }}
+					visible={false}
+					setPayload={vi.fn()}
+				/>
+			</ExperimentContext.Provider>
 		)
 		expect(limit.container.querySelector('.container')).toBeNull()
 	})

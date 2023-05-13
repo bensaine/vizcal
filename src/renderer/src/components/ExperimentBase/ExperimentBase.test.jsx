@@ -2,6 +2,7 @@ import { render } from '@testing-library/react'
 import { ExperimentBase } from './ExperimentBase'
 import { describe, it, vi, expect } from 'vitest'
 import { act } from 'react-dom/test-utils'
+import { ExperimentContext } from '../Experiment'
 
 /**
  * Unit tests for the ExperimentBase component.
@@ -15,12 +16,14 @@ import { act } from 'react-dom/test-utils'
 describe('ExperimentBase', () => {
 	it('Clicking on collapse button collapses options menu', () => {
 		const experimentBase = render(
-			<ExperimentBase
-				optionsSlot={vi.fn()}
-				graphSlot={vi.fn()}
-				helpSlot={vi.fn()}
-				output={vi.fn()}
-			/>
+			<ExperimentContext.Provider value={{ experiment: { type: 'limit' } }}>
+				<ExperimentBase
+					optionsSlot={vi.fn()}
+					graphSlot={vi.fn()}
+					helpSlot={vi.fn()}
+					output={vi.fn()}
+				/>
+			</ExperimentContext.Provider>
 		)
 
 		const options = experimentBase.container.querySelector('.options')

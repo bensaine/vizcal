@@ -2,6 +2,7 @@ import { render } from '@testing-library/react'
 import { Riemann } from './Riemann'
 import { describe, expect, it, vi } from 'vitest'
 import { act } from 'react-dom/test-utils'
+import { ExperimentContext } from './Experiment'
 
 /**
  * Unit tests for the Riemann component.
@@ -16,16 +17,18 @@ describe('Riemann', () => {
 	it('Initial payload correctly sets sliders', () => {
 		const setPayload = vi.fn()
 		const riemann = render(
-			<Riemann
-				payload={{
-					equation: 'x^2',
-					range: [-10, 10],
-					direction: 'left',
-					subdivisions: 500
-				}}
-				visible={true}
-				setPayload={setPayload}
-			/>
+			<ExperimentContext.Provider value={{ colors: {} }}>
+				<Riemann
+					payload={{
+						equation: 'x^2',
+						range: [-10, 10],
+						direction: 'left',
+						subdivisions: 500
+					}}
+					visible={true}
+					setPayload={setPayload}
+				/>
+			</ExperimentContext.Provider>
 		)
 		const values = [-10, 10, 500]
 		riemann.container.querySelectorAll('.value').forEach((slider, key) => {
@@ -36,16 +39,18 @@ describe('Riemann', () => {
 	it('Clicking help button opens dialog', () => {
 		const setPayload = vi.fn()
 		const riemann = render(
-			<Riemann
-				payload={{
-					equation: 'x^2',
-					range: [-10, 10],
-					direction: 'left',
-					subdivisions: 500
-				}}
-				visible={true}
-				setPayload={setPayload}
-			/>
+			<ExperimentContext.Provider value={{ colors: {} }}>
+				<Riemann
+					payload={{
+						equation: 'x^2',
+						range: [-10, 10],
+						direction: 'left',
+						subdivisions: 500
+					}}
+					visible={true}
+					setPayload={setPayload}
+				/>
+			</ExperimentContext.Provider>
 		)
 		const dialog = riemann.container.querySelector('.dialog').parentElement
 		expect(getComputedStyle(dialog).display).toBe('none')
@@ -58,30 +63,34 @@ describe('Riemann', () => {
 	it('Setting visible to false properly masks experiment', () => {
 		const setPayload = vi.fn()
 		let riemann = render(
-			<Riemann
-				payload={{
-					equation: 'x^2',
-					range: [-10, 10],
-					direction: 'left',
-					subdivisions: 500
-				}}
-				visible={true}
-				setPayload={setPayload}
-			/>
+			<ExperimentContext.Provider value={{ colors: {} }}>
+				<Riemann
+					payload={{
+						equation: 'x^2',
+						range: [-10, 10],
+						direction: 'left',
+						subdivisions: 500
+					}}
+					visible={true}
+					setPayload={setPayload}
+				/>
+			</ExperimentContext.Provider>
 		)
 		expect(riemann.container.querySelector('.container')).toBeTruthy()
 
 		riemann = render(
-			<Riemann
-				payload={{
-					equation: 'x^2',
-					range: [-10, 10],
-					direction: 'left',
-					subdivisions: 500
-				}}
-				visible={false}
-				setPayload={setPayload}
-			/>
+			<ExperimentContext.Provider value={{ colors: {} }}>
+				<Riemann
+					payload={{
+						equation: 'x^2',
+						range: [-10, 10],
+						direction: 'left',
+						subdivisions: 500
+					}}
+					visible={false}
+					setPayload={setPayload}
+				/>
+			</ExperimentContext.Provider>
 		)
 		expect(riemann.container.querySelector('.container')).toBeNull()
 	})
