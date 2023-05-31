@@ -35,6 +35,8 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 	 */
 	const [equation, setEquation] = useState(payload.equation ?? '')
 
+	/// all hooks must be documented 
+	/// a React context is like inherited properties from a parent class in Java
 	const experimentContext = useContext(ExperimentContext)
 
 	/**
@@ -56,7 +58,7 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 	 *
 	 * @type {string}
 	 */
-	const [derivOrder, setDerivOrder] = useState(payload.derivOrder ?? 'First')
+	const [derivOrder, setDerivOrder] = useState(payload.derivOrder ?? 'First') // abbreviation variables
 
 	/**
 	 * The slope value state.
@@ -74,8 +76,8 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 		setPayload({
 			equation: equation,
 			xPoint: xPoint,
-			runRiseVal: runRiseVal,
-			derivOrder: derivOrder
+			runRiseVal: runRiseVal, /// abbreviated variables
+			derivOrder: derivOrder /// abbreviated variables
 		})
 	}, [equation, xPoint, runRiseVal, derivOrder])
 
@@ -120,7 +122,7 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 					disabled={equation == ''}
 				/>
 				<Dropdown
-					id="derivOrd"
+					id="derivOrd" /// abbreviated variable
 					label="Derivative Order"
 					value={derivOrder}
 					options={['First', 'Second']}
@@ -266,6 +268,7 @@ export const Derivative = ({ payload, visible, setPayload }) => {
 				<p>
 					Use the second slider to select the run and rise values which will be used to
 					modify the slope value. The default value is 0.001.
+					{/* What can we expect to see when the run and rise value is changed? */}
 				</p>
 
 				<h4>3. Select a derivative order</h4>

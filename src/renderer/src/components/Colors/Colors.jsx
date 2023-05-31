@@ -19,15 +19,15 @@ import { experiments } from '../../data/experiments'
  * @returns {React.Element} The rendered component
  */
 export const Colors = () => {
-	const [open, setOpen] = useState(false)
+	const [open, setOpen] = useState(false) /// boolean variable naming
 	const { experiment, colors, setColors } = useContext(ExperimentContext)
 	const [titles, setTitles] = useState({})
 
 	// Set the titles of the color options once the experiment is loaded
 	useEffect(() => {
 		if (!experiment) return
-		const colors = experiments.find((e) => e.type === experiment.type).colors
-		const titles = Object.entries(colors).reduce((obj, [id, val]) => {
+		const colors = experiments.find((e) => e.type === experiment.type).colors /// single letter variable
+		const titles = Object.entries(colors).reduce((obj, [id, val]) => { /// abbreviations
 			obj[id] = val.title
 			return obj
 		}, {})

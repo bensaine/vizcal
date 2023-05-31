@@ -22,11 +22,12 @@ import { experiments } from './data/experiments'
  * @returns {ReactElement} The rendered App component.
  */
 function App() {
-	const [openExperiments, setOpenExperiments] = useState([])
+	/// documentation required for React hooks
+	const [openExperiments, setOpenExperiments] = useState([]) /// should be openedExperiments, setOpenedExperiments
 	const [focusedExperiment, setFocusedExperiment] = useState('home')
 	const [theme, setTheme] = useState(localStorage.getItem('theme') ?? 'Dark')
 	const [font, setFont] = useState(localStorage.getItem('font') ?? 'Helvetica Neue')
-	const [helpOpen, setHelpOpen] = useState(false)
+	const [helpOpen, setHelpOpen] = useState(false) /// should be isHelpOpen and setIsHelpOpen, booleans have a variable naming convention (even if js is dynamically typed)
 
 	// Save theme and font settings to local storage
 	useEffect(() => {
@@ -38,14 +39,14 @@ function App() {
 	}, [font])
 
 	// Create a new experiment when the user clicks the "New Experiment" button
-	const createExperiment = (type) => {
+	const createExperiment = (type) => { /// consider an enum for the type than a string
 		const id = uuidv4()
-		const colors = experiments.find((e) => e.type == type).colors
-		const colorsObj = Object.entries(colors).reduce((obj, [key, value]) => {
+		const colors = experiments.find((e) => e.type == type).colors /// no single letter variables
+		const colorsObj = Object.entries(colors).reduce((obj, [key, value]) => { /// no abbreviated variable names
 			obj[key] = value.default
 			return obj
 		}, {})
-		localStorage.setItem(id, JSON.stringify({ type: type, payload: {}, colors: colorsObj }))
+		localStorage.setItem(id, JSON.stringify({ type: type, payload: {}, colors: colorsObj })) /// no abbreviated variable names
 		setOpenExperiments([...openExperiments, id])
 		setFocusedExperiment(id)
 	}
@@ -61,7 +62,7 @@ function App() {
 	}
 
 	// Define the electron event API for opening and saving files
-	if (window.electron) {
+	if (window.electron) { /// Typescript warning: electron not found
 		window.electron.ipcRenderer.on('open-file', (event, experiment) => {
 			localStorage.setItem(experiment.id, JSON.stringify(experiment.save))
 

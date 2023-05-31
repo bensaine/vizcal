@@ -22,7 +22,7 @@ export const ExperimentCarousel = ({ slides, onSlideClick }) => {
 	useLayoutEffect(() => {
 		const handleResize = () => {
 			const windowWidth = ref.current.offsetWidth
-			const visibleSlides = Math.floor(windowWidth / 300) || 1
+			const visibleSlides = Math.floor(windowWidth / 300) || 1 /// magic numbers
 			const visibleSlidesCount = slides.length < visibleSlides ? slides.length : visibleSlides
 			setNumberOfSlides(visibleSlidesCount)
 		}

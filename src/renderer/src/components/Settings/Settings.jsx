@@ -10,10 +10,10 @@ import { Dropdown } from '../Controls/Dropdown'
  *
  * @author Benjamin Saine, Mervin Tounou
  * @component Settings
- * @param {string} theme - The selected theme.
- * @param {function} setTheme - The function to set the selected theme.
- * @param {string} font - The selected font.
- * @param {function} setFont - The function to set the selected font.
+ * @param {string} theme - The selected theme. /// props.theme
+ * @param {function} setTheme - The function to set the selected theme. /// props.setTheme
+ * @param {string} font - The selected font. /// props.font
+ * @param {function} setFont - The function to set the selected font. /// props.setFont
  * @returns {ReactElement} The rendered settings component.
  */
 export const Settings = ({ theme, setTheme, font, setFont }) => {
@@ -25,13 +25,13 @@ export const Settings = ({ theme, setTheme, font, setFont }) => {
 			<div className={styles.col}>
 				<Dropdown
 					label="Theme"
-					options={['Dark', 'Light']}
+					options={['Dark', 'Light']} /// consider enums
 					value={theme}
 					onChange={setTheme}
 				/>
 				<Dropdown
 					label="Font"
-					options={[
+					options={[ /// consider enums
 						'Helvetica Neue',
 						'Arial',
 						'Verdana',

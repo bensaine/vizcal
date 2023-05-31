@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import '../../assets/mathquill.css'
-import '../../../jquery.js'
+import '../../../jquery.js' /// why is this even needed?
 import '../../../mathquill.js'
 import { ControlContainer } from './ControlContainer/ControlContainer'
 

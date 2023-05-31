@@ -26,13 +26,14 @@ export const NavItem = ({ id, focus, onClick, closeExperiment }) => {
 	return (
 		<li className={focus ? styles.active : ''}>
 			<span className={styles.closeBtn} onClick={() => closeExperiment(id)}>
-				<X className={styles.closeIcon} />
+				<X className={styles.closeIcon} /// what is X?
+				/> 
 			</span>
 			<img
 				className={styles.icon}
 				onClick={() => onClick(id)}
-				src={experiments.find((e) => e.type == experiment.type).image}
-				alt={experiments.find((e) => e.type == experiment.type).displayName + ' logo'}
+				src={experiments.find((e) => e.type == experiment.type).image} /// single letter variable
+				alt={experiments.find((e) => e.type == experiment.type).displayName + ' logo'} /// single letter variable
 			/>
 		</li>
 	)

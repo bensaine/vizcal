@@ -32,12 +32,12 @@ export const Experiment = ({ id, visible }) => {
 
 	// Add a listener to update the payload in local storage whenever it changes (used when saving to file)
 	useEffect(() => {
-		document.addEventListener('updatePayload:' + id, (e) => {
+		document.addEventListener('updatePayload:' + id, (e) => { /// single letter variable
 			localStorage.setItem(id, JSON.stringify({ ...experiment, payload, colors }))
 		})
 
 		return () => {
-			document.removeEventListener('updatePayload:' + id, (e) =>
+			document.removeEventListener('updatePayload:' + id, (e) => /// single letter variable
 				localStorage.setItem(id, JSON.stringify({ ...experiment, payload, colors }))
 			)
 		}
@@ -61,7 +61,7 @@ export const Experiment = ({ id, visible }) => {
 				setColors: (colors) => setColors({ ...colors })
 			}}
 		>
-			{React.createElement(experiments.find((exp) => exp.type == experiment.type).component, {
+			{React.createElement(experiments.find((exp) => exp.type == experiment.type).component, { /// do not abbreviate
 				payload: experiment.payload,
 				visible,
 				setPayload
@@ -81,7 +81,7 @@ export const Experiment = ({ id, visible }) => {
  * const { experiment, colors, setColors } = useContext(ExperimentContext)
  *
  * @see Experiment
- * @see Colors
+ * @see Colors /// no reference
  *
  * @returns {React.Context} The context object
  */

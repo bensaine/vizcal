@@ -20,13 +20,14 @@ import { ExperimentContext } from './Experiment.jsx'
  * @author Steven Thao
  * @param {Object} props
  * @param {Object} props.payload - The initial payload containing function, range and number of subdivisions. Used if the experiment is opened from a file.
- * @param {boolean} props.visible - Determines whether the component is visible or not.
+ * @param {boolean} props.visible - Determines whether the component is visible or not. /// boolean variable naming
  * @param {Function} props.setPayload - Callback function to update the payload when it changes. Used to save experiment state to a file.
  * @returns {ReactElement|null} The rendered Arc Length component or null if not visible.
  * @example
  * <Arc payload={{equation: 'x^2', x: 2, n: 10}} visible={true} setPayload={setPayload} />
  */
 export const Arc = ({ payload, visible, setPayload }) => {
+	/// React hooks must be documented. They are like instance properties in Java.
 	const [equation, setEquation] = useState(payload.equation ?? '')
 	const [range, setRange] = useState(payload.range ?? [0, 10])
 	const [numberOfSubdivisions, setNumberOfSubdivisions] = useState(
@@ -97,6 +98,7 @@ export const Arc = ({ payload, visible, setPayload }) => {
 	 * @returns {ReactElement} React fragment containing the graph section of the Arc Length component.
 	 */
 	const renderGraph = () => {
+		/// You need to add comments to the Desmos calls. Which one is the input and which one is the output?
 		return (
 			<>
 				<Expression id="a" latex={'a=' + range[0]} />

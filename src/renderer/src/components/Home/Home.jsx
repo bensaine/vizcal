@@ -17,7 +17,7 @@ import { experiments } from '../../data/experiments.js'
  */
 export const Home = ({ createNewExperiment }) => {
 	const handleLoadExisting = () => {
-		window.api.openExperiment()
+		window.api.openExperiment() /// Where is the window.api defined? I couldn't find it in the standard docs
 	}
 
 	return (

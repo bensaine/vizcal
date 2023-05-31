@@ -27,6 +27,7 @@ import { ExperimentContext } from './Experiment.jsx'
  * <Limit payload={{equation: 'x^2', xPoint: 2, epsilon: 0.1, delta: 0.1}} visible={true} setPayload={setPayload} />
  */
 export const Limit = ({ payload, visible, setPayload }) => {
+	/// React hooks require documentation
 	const [equation, setEquation] = useState(payload.equation ?? '')
 	const [xPoint, setXPoint] = useState(payload.xPoint ?? 0)
 	const [epsilon, setEpsilon] = useState(payload.epsilon ?? 0.1)
@@ -114,6 +115,7 @@ export const Limit = ({ payload, visible, setPayload }) => {
 	const renderGraph = () => {
 		return (
 			<>
+				{/* /// Every Desmos Expression must be commented. No one can read the latex. */}
 				<Expression
 					id="function"
 					latex={'f\\left(x\\right)=' + equation}
@@ -247,13 +249,15 @@ export const Limit = ({ payload, visible, setPayload }) => {
 				<h4>3. Select an epsilon value</h4>
 				<p>
 					Use the second slider to select the epsilon value which will be used to
-					approximate the limit. The default value is 0.1.
+					approximate the limit. The default value is 0.1. 
+					{/* What can we expect to see when the epsilon value changes? */}
 				</p>
 
 				<h4>3. Select a delta value</h4>
 				<p>
 					Use the second slider to select the delta value which will be used to
 					approximate the limit. The default value is 0.1.
+					{/* What can we expect to see when the delta value changes? */}
 				</p>
 			</>
 		)

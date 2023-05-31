@@ -38,7 +38,7 @@ export const experiments = [
 		}
 	},
 	{
-		type: 'slope',
+		type: 'slope', /// inconsistent value
 		displayName: 'Derivative',
 		category: 'Derivatives',
 		image: slope,

@@ -22,7 +22,7 @@ import { ExperimentContext } from './Experiment.jsx'
  * @param {string} props.payload.equation - The function expression.
  * @param {number[]} props.payload.range - The range of the function.
  * @param {string} props.payload.direction - The direction of the Riemann sum.
- * @param {number} props.payload.subsivisions - The number of subdivisions for the Riemann sum.
+ * @param {number} props.payload.subsivisions - The number of subdivisions for the Riemann sum. /// doc typo!
  * @param {boolean} props.visible - Whether the component is visible.
  * @param {function} props.setPayload - The function to set the payload state.
  * @returns {React.Component} - The Riemann component.
@@ -43,7 +43,7 @@ export const Riemann = ({ payload, visible, setPayload }) => {
 	 *
 	 * @type {number[]}
 	 */
-	const [range, setRange] = useState(payload.range ?? [-10, 10])
+	const [range, setRange] = useState(payload.range ?? [-10, 10]) /// magic numbers
 
 	/**
 	 * The direction of the Riemann sum state.
@@ -148,6 +148,7 @@ export const Riemann = ({ payload, visible, setPayload }) => {
 	const renderGraph = () => {
 		return (
 			<>
+				{/* /// Every Desmos Expression must be explained by a comment */}
 				<Expression id="a" latex={'a=' + range[0]} />
 				<Expression id="b" latex={'b=' + range[1]} />
 				<Expression id="c" latex={'c=' + (direction == 'left' ? 0 : 1)} />
@@ -217,7 +218,7 @@ export const Riemann = ({ payload, visible, setPayload }) => {
 	const renderHelp = () => {
 		return (
 			<>
-				<h2>Reimann sums and Integrals</h2>
+				<h2>Reimann sums and Integrals</h2> {/* /// Typo  */}
 				<h3>What is a Reimann sum?</h3>
 				<p>
 					In mathematics, a Riemann sum is a certain kind of approximation of an integral

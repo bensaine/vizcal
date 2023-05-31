@@ -1,7 +1,7 @@
 import { contextBridge, ipcRenderer } from 'electron'
 import { electronAPI } from '@electron-toolkit/preload'
 
-// Custom APIs for renderer
+// Custom APIs for renderer /// Missing documentation
 const api = {
 	writeFile: (path, data) => ipcRenderer.send('write-file', path, data),
 	openExperiment: () => ipcRenderer.send('open-experiment')

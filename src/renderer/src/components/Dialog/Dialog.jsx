@@ -27,7 +27,8 @@ export const Dialog = ({ title, children, open, onClose }) => {
 			<dialog className={styles.dialog}>
 				<div className={styles.header}>
 					<h1 className={styles.title}>{title}</h1>
-					<span className={styles.closeBtn} onClick={onClose}>
+					<span className={styles.closeBtn} /// variable name issue: closeBtn
+						onClick={onClose}>
 						<X />
 					</span>
 				</div>

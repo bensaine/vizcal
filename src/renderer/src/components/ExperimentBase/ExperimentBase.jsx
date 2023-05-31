@@ -32,8 +32,8 @@ import { Colors } from '../Colors/Colors'
  * @returns {ReactElement} The rendered ExperimentBase component.
  */
 export const ExperimentBase = ({ optionsSlot, graphSlot, helpSlot, output }) => {
-	const [helpOpen, setHelpOpen] = useState(false)
-	const [isCollapsed, setIsCollapsed] = useState(false)
+	const [helpOpen, setHelpOpen] = useState(false) /// boolean variable naming
+	const [isCollapsed, setIsCollapsed] = useState(false) /// that's what I want
 	const [color] = useState('black')
 
 	return (

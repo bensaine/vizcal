@@ -17,8 +17,10 @@ import { useEffect, useState } from 'react'
  * 3. `error`: Any error that occurred while fetching the experiment, or `null` if no error occurred.
  */
 const useExperiment = (id) => {
+	/// all state variables must be documented
+	/// they act like instance properties of classes in Java (this.someProperty)
 	const [experiment, setExperiment] = useState(null)
-	const [loading, setLoading] = useState(true)
+	const [loading, setLoading] = useState(true) /// boolean naming problem
 	const [error, setError] = useState(null)
 
 	useEffect(() => {
