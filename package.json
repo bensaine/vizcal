@@ -4,6 +4,7 @@
 	"description": "Visualizing concepts is a great way to learn them. It is also a great way to teach them. Vizcal is a tool to help you visualize Calculus concepts.",
 	"main": "./out/main/index.js",
 	"author": "Calculus-Oriented Creative Kids",
+	"type": "module",
 	"scripts": {
 		"format": "prettier --write .",
 		"lint": "eslint . --ext .js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix",
@@ -17,14 +18,14 @@
 		"build:linux": "npm run build && electron-builder --linux --config"
 	},
 	"dependencies": {
-		"@electron-toolkit/preload": "^1.0.3",
-		"@electron-toolkit/utils": "^1.0.2",
+		"@electron-toolkit/preload": "^3.0.0",
+		"@electron-toolkit/utils": "^3.0.0",
 		"desmos-react": "^1.2.0",
 		"fs": "^0.0.1-security",
 		"pure-react-carousel": "^1.30.1",
 		"react-feather": "^2.0.10",
-		"react-slider": "^2.0.4",
-		"uuid": "^9.0.0"
+		"react-slider": "^2.0.6",
+		"uuid": "^9.0.1"
 	},
 	"browser": {
 		"fs": false,
@@ -32,22 +33,22 @@
 		"os": false
 	},
 	"devDependencies": {
-		"@electron/notarize": "^1.2.3",
-		"@testing-library/react": "^14.0.0",
-		"@vitejs/plugin-react": "^3.0.1",
-		"electron": "^21.3.3",
-		"electron-builder": "^23.6.0",
-		"electron-vite": "^1.0.22",
-		"eslint": "^8.31.0",
-		"eslint-config-prettier": "^8.6.0",
-		"eslint-plugin-prettier": "^4.2.1",
-		"eslint-plugin-react": "^7.31.11",
-		"jsdom": "^22.0.0",
-		"prettier": "^2.8.2",
+		"@electron/notarize": "^2.3.0",
+		"@testing-library/react": "^14.2.1",
+		"@vitejs/plugin-react": "^4.2.1",
+		"electron": "^29.1.3",
+		"electron-builder": "^24.13.3",
+		"electron-vite": "^2.1.0",
+		"eslint": "^8.57.0",
+		"eslint-config-prettier": "^9.1.0",
+		"eslint-plugin-prettier": "^5.1.3",
+		"eslint-plugin-react": "^7.34.0",
+		"jsdom": "^24.0.0",
+		"prettier": "^3.2.5",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
-		"sass": "^1.58.0",
-		"vite": "^4.0.4",
-		"vitest": "^0.31.0"
+		"sass": "^1.72.0",
+		"vite": "^5.1.6",
+		"vitest": "^1.3.1"
 	}
 }
